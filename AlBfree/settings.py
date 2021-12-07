@@ -78,8 +78,11 @@ WSGI_APPLICATION = 'AlBfree.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'albfree',      #データベースの名前
+        'USER': 'root',         #ユーザ―名
+        #'PASSWORD': 'password',    #パスワードがある場合
+        'PORT': '3306',         #ポート番号 XAMPP>MySQL部に記載されてある　デフォルトが3306
     }
 }
 
