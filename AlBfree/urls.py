@@ -14,8 +14,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path , include #include追加
+from django.conf import settings       #行追加
+from django.conf.urls.static import static #行追加
+from .views import TopPage              #行追加
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+    path('', TopPage.as_view(), name='toppage’),        #追加（トップページ）
+    path('blog/', include('blogs.urls')),               #追加（アプリ）
+    path('accounts/', include('accounts.urls')),        #追加（アプリ）
+    path('qa/', include('QA.urls')),                    #追加（アプリ）
+]#+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
+ #+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 
+ #追加（静的ファイル）

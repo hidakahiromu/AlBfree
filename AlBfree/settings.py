@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'blogs.apps.BlogsConfig',          #追加
+    #'accounts.apps.AccountsConfig',    #追加
+    #'QA.apps.QaConfig',                #追加　
 ]
 
 MIDDLEWARE = [
@@ -54,7 +57,7 @@ ROOT_URLCONF = 'AlBfree.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],   #追加
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
