@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'blogs.apps.BlogsConfig',          #追加
+    'restaurants.apps.RestaurantsConfig',          #追加
     'accounts.apps.AccountsConfig',    #追加
     #'QA.apps.QaConfig',                #追加　
 ]
@@ -129,3 +129,4 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

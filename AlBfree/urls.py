@@ -22,7 +22,7 @@ from django.conf.urls.static import static #行追加
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/' , include('accounts.urls')),
+    path('restaurants/' , include('restaurants.urls')),
     path('' , include('accounts.urls')),
     #path('', TopPage.as_view(), name='toppage’),        #追加（トップページ）
     #path('blog/', include('blogs.urls')),               #追加（アプリ）
