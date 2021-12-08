@@ -1,0 +1,14 @@
+html,body{
+  text-align: center;
+  font-size:20px;
+  font-family: serif ;
+}
+
+span.total{
+  font-size:20px;
+    color:red;
+}
+span.star{
+  font-size:20px;
+    color:red;
+}
