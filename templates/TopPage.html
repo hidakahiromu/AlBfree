@@ -1,11 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
 <!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="utf-8">
+<!-- headの継承 -->
+{% block title %}
     <title>トップページ</title>
-    <link rel="stylesheet" href="../static/css/destyle.css">
-</head>
+{% endblock title %}
 
-<body>
-    <p>daukdaiuwydgaiu</p>
-</body>
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/TopPage.css' %}">
+{% endblock css %}
+
+<!-- bodyの継承 -->
+{% block content %}
+<!-- ここにbodyの中身書くよ -->
+<p>本文だよ</p>
+{% endblock content %}

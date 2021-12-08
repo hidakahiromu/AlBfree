@@ -1,0 +1,18 @@
+{% load static %}
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'css/destyle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/TopPage.css' %}">
+    
+    {% block title %}
+    <!-- ここにtitle書くよ -->
+    {% endblock title %}
+</head>
+
+<body>
+<!-- bodyの継承 -->
+{% block content %}
+<!-- ここにbodyの中身書くよ -->
+{% endblock content %}
+</body>
+</html>
