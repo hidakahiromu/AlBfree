@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
+
 <!-- headの継承 -->
 {% block title %}
     <title>トップページ</title>
@@ -11,7 +11,15 @@
 {% endblock css %}
 
 <!-- bodyの継承 -->
+{% block header %}
+    <!-- ここにheader書くよ -->
+{% endblock header %}
+
 {% block content %}
-<!-- ここにbodyの中身書くよ -->
-<p>本文だよ</p>
+    <!-- ここに本文書くよ -->
+    <p>本文だよ</p>
 {% endblock content %}
+
+{% block footer %}
+    <!-- ここにfooter書くよ -->
+{% endblock footer %}
