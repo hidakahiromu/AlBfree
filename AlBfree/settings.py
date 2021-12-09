@@ -9,7 +9,8 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+# 追加
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,9 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'restaurants.apps.RestaurantsConfig',          #追加
-    'accounts.apps.AccountsConfig',    #追加
-    #'QA.apps.QaConfig',                #追加　
+    'restaurants.apps.RestaurantsConfig',  # 追加
+    'accounts.apps.AccountsConfig',  # 追加
+    # 'QA.apps.QaConfig',                #追加　
 ]
 
 MIDDLEWARE = [
@@ -57,7 +58,7 @@ ROOT_URLCONF = 'AlBfree.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],   #追加
+        'DIRS': [BASE_DIR / 'templates'],  # 追加
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,10 +80,10 @@ WSGI_APPLICATION = 'AlBfree.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'albfree',      #データベースの名前
-        'USER': 'root',         #ユーザ―名
-        #'PASSWORD': 'password',    #パスワードがある場合
-        'PORT': '3306',         #ポート番号 XAMPP>MySQL部に記載されてある　デフォルトが3306
+        'NAME': 'albfree',  # データベースの名前
+        'USER': 'root',  # ユーザ―名
+        # 'PASSWORD': 'password',    #パスワードがある場合
+        'PORT': '3306',  # ポート番号 XAMPP>MySQL部に記載されてある　デフォルトが3306
     }
 }
 
@@ -125,8 +126,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# 追加
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
