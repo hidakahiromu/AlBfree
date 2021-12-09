@@ -1,14 +1,13 @@
-html,body{
-  text-align: center;
-  font-size:20px;
-  font-family: serif ;
-}
 
-span.total{
+span.rating-name{
   font-size:20px;
-    color:red;
+    color:black;
 }
 span.star{
-  font-size:20px;
-    color:red;
+  font-size:40px;
+    color:orange;
+}
+
+.right{
+  float : right;
 }
