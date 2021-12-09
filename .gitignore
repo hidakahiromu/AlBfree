@@ -1,3 +1,4 @@
 
-*.pyc
-*.cpython-39.pyc
+
+*/migrations/
+*/__pycache__/
