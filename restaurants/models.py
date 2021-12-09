@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class store_information(models.Model):
+#class store_information(models.Model):
     #restaurant_id = models.IntegerField(primary_key=True)
     #restaurant_name	= models.CharField( "飲食店名" , null = True , max_length = 50)
     #explanation	= models.TextField( "説明文" , max_length = 1000)
