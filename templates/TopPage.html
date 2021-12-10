@@ -7,6 +7,7 @@
 {% endblock title %}
 
 {% block css %}
+    <!-- ここにcss書くよ -->
     <link rel="stylesheet" href="{% static 'css/TopPage.css' %}">
 {% endblock css %}
 
@@ -17,7 +18,76 @@
 
 {% block content %}
     <!-- ここに本文書くよ -->
-    <p>本文だよ</p>
+    <div class="img">
+        <h1 class="Heading">ALBfree</h1>
+        <h2>アレルギー別でお店検索が出来るサイトやで</h2>
+    </div>
+        <div search list>
+            <!--簡易検索フォーム-->
+            <form action="店舗一覧(検索結果)" method="get">
+                <select name="Prefecture">
+                    <option class="tab_select">県を選ぶ</option>
+                    <optgroup label="北海道・東北">
+                        <option value="hokkaido">北海道</option>
+                        <option value="aomori">青森</option>
+                        <option value="akita">秋田</option>
+                    </optgroup>
+                    <optgroup label="関東">
+                        <option value="tokyo">東京</option>
+                        <option value="tiba">千葉</option>
+                        <option value="kanagawa">神奈川</option>
+                    </optgroup>
+                    <optgroup label="中部">
+                    </optgroup>
+                    <optgroup label="近畿">
+                        <option value="hyogo">兵庫</option>
+                        <option value="osaka">大阪</option>
+                        <option value="kyoto">京都</option>
+                    </optgroup>
+                    <optgroup label="中国">
+                    </optgroup>
+                    <optgroup label="四国">
+                    </optgroup>
+                    <optgroup label="九州・沖縄">
+                    </optgroup>
+                </select>
+
+                <select name="time">
+                    <option>時間を選ぶ</option>
+                    <option value="800">8:00</option>             
+                    <option value="900">9:00</option>
+                    <option value="1000">10:00</option>
+                    <option value="1100">11:00</option>
+                    <option value="1200">12:00</option>
+                    <option value="1300">13:00</option>
+                    <option value="1400">14:00</option>
+                    <option value="1500">15:00</option>
+                    <option value="1600">16:00</option>
+                    <option value="1700">17:00</option>
+                    <option value="1800">18:00</option>
+                    <option value="1900">19:00</option>
+                    <option value="2000">20:00</option>
+                    <option value="2100">21:00</option>
+                    <option value="2200">22:00</option>
+                </select>
+                <select name="member">
+                    <option>人数を選ぶ</option>
+                    <option value="1">1人</option>             
+                    <option value="2">2人</option>
+                    <option value="3">3人</option>
+                    <option value="4">4人</option>
+                    <option value="5">5人</option>
+                    <option value="6">6人</option>
+                    <option value="7">7人</option>
+                    <option value="8">8人</option>
+                    <option value="9">9人</option>
+                    <option value="10">10人</option>
+                </select>
+
+                <input type="search" name="search" placeholder="キーワードを入力">
+                <input type="submit" name="submit" value="検索">
+            </form>
+        </div>
 {% endblock content %}
 
 {% block footer %}
