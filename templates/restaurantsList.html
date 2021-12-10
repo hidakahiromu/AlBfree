@@ -3,14 +3,16 @@
     <head>
         <meta charset="UTF-8">
         <title>restaurantList</title>
+        <link rel = "stylesheet" href="{% static 'css/restaurantsList.css' %}" > 
     </head>
     <body>
-        <p>○○なお店</p>     <!--処理入れる-->
         <select name="sorting">
             <option value="オススメ順">オススメ順</option>
             <option value="新着順">新着順</option>
             <option value="アレルゲンが少ない順">アレルゲンが少ない順</option>
         </select>
+
+        <p>○○なお店</p>     <!--処理入れる-->
 
         <!--詳細画面に飛ぶやつ-->
         <div class="storeList">
@@ -57,7 +59,3 @@
     </footer>
 </html>
 
-
-{% for test in test_list  %}
-    {{ test.restaurant_name }}
-{% endfor %}

@@ -26,7 +26,7 @@ class store_information(models.Model):
 
     #ここからは一応必須かわからないからblankを付けときます
     seat = models.CharField( "席" , blank=True , max_length = 20)
-    private_room = models.CharField( "席" , blank=True , max_length = 20)
+    private_room = models.CharField( "個室" , blank=True , max_length = 20)
     reserved = models.CharField( "貸切" , blank=True , max_length = 20)
     smoking = models.CharField( "禁煙&喫煙" , blank=True , max_length = 20)
     parking	= models.CharField( "駐車場" , blank=True , max_length = 20)
