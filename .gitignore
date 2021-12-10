@@ -1,18 +1,8 @@
-
-
-*/migrations/
-*/__pycache__/
-*AlBfree/__pycache__/__init__.cpython-39.pyc
-*AlBfree/__pycache__/settings.cpython-39.pyc
-*AlBfree/__pycache__/urls.cpython-39.pyc
-*AlBfree/__pycache__/wsgi.cpython-39.pyc
-*accounts/__pycache__/__init__.cpython-39.pyc
-*accounts/__pycache__/admin.cpython-39.pyc
-*accounts/__pycache__/apps.cpython-39.pyc
-*accounts/__pycache__/models.cpython-39.pyc
-*accounts/__pycache__/urls.cpython-39.pyc
-*accounts/__pycache__/views.cpython-39.pyc
-*accounts/migrations/__pycache__/__init__.cpython-39.pyc
-*restaurants/__pycache__/models.cpython-39.pyc
-*restaurants/__pycache__/urls.cpython-39.pyc
-*restaurants/__pycache__/views.cpython-39.pyc
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+media
