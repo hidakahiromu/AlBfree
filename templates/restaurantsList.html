@@ -1,3 +1,5 @@
+{% load static %}   <!--staticの読み込み-->
+
 <!DOCTYPE html>
 <html lang="ja">
     <head>
@@ -6,30 +8,35 @@
         <link rel = "stylesheet" href="{% static 'css/restaurantsList.css' %}" > 
     </head>
     <body>
-        <select name="sorting">
-            <option value="オススメ順">オススメ順</option>
-            <option value="新着順">新着順</option>
-            <option value="アレルゲンが少ない順">アレルゲンが少ない順</option>
-        </select>
 
-        <p>○○なお店</p>     <!--処理入れる-->
+        <div class="sortingButton">
+            <select name="sorting">     <!--並び順変更ボタン-->
+                <option value="オススメ順">オススメ順</option>
+                <option value="新着順">新着順</option>
+                <option value="アレルゲンが少ない順">アレルゲンが少ない順</option>
+            </select>
+        </div>
+
+        <h2>○○なお店</h2>     <!--○○に検索した条件を代入-->
 
         <!--詳細画面に飛ぶやつ-->
         <div class="storeList">
-            <img src="cafe.jpg" height="150px" width="150px">
-            <h3>cafe</h3>
+            <img src="cafe.jpg" height="100px" width="100px">
+            <p>cafe</p>
             <table border="1">
                 <tr><th>卵</th><th>乳</th><th>小麦</th><th>えび</th><th>かに</th><th>落花生</th><th>そば</th></tr>
             </table>
+            <br>
             <p>説明文</p>
         </div>
 
-        <!-- 検索 -->
-        <div class="listSearch">   <!-- 検索 -->
-            <div class="searchAllergen">    <!-- アレルゲン -->
+        <!-- 詳細条件検索 -->
+        <section class="listSearch">   <!-- 詳細条件の枠組み -->
+            <h2>詳細条件</h2>
+            <div class="searchAllergen">    <!-- アレルゲン検索 -->
                 <form action="#">
                     <button class="allergen">アレルゲン</button>
-                    </div>
+                    <br>
                     <label for="egg">
                         <input type="checkbox">卵
                     </label>
@@ -53,9 +60,12 @@
                     </label>
                 </form>
             </div>      <!-- アレルゲン検索ここまで -->
-        </div>
+        </section>
+
     </body>
+
     <footer>
     </footer>
+
 </html>
 
