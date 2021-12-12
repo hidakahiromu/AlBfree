@@ -13,39 +13,10 @@ body {
     margin-top: 5px;
 }
 
-.storeList{         /*飲食店一覧のスタイル*/
-    width: 600px;        /*ここは調節が必要*/
-    height: auto;       /*ここも調節がいる*/
-    float: left;
-    margin-top: 20px;
-    margin-left: 10px;
-    margin-right: 150px;
-    padding: 0.5em 1em;
-    font-weight: bold;
-    border: solid 3px #000;     /*線*/
-    border-radius: 10px;          /*角の丸み*/
-}
-
-.storeList img{
-    float: left;
-}
-
-.storeList table{
-    width: auto;
-    height: auto;
-    float: left;    
-}
-
-.storeList p{
-    width: auto;
-    height: auto;
-    float: left;
-}
-
 .listSearch{        /*詳細条件検索の箱スタイル*/
     width: 400px;       /*ここも調節が必要*/
     height: auto;      /*ここも調節が必要*/
-    float: left;
+    float: right;
     margin-top: 5px;
     padding: 0.5em 1em;
     font-weight: bold;
@@ -58,3 +29,35 @@ body {
     height: auto;
     margin-top: 10px;
 }
+
+
+.storeList{         /*飲食店一覧のスタイル*/
+    width: 600px;        /*ここは調節が必要*/
+    height: auto;       /*ここも調節がいる*/
+    float: left;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 150px;
+    padding: 10px 10px;
+    font-weight: bold;
+    border: solid 3px #000;     /*線*/
+    border-radius: 10px;          /*角の丸み*/
+}
+
+.storeList img{         /*飲食店のトップ画*/
+    float: left;
+}
+
+.storeList table{       /*飲食店のアレルギー表示*/
+    float: right;    
+}
+
+/*飲食店名のスタイル*/
+.restaurant_name{
+    float: left;
+}
+
+.explanation{       /*飲食店の説明文のスタイル*/
+    
+}
+

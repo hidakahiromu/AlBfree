@@ -7,6 +7,6 @@ def ShopDetails(request):
 
 def RestaurantsList(request):
     db = {
-        'test_list' : store_information.objects.all()
+        'restaurants_db' : store_information.objects.all()
     }
     return render(request , 'restaurantsList.html' , db)
