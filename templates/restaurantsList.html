@@ -1,13 +1,19 @@
+{% extends "base.html" %}   <!--headerとfooterの読み込み-->
 {% load static %}   <!--staticの読み込み-->
 
-<!DOCTYPE html>
-<html lang="ja">
-    <head>
-        <meta charset="UTF-8">
-        <title>restaurantList</title>
-        <link rel = "stylesheet" href="{% static 'css/restaurantsList.css' %}" > 
-    </head>
-    <body>
+{% block title %}
+    <title>restaurantList</title>
+{% endblock title %}
+
+{% block css %}     <!-- ここでcss読み込む -->
+    <link rel = "stylesheet" href="{% static 'css/restaurantsList.css' %}" > 
+{% endblock css %}
+        
+{% block header %}
+    <!-- ここにheader書くけどいまは何もなし -->
+{% endblock header %}
+
+{% block content %}
 
         <div class="sortingButton">
             <select name="sorting">     <!--並び順変更ボタン-->
@@ -63,11 +69,10 @@
                 <p class="explanation">{{ data.explanation }}</p>
             </div>
         {% endfor %}
+    
         
-    </body>
+{% endblock content %}
 
-    <footer>
-    </footer>
-
-</html>
-
+{% block footer %}
+    <!-- ここにfooter書くけど今は何もなし -->
+{% endblock footer %}
