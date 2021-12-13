@@ -1,4 +1,20 @@
+body{
+  width:100%;
+  background-color: #d6ffea;
+}
+.contents{
+  width:960px;
+  margin:30%;
 
+}
+.inline{
+  display: inline-block;
+}
+
+.shopname{
+  font-size:30px;
+  color:black;
+}
 .clearfix::after{
   content:"";
   display:block;
