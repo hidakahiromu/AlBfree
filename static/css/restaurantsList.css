@@ -7,11 +7,50 @@ body {
 }
 
 .sortingButton{     /*○○順選択のボタンのスタイル*/
-    width: 200px;
+    width: 240px;
     height: auto;
     float: left;
+    position: relative;
     margin-top: 5px;
 }
+/*プルダウンメニューのデザイン*/
+.sortingButton:after {
+    content: '<>';
+    font: 17px "Consolas", monospace;
+    color: #000;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    right: 11px;
+    /*位置の調整*/
+    top: 18px;
+    padding: 0 0 2px;
+    border-bottom: 1px solid #000;
+    /*left line */
+    position: absolute;
+    pointer-events: none;
+  }
+    
+  .sortingButton select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* Add some styling */
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    height: 50px;
+    float: right;
+    margin: 5px 0px;
+    padding: 0px 24px;
+    font-size: 16px;
+    line-height: 1.75;
+    border: 1px solid #000;
+    -ms-word-break: normal;
+    word-break: normal;
+  }
+/*プルダウンメニューのデザインここまで*/
 
 .listSearch{        /*詳細条件検索の箱スタイル*/
     width: 400px;       /*ここも調節が必要*/
@@ -49,8 +88,24 @@ body {
 }
 
 .storeList table{       /*飲食店のアレルギー表示*/
-    float: right;    
+    font-size: 12px;
+    font-weight: bold;
+    float: right;
 }
+/*アレルゲン表示のデザイン*/
+.storeList table td{
+    text-align: center;
+    border-left: 1px solid #a8b7c5;
+    border-bottom: 1px solid #a8b7c5;
+    border-top: 1px solid #a8b7c5;
+    box-shadow: 0px -3px 5px 1px #eee inset;  /*影いらなかったら消して*/
+    width: 45px;
+    padding: 5px 0;
+}
+.storeList table td:last-child{
+    border-right: 1px solid #a8b7c5;
+}
+/*アレルゲン表示のデザインここまで*/
 
 /*飲食店名のスタイル*/
 .restaurant_name{
