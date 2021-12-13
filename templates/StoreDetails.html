@@ -1,49 +1,33 @@
-<<<<<<< Updated upstream
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+<title>店舗詳細画面</title>
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/StoreDetails.css' %}">
+{% endblock css %}
+
+{% block content %}
+<h1>店舗名：カフェマリア </h1>
 
 
-=======
->>>>>>> Stashed changes
-<!DOCTYPE html>
-<html lang="jp" dir="ltr">
+<div class="right-info">
+  <span class="right rating-name">トータルの評価&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+  <span class="star">★★☆☆☆ 2.0</span>
+  <br>
+  <span class="rating-name">アレルギー対応の評価</span>
+  <span class="star">★★★★☆ 4.0</span>
+</div>
 
-<head>
-  <meta charset="utf-8">
-  <title>店舗詳細画面</title>
-  <!-- <link rel="stylesheet" href="../static/css/destyle.css">-->
-  <link rel="stylesheet" href="../static/css/ShopDetail.css">
-</head>
-
-<body>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<!--星の画像使わなあかん-->
 
 
+<!--ここからメニューリスト(プロトタイプ6枚目)-->
+<h4>ホットコーヒー </h4>
+<h5>500円</h5>
+{% endblock content %}
 
-  <h1>店舗名：カフェマリア </h1>
-
-
-  <div class="right-info">
-    dghfdsahj
-    <br>
-    <span class="right rating-name">トータルの評価&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-    <span class="star">★★☆☆☆ 2.0</span>
-    <br>
-    <span class="rating-name">アレルギー対応の評価</span>
-    <span class="star">★★★★☆ 4.0</span>
-  </div>
-
-  <!--星の画像使わなあかん-->
-
-
-  <!--ここからメニューリスト(プロトタイプ6枚目)-->
-  <h4>ホットコーヒー </h4>
-  <h5>500円</h5>
-
-</body>
-
-<<<<<<< Updated upstream
-
-=======
-</html>
->>>>>>> Stashed changes
+{% block footer %}
+{% endblock footer %}

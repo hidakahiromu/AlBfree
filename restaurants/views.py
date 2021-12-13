@@ -4,7 +4,7 @@ from .models import store_information
 # Create your views here.
 
 
-def ShopDetails(request):
+def StoreDetails(request):
     return render(request, 'StoreDetails.html')
 
 
