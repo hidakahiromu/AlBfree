@@ -6,13 +6,48 @@ body {
     background: #fff;
 }
 
+/*階層構造表示のスタイル*/
+
+.hierarchies ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.hierarchy {
+    display: inline-block;
+}
+
+.hierarchy a::after {
+    display: inline-block;
+    color: #000;
+    content: '>';
+    font-size: 80%;
+    font-weight: bold;
+    padding: 0 3px;
+}
+/*ここまで*/
+
+/*店舗数と口コミ数の欄*/
+.count{
+    float: right;
+}
+
+
 .sortingButton{     /*○○順選択のボタンのスタイル*/
-    width: 240px;
-    height: auto;
+    width: 175px;
+    height: 15px;
     float: left;
     position: relative;
-    margin-top: 5px;
+    margin-top: 15px;
 }
+
+.storeName{                 /*○○のところ*/
+    width: auto;
+    height: 30px;
+    margin-left: 350px;
+    margin-top: 30px;
+}
+
 /*プルダウンメニューのデザイン*/
 .sortingButton:after {
     content: '<>';
@@ -25,7 +60,6 @@ body {
     right: 11px;
     /*位置の調整*/
     top: 18px;
-    padding: 0 0 2px;
     border-bottom: 1px solid #000;
     /*left line */
     position: absolute;
@@ -38,15 +72,16 @@ body {
     appearance: none;
     /* Add some styling */
     display: block;
-    width: 100%;
+    width: 150px;
     max-width: 320px;
     height: 50px;
     float: right;
     margin: 5px 0px;
-    padding: 0px 24px;
-    font-size: 16px;
+    padding: 0px 5px;
+    font-size: 11px;
     line-height: 1.75;
     border: 1px solid #000;
+    border-radius: 10px;          /*角の丸み*/
     -ms-word-break: normal;
     word-break: normal;
   }
@@ -67,6 +102,14 @@ body {
     width: 200px;
     height: auto;
     margin-top: 10px;
+}
+
+.areaSearch{        /*詳細条件のエリア検索の枠*/
+    margin-top: 35px;
+}
+
+.prefectures{       /*都道府県プルダウンメニュー*/
+
 }
 
 
