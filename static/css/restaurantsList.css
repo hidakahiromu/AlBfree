@@ -8,9 +8,13 @@ body {
 
 /*階層構造表示のスタイル*/
 
+.hierarchy{
+    float: left;
+}
+
 .hierarchies ul {
+    margin: 0;
     list-style-type: none;
-    padding-left: 0;
 }
 
 .hierarchy {
@@ -28,7 +32,8 @@ body {
 /*ここまで*/
 
 /*店舗数と口コミ数の欄*/
-.count{
+.count p{
+    margin: 0;
     float: right;
 }
 
@@ -37,15 +42,9 @@ body {
     width: 175px;
     height: 15px;
     float: left;
+    clear: both;
     position: relative;
     margin-top: 15px;
-}
-
-.storeName{                 /*○○のところ*/
-    width: auto;
-    height: 30px;
-    margin-left: 350px;
-    margin-top: 30px;
 }
 
 /*プルダウンメニューのデザイン*/
@@ -87,10 +86,20 @@ body {
   }
 /*プルダウンメニューのデザインここまで*/
 
+
+.storeName{                 /*○○のところ*/
+    width: 200px;
+    height: 20px;
+    float: left;
+    margin-left: 150px;
+    margin-top: 30px;
+}
+
 .listSearch{        /*詳細条件検索の箱スタイル*/
     width: 400px;       /*ここも調節が必要*/
     height: auto;      /*ここも調節が必要*/
     float: right;
+    clear: both;
     margin-top: 5px;
     padding: 0.5em 1em;
     font-weight: bold;
