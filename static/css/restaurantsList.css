@@ -113,17 +113,22 @@ body {
     margin-top: 10px;
 }
 
-.areaTitle{
+.areaTitle{     /*エリア検索の文字*/
     margin: 20px 20px 0px 20px;
+    font-size: 20px;
+    text-align: center;
 }
-
 
 /*都道府県プルダウンメニュー*/
 .areaSearch {
 	overflow: hidden;
 	width: 90%;
-	margin: 1em auto;
+	margin: 0.5rem 1rem auto auto; /*位置*/
 	text-align: center;
+    position: relative;
+	border: 1px solid #bbbbbb;
+	border-radius: 2px;
+	background: #ffffff;
 }
 .areaSearch select {
 	width: 100%;
@@ -138,15 +143,11 @@ body {
 	box-shadow: none;
 	-webkit-appearance: none;
 	appearance: none;
+    padding: 8px 38px 8px 8px;
+	color: #000;
 }
 .areaSearch select::-ms-expand {
     display: none;
-}
-.areaSearch {
-	position: relative;
-	border: 1px solid #bbbbbb;
-	border-radius: 2px;
-	background: #ffffff;
 }
 .areaSearch::before {
 	position: absolute;
@@ -169,10 +170,6 @@ body {
 	width: 1px;
 	content: '';
 	border-left: 1px solid #bbbbbb;
-}
-.areaSearch select {
-	padding: 8px 38px 8px 8px;
-	color: #666666;
 }
 /*都道府県プルダウンメニューここまで*/
 
