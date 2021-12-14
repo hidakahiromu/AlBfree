@@ -22,7 +22,7 @@
         <h1 class="Heading">ALBfree</h1>
         <h2>アレルギー別でお店検索が出来るサイトやで</h2>
     </div>
-        <div search list>
+        <div class="search_list">
             <!--簡易検索フォーム-->
             <form action="店舗一覧(検索結果)" method="get">
                 <select name="Prefecture">
@@ -85,8 +85,51 @@
                 </select>
 
                 <input type="search" name="search" placeholder="キーワードを入力">
+
+                <!-- 折り畳み展開ポインタ -->
+                <span onclick="obj=document.getElementById('open').style; obj.display=(obj.display=='none')?'block':'none';">
+                    <a>アレルギー食品を除外</a>
+                </span>
+                    <!--// 折り畳み展開ポインタ -->
+                    
+                    <!-- 折り畳まれ部分 -->
+                <div id="open" style="display:none;clear:both;">
+                    <span>
+                        <input type="checkbox" id="egg" name="egg" checked>
+                        <label for="egg">卵</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" id="milk" name="milk">
+                        <label for="milk">乳</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" id="wheat" name="wheat">
+                        <label for="wheat">小麦</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" id="shrimp" name="shrimp">
+                        <label for="shrimp">えび</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" id="crab" name="crab">
+                        <label for="crab">かに</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" id="peant" name="peant">
+                        <label for="peant">落花生</label>
+                    </span>
+                    <span>
+                        <input type="checkbox" id="soba" name="soba">
+                        <label for="soba">そば</label>
+                    </span>
+                    <p>検索から除外したい食品にチェックを入れてね</p>
+                </div>
+                <!--// 折り畳まれ部分 --> 
+
                 <input type="submit" name="submit" value="検索">
             </form>
+            <a>さらに詳しく検索したい方はこちらから→</a>
+            <a class="shop_link" href="店舗一覧">詳細検索</a>
         </div>
 <div id="style">
     <div><!--紹介プレ-->
