@@ -14,15 +14,16 @@
 hr{
   margin: 0%;
 }
-.h_link {
+a {
   color: #000000;
   text-decoration: none;
   display: inline-block;
   transition: .3s;
+ 
   -webkit-transform: scale(1);
   transform: scale(1);
 }
-.h_link:hover {
+a:hover {
   color: green;
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
@@ -34,6 +35,7 @@ footer {
   text-align: center;
   padding: 20px 0;
   background-color: #e7e6e5;
+  position: absolute;
   bottom: 0;
 }
 
@@ -47,14 +49,6 @@ footer {
   padding: 3px;
   margin-right: 55px;
 }
-.h_foo {
-  color: #000000;
-  text-decoration: none;
-  display: inline-block;
-  transition: .3s;
-  -webkit-transform: scale(1);
-  transform: scale(1);
-}s
 .c{
   text-align:center;
   color: black;
