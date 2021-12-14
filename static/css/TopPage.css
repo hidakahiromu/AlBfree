@@ -32,3 +32,89 @@ input{
     border: solid 3px #000000;/*線*/
     border-radius: 10px;/*角の丸み*/
 }
+
+
+
+
+/*辻変更*/
+#style{
+    margin-right:140px;
+    margin-left: 140px;
+    padding:1px; 
+    border:1px ;
+}
+.Title{
+    text-align:center;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+img {
+    width: 150px;
+    height: 150px;  
+}
+
+p.ite {
+    overflow-wrap: break-word;
+    padding-bottom: 10px;
+    width: 100px;
+    height: 100px;
+    margin:5px; padding:1px; border:1px solid black;
+}
+
+ul.items {
+	overflow-x: auto;
+	white-space: nowrap;
+}
+li.ite {
+	display: inline-block;	
+	margin: 16px;
+
+}	
+.detail{/*詳細*/
+    text-align: right;
+}
+
+
+
+/*ランキングテンプレ*/
+.ranking{
+	display: flex;
+	flex-wrap:wrap;
+    text-align: center;
+    counter-reset: rank;
+    margin-bottom: 0;    
+}
+.ranking li {
+	width: calc(100%/4);/*←画像を横に4つ並べる場合*/
+	padding:0 5px;/*←画像の左右に5pxの余白を入れる場合*/
+	box-sizing:border-box; 
+}
+.ranking li img {
+	max-width:100%; /*画像のはみだしを防ぐ*/
+	height: auto; /*画像の縦横比を維持 */
+	border:solid 1px #ccc; /*←画像を1pxのグレーの枠線で囲む指定の場合*/
+}
+.ranking li::before { /* ラベルと順位のスタイル */
+    counter-increment: rank;
+    content: counter(rank) " 位";
+    position: absolute;
+    padding: 8px 14px;
+    font-size: 1.2em;
+    color: #fff; /* 文字色 */
+    background: rgba(0,0,0,0.8); /* 背景色 */
+  }
+
+/*ロケーション*/
+.location{
+	display: flex;
+	flex-wrap:wrap;
+    text-align: center;
+    counter-reset: rank;
+    margin-bottom: 0;
+}
+.location li img {
+	max-width:100%; /*画像のはみだしを防ぐ*/
+	height: auto; /*画像の縦横比を維持 */
+	
+}
