@@ -56,24 +56,24 @@ span a{
 }
 
 /*辻変更*/
-#style{
+#style{/*ボディーの余白を作っています*/
     margin-right:140px;
     margin-left: 140px;
     padding:1px; 
     border:1px ;
 }
-.Title{
+.Title{/*各タイトルの大きさ*/
     text-align:center;
     font-size: 25px;
     font-weight: bold;
     margin-bottom: 0;
 }
-img {
+img {/*画像の大きさ*/
     width: 150px;
     height: 150px;  
 }
 
-p.ite {
+p.ite {/*リンク＋文字の大きさ*/
     overflow-wrap: break-word;
     padding-bottom: 10px;
     width: 100px;
@@ -97,14 +97,14 @@ li.ite {
 
 
 /*ランキングテンプレ*/
-.ranking{
+.ranking{/*リンク＋文字の大きさ*/
 	display: flex;
 	flex-wrap:wrap;
     text-align: center;
     counter-reset: rank;
     margin-bottom: 0;    
 }
-.ranking li {
+.ranking li {/*横並び*/
 	width: calc(100%/4);/*←画像を横に4つ並べる場合*/
 	padding:0 5px;/*←画像の左右に5pxの余白を入れる場合*/
 	box-sizing:border-box; 
@@ -125,7 +125,7 @@ li.ite {
   }
 
 /*ロケーション*/
-.location{
+.location{/*横向き*/
 	display: flex;
 	flex-wrap:wrap;
     text-align: center;
