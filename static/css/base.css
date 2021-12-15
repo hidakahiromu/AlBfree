@@ -1,0 +1,61 @@
+
+.h_menuBar{
+  text-align: center;
+  margin: 0%;
+}
+.h_menuBar li{
+  font-family: 'Meiryo UI';
+  display: inline-block;
+  list-style: none;
+  padding: 3px;
+  margin-right: 100px;
+  
+}
+hr{
+  margin: 0%;
+}
+.h_link {
+  color: #000000;
+  text-decoration: none;
+  display: inline-block;
+  transition: .3s;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+.h_link:hover {
+  color: green;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+footer {
+  width: 100%;
+  height: 120px; 
+  text-align: center;
+  padding: 20px 0;
+  background-color: #e7e6e5;
+  bottom: 0;
+}
+
+.h_footer{
+  text-align: center;
+}
+.h_footer li{
+  font-family: 'Meiryo UI';
+  display: inline-block;
+  list-style: none;
+  padding: 3px;
+  margin-right: 55px;
+}
+.h_foo {
+  color: #000000;
+  text-decoration: none;
+  display: inline-block;
+  transition: .3s;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+.c{
+  text-align:center;
+  color: black;
+}
