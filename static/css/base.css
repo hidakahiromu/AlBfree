@@ -14,16 +14,15 @@
 hr{
   margin: 0%;
 }
-a {
+.h_link {
   color: #000000;
   text-decoration: none;
   display: inline-block;
   transition: .3s;
- 
   -webkit-transform: scale(1);
   transform: scale(1);
 }
-a:hover {
+.h_link:hover {
   color: green;
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
@@ -47,6 +46,14 @@ footer {
   list-style: none;
   padding: 3px;
   margin-right: 55px;
+}
+.h_foo {
+  color: #000000;
+  text-decoration: none;
+  display: inline-block;
+  transition: .3s;
+  -webkit-transform: scale(1);
+  transform: scale(1);
 }
 .c{
   text-align:center;
