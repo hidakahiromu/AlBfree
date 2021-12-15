@@ -1,6 +1,7 @@
 .Heading{
-    font-size: 40px;
+    font-size    : 40px;
 }
+/*サイト名*/
 .img{
     margin       : auto;
     width        : 100%;
@@ -8,27 +9,136 @@
     background   : orange;
 }
 /*簡易検索フォーム*/
-form{
-    margin       : auto;
-    width        : 100%;
-    height       : 35px;
-    background   : rgb(214, 211, 211); 
-}
-
 select{
-    padding: 0.2em;
-    font-weight: bold;
-    background: #FFF;
-    border: solid 3px #000000;/*線*/
+    padding      : 0.2em;
+    font-weight  : bold;
+    background   : #FFF;
+    border       : solid 3px #000000;/*線*/
     border-radius: 10px;/*角の丸み*/
 }
 .tab_select{
-    font-weight: none;
+    font-weight  : none;
 }
 input{
-    padding: 0.2em;
-    font-weight: bold;
-    background: #FFF;
-    border: solid 3px #000000;/*線*/
+    padding      : 0.2em;
+    font-weight  : bold;
+    background   : #FFF;
+    border       : solid 3px #000000;/*線*/
     border-radius: 10px;/*角の丸み*/
+}
+.search_list{
+    margin       : auto;
+    width        : 100%;
+    height       : auto;
+    background   : rgb(214, 211, 211); 
+}
+form{
+    margin-left  : 30px;
+}
+#open{
+    width        : auto;
+    height       : auto;
+    background   : rgb(104, 214, 122); 
+}
+span a{
+    vertical-align: middle;
+    margin       : auto;
+    display      : inline-block;
+    cursor       : pointer;
+    padding      : 0.2em;
+    font-weight  : bold;
+    background   : #FFF;
+    border       : solid 3px #e73b3b;/*線*/
+    border-radius: 10px;/*角の丸み*/
+}
+.search_list a{
+    margin-left  : 30px;
+}
+.shop_link{
+    color        :red; 
+    font-weight  : bold;
+    font-size    : large;
+}
+
+/*辻変更*/
+#style{          /*ボディーの余白を作っています*/
+    margin-right : 140px;
+    margin-left  : 140px;
+    padding      : 1px; 
+    border       : 1px ;
+}
+.Title{         /*各タイトルの大きさ*/
+    text-align   : center;
+    font-size    : 25px;
+    font-weight  : bold;
+    margin-bottom: 0;
+}
+img {           /*画像の大きさ*/
+    width        : 150px;
+    height       : 150px;  
+}
+
+p.ite {         /*リンク＋文字の大きさ*/
+    overflow-wrap: break-word;
+    padding-bottom: 10px;
+    width        : 100px;
+    height       : 100px;
+    margin       : 5px; padding:1px; border:1px solid black;
+}
+
+ul.items {
+	overflow-x   : auto;
+	white-space  : nowrap;
+}
+li.ite {
+	display      : inline-block;	
+	margin       : 16px;
+
+}	
+.detail{/*詳細*/
+    text-align   : right;
+}
+
+
+
+/*ランキングテンプレ*/
+.ranking{       /*リンク＋文字の大きさ*/
+	display      : flex;
+	flex-wrap    : wrap;
+    text-align   : center;
+    counter-reset: rank;
+    margin-bottom: 0;    
+}
+.ranking li {     /*横並び*/
+	width        : calc(100%/4);/*←画像を横に4つ並べる場合*/
+	padding      : 0 5px;/*←画像の左右に5pxの余白を入れる場合*/
+	box-sizing   : border-box; 
+}
+.ranking li img {
+	max-width    : 100%; /*画像のはみだしを防ぐ*/
+	height       : auto; /*画像の縦横比を維持 */
+	border       : solid 1px #ccc; /*←画像を1pxのグレーの枠線で囲む指定の場合*/
+}
+.ranking li::before { /* ラベルと順位のスタイル */
+    counter-increment: rank;
+    content      : counter(rank) " 位";
+    position     : absolute;
+    padding      : 8px 14px;
+    font-size    : 1.2em;
+    color        : #fff; /* 文字色 */
+    background   : rgba(0,0,0,0.8); /* 背景色 */
+  }
+
+/*ロケーション*/
+.location{      /*横向き*/
+	display      : flex;
+	flex-wrap    : wrap;
+    text-align   : center;
+    counter-reset: rank;
+    margin-bottom: 0;
+}
+.location li img {
+	max-width    : 100%; /*画像のはみだしを防ぐ*/
+	height       : auto; /*画像の縦横比を維持 */
+	
 }
