@@ -1,4 +1,3 @@
-
 """
 Django settings for AlBfree project.
 
@@ -14,7 +13,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 #追加
 import os
 from pathlib import Path
-import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -128,10 +126,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-#追加
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
 
 
 #追加
@@ -143,5 +137,4 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 

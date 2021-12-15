@@ -1,24 +1,22 @@
 {% load static %}
 <html lang="ja" dir="ltr">
-
 <head>
     <meta charset="utf-8">
     {% block title %}
-    <!-- ここにtitle書くよ -->
+        <!-- ここにtitle書くよ -->
     {% endblock title %}
 
     <!--リセットcss-->
     <link rel="stylesheet" href="{% static 'css/destyle.css' %}">
     <!--bootstrap-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">    
 
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
     {% block css %}
-    <!-- ここに各ページのcss書くよ -->
+        <!-- ここに各ページのcss書くよ -->
     {% endblock css %}
-    <!< /head>
+</head>
 
 
 
@@ -31,14 +29,14 @@
             <li><a class="h_link" href=" ">ログイン</a></li>
         </ul>
         <hr>
-
-        {% block header %}
-        <!-- ここにheader書くよ -->
-        {% endblock header %}
+        
+            {% block header %}
+                <!-- ここにheader書くよ -->
+            {% endblock header %}
     </header>
 
     {% block content %}
-    <!-- ここに本文書くよ -->
+        <!-- ここに本文書くよ -->
     {% endblock content %}
 
     <footer>
@@ -53,13 +51,10 @@
         </ul>
         <p class="c">©ALBfree</p>
         {% block footer %}
-        <!-- ここにfooter書くよ -->
+            <!-- ここにfooter書くよ -->
         {% endblock footer %}
     </footer>
     <!--jsを使う場合必要なbootstrap-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </body>
-
 </html>

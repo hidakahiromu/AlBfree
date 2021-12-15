@@ -10,6 +10,3 @@ def index_template(request):
 def TopPage(request):
     return render(request, 'TopPage.html')
 
-
-def ShopDetails(request):
-    return render(request, 'ShopDetails.html')
