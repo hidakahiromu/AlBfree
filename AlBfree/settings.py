@@ -87,6 +87,9 @@ DATABASES = {
         'USER': 'root',         #ユーザ―名
         #'PASSWORD': 'password',    #パスワードがある場合
         'PORT': '3306',         #ポート番号 XAMPP>MySQL部に記載されてある　デフォルトが3306
+        'OPTIONS' : {
+            'init_command' : "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
     }
 }
 
