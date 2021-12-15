@@ -22,7 +22,7 @@
         <h1 class="Heading">ALBfree</h1>
         <h2>アレルギー別でお店検索が出来るサイトやで</h2>
     </div>
-        <div class="search_list">
+        <div search list>
             <!--簡易検索フォーム-->
             <form action="店舗一覧(検索結果)" method="get">
                 <select name="Prefecture">
@@ -85,135 +85,9 @@
                 </select>
 
                 <input type="search" name="search" placeholder="キーワードを入力">
-
-                <!-- 折り畳み展開ポインタ -->
-                <span onclick="obj=document.getElementById('open').style; obj.display=(obj.display=='none')?'block':'none';">
-                    <a>アレルギー食品を除外</a>
-                </span>
-                    <!--// 折り畳み展開ポインタ -->
-                    
-                    <!-- 折り畳まれ部分 -->
-                <div id="open" style="display:none;clear:both;">
-                    <span>
-                        <input type="checkbox" id="egg" name="egg" checked>
-                        <label for="egg">卵</label>
-                    </span>
-                    <span>
-                        <input type="checkbox" id="milk" name="milk">
-                        <label for="milk">乳</label>
-                    </span>
-                    <span>
-                        <input type="checkbox" id="wheat" name="wheat">
-                        <label for="wheat">小麦</label>
-                    </span>
-                    <span>
-                        <input type="checkbox" id="shrimp" name="shrimp">
-                        <label for="shrimp">えび</label>
-                    </span>
-                    <span>
-                        <input type="checkbox" id="crab" name="crab">
-                        <label for="crab">かに</label>
-                    </span>
-                    <span>
-                        <input type="checkbox" id="peant" name="peant">
-                        <label for="peant">落花生</label>
-                    </span>
-                    <span>
-                        <input type="checkbox" id="soba" name="soba">
-                        <label for="soba">そば</label>
-                    </span>
-                    <p>検索から除外したい食品にチェックを入れてね</p>
-                </div>
-                <!--// 折り畳まれ部分 --> 
-
                 <input type="submit" name="submit" value="検索">
             </form>
-            <a>さらに詳しく検索したい方はこちらから→</a>
-            <a class="shop_link" href="店舗一覧">詳細検索</a>
         </div>
-<div id="style">
-    <div><!--紹介プレ-->
-        <br>
-        <p class="Title">アレルギー7品目対応店</p>
-        <hr>
-        <br>
-        <ul class="items">
-            <li class="ite"><a href=""><img src= "{% static 'img/shop_funinki.png' %}" alt="対応店舗0">
-                <p>オーガレストラン</p>
-                </a></li>
-            <li class="ite"><a href=""><img src= "{% static 'img/shop_ninnki.jpg' %}" alt="対応店舗1">
-                <p>居酒屋　宅</p>
-                </a></li>
-            <li class="ite"><a href=""><img src="file01.jpg" alt="対応店舗2">
-                <p>居酒屋　層</p>
-                </a></li>
-            <li class="ite"><a href=""><img src="file01.jpg" alt="対応店舗3">
-                <p>大好き　酒</p>
-                </a></li>
-            <li class="ite"><a href=""><img src="file01.jpg" alt="対応店舗3">
-                <p>大好き　酒</p>
-                </a></li>
-            <li class="ite"><a href=""><img src="file01.jpg" alt="対応店舗3">
-                <p>大好き　酒</p>
-                </a></li>
-            <li class="ite"><a href=""><img src="file01.jpg" alt="対応店舗3">
-                <p>大好き　酒</p>
-                </a></li>
-        </ul>
-        <div class="detail">
-            <a href="">アレルギー7品目店詳細へ</a>
-            </div>
-    </div>
-
-    <div><!--ランキングテンプレ-->
-        <br>
-        <p class="Title">ooランキング</p>
-        <hr>
-        
-        <br>
-        <ul class="ranking">
-            <li class="item"><a href=""><img src= "{% static 'img/shop_funinki.png' %}" alt="バナー0">
-                <p>arerugi-taoufjalfjadjfoadjfahfo</p></a></li>
-            <li class="item"><a href=""><img src="file01.jpg" alt="バナー1">
-                <p></p></a></li>
-            <li class="item"><a href=""><img src="file01.jpg" alt="バナー2">
-                <p></p></a></li>
-            <li class="item"><a href=""><img src="file01.jpg" alt="バナー3">
-                <p></p></a></li>
-        </ul>
-        <div class="detail">
-        <a href="">００ランキング詳細へ</a>
-        </div>
-    </div>
-
-
-    <div><!--ランキングテンプレ-->
-        <br>
-        <p class="Title">ロケーションから探す</p>
-        <hr>
-        
-        <br>
-        <ul class="location">
-            <li class="item"><a href=""><img src= "{% static 'img/shop_funinki.png' %}" alt="バナー0">
-                <p>おひとり様</p></a></li>
-            <li class="item"><a href=""><img src="file01.jpg" alt="バナー1">
-                <p>家族・子供と</p></a></li>
-            <li class="item"><a href=""><img src="file01.jpg" alt="バナー2">
-                <p>接待</p></a></li>
-            <li class="item"><a href=""><img src="file01.jpg" alt="バナー3">
-                <p>デート</p></a></li>
-            <li class="item"><a href=""><img src="file01.jpg" alt="バナー3">
-                <p>合コン</p></a></li>
-            <li class="item"><a href=""><img src="file01.jpg" alt="バナー3">
-                <p>宴会</p></a></li>
-        </ul>
-        <div class="detail">
-        <a href="">ロケーション詳細へ</a>
-        </div>
-    </div>
-
-
-</div>  
 {% endblock content %}
 
 {% block footer %}
