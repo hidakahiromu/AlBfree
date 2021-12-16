@@ -13,3 +13,6 @@ def TopPage(request):
 
 def ShopDetails(request):
     return render(request, 'ShopDetails.html')
+
+def service(request):
+    return render(request , 'riyou.html')
