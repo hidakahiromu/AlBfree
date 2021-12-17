@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponse
 from .models import store_information
 
 # Create your views here.
@@ -12,6 +14,11 @@ def StoreDetails(request):
 
     }
     return render(request, 'StoreDetails.html', db)
+
+
+def DbStoreDetails(request,id):
+
+    return render(request, 'StoreDetails.html')
 
 
 def RestaurantsList(request):

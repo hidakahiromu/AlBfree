@@ -1,6 +1,6 @@
 body{
   width:100%;
-  background-color: #d6ffea;
+  background-color: #f8faf9;
 }
 .contents{
   width:960px;
@@ -36,3 +36,63 @@ span.star{
   float:left;
 }
 
+.bold-text{
+  font-weight:  bold;
+}
+
+/*プロトタイプ3枚目*/
+
+/*店舗基本情報*/
+span.ul.rst-info-title {
+	position: relative;
+	padding: 0;
+	list-style-type: none;
+}
+
+span.ul.rst-info-title li {
+	padding: 0.5em;
+	margin-bottom: 3px;
+	line-height: 1.5;
+	border-left: solid 6px #f7e600;
+	background: #f8faf9;
+	color:#000000;
+}
+
+/*店舗基本情報(表)*/
+table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table tr{
+  border-bottom: solid 2px white;
+}
+
+table tr:last-child{
+  border-bottom: none;
+}
+
+table th{
+  position: relative;
+  text-align: left;
+  width: 30%;
+  background-color: #e4e1c0;
+  color: black;
+  text-align: left;
+  padding: 10px 0;
+}
+
+table td{
+  text-align: left;
+  width: 70%;
+  text-align: center;
+  background-color: #eee;
+  padding: 10px 0;
+}
+
+.matrix{
+  display:inline-block;
+}
+
+
+/*プロトタイプ3枚目ここまで*/

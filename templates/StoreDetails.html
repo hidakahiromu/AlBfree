@@ -14,43 +14,67 @@
 {% block content %}
 
 
-<div class="clearfix ">
+<div class="clearfix">
 
 
   <div class=" left">
     <img src="{% static 'img/cafe.jpg' %}" width="300" height="200"><br><br>
     <img src="{% static 'img/waffle.jpg' %}" width="300" height="200"><br><br>
     <img src="{% static 'img/coffe.jpg' %}" width="300" height="200"><br><br>
-    <img src="{% static 'img/coffe.jpg' %}" width="300" height="200"><br><br>
-    <img src="{% static 'img/coffe.jpg' %}" width="300" height="200"><br><br>
-    <img src="{% static 'img/coffe.jpg' %}" width="300" height="200"><br><br>
+
 
   </div>
   {% for data in restaurants_db %}
   <div class="clearfix">
-    <p class="shopname">{{ data.restaurant_name }}</p>
+    <p class="shopname">{{data.restaurant_name}}</p>
     <span class=" rating-name">トータルの評価</span>
     <span class="star">★★☆☆☆ 2.0</span>
     <br>
     <span class="rating-name">アレルギー対応の評価</span>
     <span class="star">★★★★☆ 4.0</span>
-    <h2>使用しているアレルゲン</h2>
+
+    <p class="bold-text">使用しているアレルゲン</
     <h5>ごま　たまご　いわし</h5>
     <h5>タグ：カフェ,1000~2000,ランチ</h5>
+    
+    <p>〒×××-×××××県××市××町××ビル×階</p>
+    <p>※ここにgoogle map</p>
 
-    <div style="padding: 100px; margin-bottom: 10px; border: 1px solid #333333;">
-      <h4>アレルギー含め店のアピールポイント</h4>
-    </div>
+    <!--プロトタイプ3枚目-->
 
-    <h5>〒×××-×××
-      ××県××市××町××ビル×階
-    </h5>
+    
+    <table class="inline right">
+      <ul class="rst-info-title">
+        <li><b>店舗基本情報</b></li>
+      </ul> 
+      <tr>
+        <th>店名</th>
+        <td>{{data.restaurant_name}}</td>
+      </tr>
+      <tr>
+        <th>アレルゲン</th>
+        <td>ごま・さば</td>
+      </tr>
+      <tr>
+        <th>定休日</th>
+        <td>月・木</td>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <td>〒×××-×××××県××市××町××ビル×階</td>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <td>000-000-0000</td>
+      </tr>
+    </table>
+
   </div>
   {% endfor %}
 
   <!--星の画像使わなあかん-->
 
-  <!--ここからメニューリスト(プロトタイプ6枚目)-->
+  <!--プロトタイプ4枚目(メニューリスト)-->
 
   <div class=" left">
     <br>
@@ -63,6 +87,7 @@
   <h4>ホットコーヒー </h4>
   <h5>5000円</h5>
 </div>
+
 {% endblock content %}
 
 {% block footer %}
