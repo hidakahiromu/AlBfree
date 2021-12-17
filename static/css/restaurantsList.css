@@ -90,7 +90,7 @@ body {
     width: 200px;
     height: 20px;
     float: left;
-    margin-left: 150px;
+    margin-left: 200px;
     margin-top: 30px;
 }
 
@@ -99,8 +99,8 @@ body {
     height: auto;      /*ここも調節が必要*/
     float: right;
     clear: both;
-    margin-top: 5px;
-    margin-right: 60px;
+    margin-top: 20px;
+    margin-right: 10px;
     padding: 0.5em 1em;
     font-weight: bold;
     border: solid 3px #000;     /*線*/
@@ -422,12 +422,11 @@ input[type="date"] {
   /*検索ボタンここまで*/
 
 .storeList{         /*飲食店一覧のスタイル*/
-    width: 600px;        /*ここは調節が必要*/
+    width: 830px;        /*ここは調節が必要*/
     height: auto;       /*ここも調節がいる*/
     float: left;
     margin-top: 20px;
-    margin-left: 10px;
-    margin-right: 150px;
+    margin-left: 10px; 
     padding: 10px 10px;
     font-weight: bold;
     border: solid 3px #000;     /*線*/
