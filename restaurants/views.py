@@ -5,12 +5,18 @@ from .models import store_information
 
 
 def StoreDetails(request):
-    return render(request, 'StoreDetails.html')
+
+    db = {
+        'restaurants_db': store_information.objects.all(),
+        'user_db': store_information.objects.get(restaurant_id_id=0)
+
+    }
+    return render(request, 'StoreDetails.html', db)
 
 
 def RestaurantsList(request):
     db = {
-        'restaurants_db' : store_information.objects.all(),
-        'user_db' : store_information.objects.get(restaurant_id_id = 0)
+        'restaurants_db': store_information.objects.all(),
+        'user_db': store_information.objects.get(restaurant_id_id=0)
     }
-    return render(request , 'restaurantsList.html' , db)
+    return render(request, 'restaurantsList.html', db)
