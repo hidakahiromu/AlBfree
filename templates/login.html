@@ -1,0 +1,41 @@
+{% load static %}
+<html lang="ja" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+
+    {% block title %}
+        <title>ログイン</title>
+    {% endblock title %}
+    
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+
+<div class="form-wrapper">
+
+    <h1>{% block h1 %}ログイン{% endblock %}</h1>
+
+    {% block contents %}
+      <form action="" method="post">
+        {% csrf_token %}
+          <div class="form-item">
+            <label for="email"></label><!--メアド入力-->
+            <input type="email" name="email" required="required" placeholder="メールアドレス"></input>
+          </div>
+          <div class="form-item">
+            <label for="password"></label><!--パスワード入力-->
+            <input type="password" name="password" required="required" placeholder="パスワード"></input>
+          </div>
+          <div class="button-panel"><!--ログインボタン-->
+            <input type="submit" class="button" title="Sign In" value="ログイン"></input>
+          </div>
+      </form>
+    {% endblock %}
+
+    <div class="form-footer">
+      {% block footer %}
+        <p><a href="#">アカウントを新規作成</a></p>
+        <p><a href="#">パスワードを忘れた方はこちら</a></p>
+      {% endblock %}
+    </div>
+  </div>

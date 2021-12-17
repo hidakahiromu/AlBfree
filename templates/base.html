@@ -18,7 +18,7 @@
     {% block css %}
     <!-- ここに各ページのcss書くよ -->
     {% endblock css %}
-    <!< /head>
+    </head>
 
 
 
@@ -27,8 +27,13 @@
         <ul class="h_menuBar">
             <li><a class="h_link" href="{% url 'RestaurantsList' %}">店舗検索</a></li>
             <li><a class="h_link" href=" ">おしらせ</a></li>
-            <li><a class="h_link" href=" ">利用規約</a></li>
-            <li><a class="h_link" href=" ">ログイン</a></li>
+            <li><a class="h_link" href="{% url 'service' %}">利用規約</a></li>
+            {% if user.is_authenticated %}  <!--ログイン状態ならマイページリンク-->
+                <li><a class="h_link" href="マイページ">マイページ</a></li>
+                <li><a class="h_link" href="{% url 'logout' %}">ログアウト</a></li>
+            {% else %}  <!--ログインしていなければログインボタン-->
+                <li><a class="h_link" href="{% url 'login' %}">ログイン</a></li>
+            {% endif %}
         </ul>
         <hr>
 

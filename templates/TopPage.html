@@ -24,7 +24,7 @@
     </div>
         <div class="search_list">
             <!--簡易検索フォーム-->
-            <form action="店舗一覧(検索結果)" method="post">
+            <form action="{% url 'RestaurantsList' %}" method="get">
                 <select name="Prefecture">
                     <option class="tab_select">県を選ぶ</option>
                     <optgroup label="北海道・東北">

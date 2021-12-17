@@ -147,4 +147,9 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+#ログインが必要なページにログインしてないユーザーがアクセスすると飛ばす
+LOGIN_URL = '/login' 
+#ログイン後にリダイレクト
+LOGIN_REDIRECT_URL = ''
+#ログアウト後にリダイレクト
+LOGOUT_REDIRECT_URL='/login'
