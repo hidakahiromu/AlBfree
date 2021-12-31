@@ -8,7 +8,7 @@ from accounts.models import user_information
 # Create your models here.
 class store_information(models.Model):
     restaurant_id = models.ForeignKey(user_information , on_delete=models.CASCADE)
-    restaurant_name	= models.CharField( "飲食店名" , null = True , max_length = 50)
+    restaurant_name	= models.CharField( "飲食店名" , max_length = 50)
     explanation	= models.TextField( "説明文" , max_length = 1000)
 
     #拾ってきたコード
@@ -49,10 +49,20 @@ class store_information(models.Model):
         return self.name
 
 class store_menu(models.Model):
-    store_id = models.ForeignKey(store_information , on_delete=models.CASCADE)
+    store = models.ForeignKey(store_information , on_delete=models.CASCADE)
     name = models.CharField( "メニュー名" , max_length = 50)
     allergy = models.CharField( "アレルギー" , blank = True , max_length = 100)
     remarks = models.TextField( "備考" , blank = True , max_length = 300)
+    price = models.IntegerField("値段" )
+
+    def __str__(self):
+        return self.name
+
+
+class store_images(models.Model):
+    #store = models.ForeignKey(store_information , on_delete=models.CASCADE , blank = True)
+    image = models.ImageField(upload_to='images')
+    attribute = models.CharField("属性" , max_length = 20)
 
     def __str__(self):
         return self.name
