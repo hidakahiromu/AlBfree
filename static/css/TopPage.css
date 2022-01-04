@@ -5,12 +5,14 @@
 .img{
     margin       : auto;
     width        : 100%;
-    height       : 30%;
-    background   : orange;
+    height       : 300px;
+    margin-bottom: 40px;
+ 
 }
 /*簡易検索フォーム*/
 select{
     padding      : 0.2em;
+    width: 110px;
     font-weight  : bold;
     background   : #FFF;
     border       : solid 3px #000000;/*線*/
@@ -33,7 +35,8 @@ input{
     background   : rgb(214, 211, 211); 
 }
 form{
-    margin-left  : 30px;
+    margin-left  : 150px;
+    margin-right: 150px;
 }
 #open{
     width        : auto;
@@ -42,6 +45,7 @@ form{
 }
 span a{
     vertical-align: middle;
+    width: 175px;
     margin       : auto;
     display      : inline-block;
     cursor       : pointer;
@@ -51,72 +55,71 @@ span a{
     border       : solid 3px #e73b3b;/*線*/
     border-radius: 10px;/*角の丸み*/
 }
-.search_list a{
-    margin-left  : 30px;
-}
+
 .shop_link{
     color        :red; 
     font-weight  : bold;
     font-size    : large;
 }
-
+/*---------------------------------------------------------------------------------*/
 /*辻変更*/
+/*余白*/
 #style{
     margin-right : 140px;
     margin-left  : 140px;
     padding      : 1px; 
     border       : 1px ;
 }
+/*各タイトル*/
 .Title{
     text-align   : center;
     font-size    : 25px;
     font-weight  : bold;
     margin-bottom: 0;
 }
+/*詳細*/
+.detail{
+    text-align   : right;
+}
+/*写真比*/
 img {
     width        : 150px;
-    height       : 150px;  
+    height       : 150px;
+    border       : solid 1px #ccc;  
+}
+/*アレルギー*/
+ul.item {
+  overflow-x     : scroll;
+  /*-webkit-overflow-scrolling: touch;*/
+  padding        : 0 0 12px 8px;
+ /* display: -ms-flexbox;*/
+  display        : flex;
+  text-align     :center;
 }
 
-p.ite {
-    overflow-wrap: break-word;
-    padding-bottom: 10px;
-    width        : 100px;
-    height       : 100px;
-    margin       : 5px; padding:1px; border:1px solid black;
-}
-
-ul.items {
-	overflow-x   : auto;
-	white-space  : nowrap;
-}
 li.ite {
 	display      : inline-block;	
 	margin       : 16px;
-
 }	
-.detail{/*詳細*/
-    text-align   : right;
-}
-
-
 
 /*ランキングテンプレ*/
 .ranking{
 	display      : flex;
 	flex-wrap    : wrap;
     text-align   : center;
-    counter-reset: rank;
+    counter-reset: rank;/*カウント*/
     margin-bottom: 0;    
 }
 .ranking li {
-	width        : calc(100%/4);/*←画像を横に4つ並べる場合*/
+	width        : calc(85%/5);/*←画像を横に5つ並べる場合*/
 	padding      : 0 5px;/*←画像の左右に5pxの余白を入れる場合*/
 	box-sizing   : border-box; 
+    margin-left  : 12px;
+    margin-right : 12px;
 }
 .ranking li img {
 	max-width    : 100%; /*画像のはみだしを防ぐ*/
-	height       : auto; /*画像の縦横比を維持 */
+	/*height       : auto;*/ /*画像の縦横比を維持 */
 	border       : solid 1px #ccc; /*←画像を1pxのグレーの枠線で囲む指定の場合*/
 }
 .ranking li::before { /* ラベルと順位のスタイル */
@@ -134,11 +137,156 @@ li.ite {
 	display      : flex;
 	flex-wrap    : wrap;
     text-align   : center;
-    counter-reset: rank;
     margin-bottom: 0;
 }
-.location li img {
-	max-width    : 100%; /*画像のはみだしを防ぐ*/
-	height       : auto; /*画像の縦横比を維持 */
-	
+
+
+/*ニュース*/
+/*上部のバー*/
+.msr_newslist {
+    border-top   : 1px solid #AAAAAA;
+    width        : 100%;
+  }
+/*下線と文字の大きさ*/
+.msr_newslist li {
+    border-bottom: 1px solid #AAAAAA;
+    font-size    : 14px;
+  }
+/*デザイン位置*/
+.msr_newslist li a {
+    box-sizing   : border-box;
+    color        : #000000;
+    display      : table;
+    padding      : 10px;
+    text-decoration: none;
+    transition   : 0.2s ease-in-out;
+    -o-transition: 0.2s ease-in-out;
+    -moz-transition: 0.99s ease-in-out;
+    -webkit-transition: 0.2s ease-in-out;
+    width: 100%;
+  }
+/*マウスオーバー*/
+.msr_newslist li a:hover {
+    background   : #EEEEEE;
+    text-decoration: none;
+  }
+/*デザイン位置ｐ*/
+.msr_newslist li div {
+    display      : table-cell;
+    width        : 144px;
+  }
+/*サイズ変更*/
+.msr_newslist li p {
+    display      : table-cell;
+    padding-left : 20px;
+    vertical-align: middle;
+  }
+  
+/* 時間の設定 */
+.msr_newslist li time {
+    display      : table-cell;
+    vertical-align: top;
+    width        : 90px;
+  }
+  
+/* カテゴリの設定 */
+.msr_newslist li .cat01,
+.msr_newslist li .cat02 {
+    background-color: #1B73BA;
+    border-radius: 1px;
+    color        : #FFFFFF;
+    font-size    : 9px;
+    padding      : 0 2px;
+    text-align   : center;
+    width        : 50px;
+  }
+.msr_newslist li .cat02 {
+    background-color: #0E3A5F;
+  }
+
+
+
+ 
+
+/*==================================================
+スライダーのためのcss
+===================================*/
+.slider {/*横幅94%で左右に余白を持たせて中央寄せ*/
+    width       :94%;
+    margin      :0 auto;
+}
+
+.slider img {
+    width       :52vw;/*スライダー内の画像を60vwにしてレスポンシブ化*/
+    height      :auto;
+}
+
+.slider .slick-slide {
+  transform     : scale(0.8);/*左右の画像のサイズを80%に*/
+  transition    : all 1.5s;/*拡大や透過のアニメーションを1.5秒で行う*/
+  opacity       : 0.7;/*透過50%*/
+}
+
+.slider .slick-slide.slick-center{
+  transform     : scale(1);/*中央の画像のサイズだけ等倍に*/
+  opacity       : 1;/*透過なし*/
+}
+
+
+/*矢印の設定*/
+
+/*戻る、次へ矢印の位置*/
+.slick-prev, 
+.slick-next {
+    position    : absolute;/*絶対配置にする*/
+    top         : 42%;
+    cursor      : pointer;/*マウスカーソルを指マークに*/
+    outline     : none;/*クリックをしたら出てくる枠線を消す*/
+    border-top  : 2px solid #666;/*矢印の色*/
+    border-right: 2px solid #666;/*矢印の色*/
+    height      : 15px;
+    width       : 15px;
+}
+
+.slick-prev {/*戻る矢印の位置と形状*/
+    left        : -1.5%;
+    transform   : rotate(-135deg);
+}
+
+.slick-next {/*次へ矢印の位置と形状*/
+    right       : -1.5%;
+    transform   : rotate(45deg);
+}
+
+/*ドットナビゲーションの設定*/
+
+.slick-dots {
+    text-align  :center;
+  margin        :20px 0 0 0;
+}
+
+.slick-dots li {
+    display     :inline-block;
+  margin        :0 5px;
+}
+
+.slick-dots button {
+    color       : transparent;
+    outline     : none;
+    width       :8px;/*ドットボタンのサイズ*/
+    height      :8px;/*ドットボタンのサイズ*/
+    display     :block;
+    border-radius:50%;
+    background  :#ccc;/*ドットボタンの色*/
+}
+
+.slick-dots .slick-active button{
+    background  :#333;/*ドットボタンの現在地表示の色*/
+}
+
+
+/*========= レイアウトのためのCSS ===============*/
+a{
+    text-decoration: none;
+     color     : #000;
 }
