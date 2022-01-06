@@ -1,18 +1,18 @@
-body{
-  width:100%;
+.center{
+  width: 800px;
   background-color: #f8faf9;
+  margin:0 auto;
 }
-.contents{
-  width:960px;
-  margin:30%;
 
-}
+
+
 .inline{
   display: inline-block;
 }
 
 .shopname{
-  font-size:30px;
+  text-align: center;
+  font-size:45px;
   color:black;
 }
 .clearfix::after{
@@ -94,5 +94,14 @@ table td{
   display:inline-block;
 }
 
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+       #map {
+        height: 100%;
+      }
+      
+
+      
 
 /*プロトタイプ3枚目ここまで*/
+/*GoogleMap AIzaSyAPru-bEhxv6GA0EKk0ggzrDwDFCE-tfiQ */

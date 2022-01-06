@@ -10,13 +10,15 @@ def StoreDetails(request):
 
     db = {
         'restaurants_db': store_information.objects.all(),
-        'user_db': store_information.objects.get(restaurant_id_id=0)
+        'user_db': store_information.objects.get(restaurant_id_id=0),
+        'showdetail_restaurants': store_information.objects.get(restaurant_id=0)
+
 
     }
     return render(request, 'StoreDetails.html', db)
 
 
-def DbStoreDetails(request,id):
+def DbStoreDetails(request, id):
 
     return render(request, 'StoreDetails.html')
 

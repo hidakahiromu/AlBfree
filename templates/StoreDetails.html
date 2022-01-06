@@ -6,6 +6,8 @@
 <title>店舗詳細画面</title>
 {% endblock title %}
 
+
+
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/StoreDetails.css' %}">
 <link rel="stylesheet" href="clearfix.css">
@@ -13,64 +15,84 @@
 
 {% block content %}
 
+<div class=center>
 
-<div class="clearfix">
-
+  <p class="shopname">{{showdetail_restaurants.restaurant_name}}&nbsp;
+    <img src="{% static 'img/ok.jpg' %}" width="40" height="40">
+  </p>
 
   <div class=" left">
     <img src="{% static 'img/cafe.jpg' %}" width="300" height="200"><br><br>
     <img src="{% static 'img/waffle.jpg' %}" width="300" height="200"><br><br>
     <img src="{% static 'img/coffe.jpg' %}" width="300" height="200"><br><br>
-
-
   </div>
-  {% for data in restaurants_db %}
+
   <div class="clearfix">
-    <p class="shopname">{{data.restaurant_name}}</p>
+
     <span class=" rating-name">トータルの評価</span>
     <span class="star">★★☆☆☆ 2.0</span>
     <br>
     <span class="rating-name">アレルギー対応の評価</span>
     <span class="star">★★★★☆ 4.0</span>
 
-    <p class="bold-text">使用しているアレルゲン</
+    <br><br>
+
+    <p class="bold-text">使用しているアレルゲン</p>
     <h5>ごま　たまご　いわし</h5>
-    <h5>タグ：カフェ,1000~2000,ランチ</h5>
-    
-    <p>〒×××-×××××県××市××町××ビル×階</p>
+    <h5>タグ：{{showdetail_restaurants.tags }}</h5>
+
+    <p>〒{{showdetail_restaurants.postal_code}}</p>
+    <p>{{showdetail_restaurants.address}}</p>
+    <p>{{showdetail_restaurants.transportation}}</p>
     <p>※ここにgoogle map</p>
 
     <!--プロトタイプ3枚目-->
-
-    
-    <table class="inline right">
-      <ul class="rst-info-title">
-        <li><b>店舗基本情報</b></li>
-      </ul> 
-      <tr>
-        <th>店名</th>
-        <td>{{data.restaurant_name}}</td>
-      </tr>
-      <tr>
-        <th>アレルゲン</th>
-        <td>ごま・さば</td>
-      </tr>
-      <tr>
-        <th>定休日</th>
-        <td>月・木</td>
-      </tr>
-      <tr>
-        <th>住所</th>
-        <td>〒×××-×××××県××市××町××ビル×階</td>
-      </tr>
-      <tr>
-        <th>電話番号</th>
-        <td>000-000-0000</td>
-      </tr>
-    </table>
-
   </div>
-  {% endfor %}
+
+  <div id="map"></div>
+  <script>
+    var map;
+    function initMap() {
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: -34.397, lng: 150.644 },
+        zoom: 8,
+      });
+    }
+  </script>
+  <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPru-bEhxv6GA0EKk0ggzrDwDFCE-tfiQ&callback=initMap&v=weekly"
+    async></script>
+
+  <table class="inline right">
+    <ul class="rst-info-title">
+      <p>
+        <li><b>店舗基本情報</b></li>
+      </p>
+    </ul>
+    <tr>
+      <th>店名</th>
+      <td>{{showdetail_restaurants.restaurant_name}}</td>
+    </tr>
+    <tr>
+      <th>アレルゲン</th>
+      <td>ごま・さば</td>
+    </tr>
+    <tr>
+      <th>定休日</th>
+      <td>{{showdetail_restaurants.time}}</td>
+    </tr>
+    <tr>
+      <th>住所</th>
+      <td>〒{{showdetail_restaurants.postal_code}}<br>{{showdetail_restaurants.address}}</td>
+    </tr>
+    <tr>
+      <th>電話番号</th>
+      <td>{{showdetail_restaurants.tel}}</td>
+    </tr>
+  </table>
+
+
 
   <!--星の画像使わなあかん-->
 
@@ -87,6 +109,10 @@
   <h4>ホットコーヒー </h4>
   <h5>5000円</h5>
 </div>
+
+
+</div>
+
 
 {% endblock content %}
 
