@@ -4,7 +4,7 @@ from django.core.exceptions import ValidationError                     #上と�
 
 # Create your models here.
 class user_information(models.Model):
-    user_id = models.IntegerField(primary_key=True)
+    user_id = models.IntegerField("ユーザーID" , primary_key=True)
     user = models.CharField("ニックネーム" , null = False , max_length = 20)
     name = models.CharField("名前" , null = False , max_length = 20)
     kana = models.CharField("フリガナ" , null = False , max_length = 40)
@@ -15,8 +15,6 @@ class user_information(models.Model):
 
     phone_number_regex = RegexValidator(regex=r'^[0-9]+$', message = ("Tel Number must be entered in the format: '09012345678'. Up to 15 digits allowed."))
     phone_number = models.CharField("電話番号" , validators=[phone_number_regex] , max_length=15)
-
-    shop_id = models.IntegerField("飲食店id" , blank=True)
 
     def __str__(self):
         return self.name

@@ -14,15 +14,13 @@ def StoreDetails(request):
 def RestaurantsList(request):
     db = {
         'restaurants_db' : store_information.objects.all(),
-        'user_db' : store_information.objects.get(restaurant_id = 0),
-        'auth' : store_menu.objects.get(store_id = 1),
-        'img' : store_images.objects.get(attribute = "neko"),
+        'user_db' : store_information.objects.get(contributor = 0),
     }
     return render(request , 'restaurantsList.html' , db)
 
 def Form(request):
     if request.method == 'POST':
-        form = store_imagesForm(request.POST , request.FILES , request.POST)
+        form = store_imagesForm(request.POST  , request.FILES , request.POST)
         if form.is_valid():
             form.save()
             return redirect('Form')
