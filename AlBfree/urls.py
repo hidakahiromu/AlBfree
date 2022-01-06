@@ -26,7 +26,7 @@ urlpatterns = [
     path('' , include('accounts.urls')), 
     #path('', TopPage.as_view(), name='toppage’),        #追加（トップページ）
     #path('blog/', include('blogs.urls')),               #追加（アプリ）
-    #path('accounts/', include('accounts.urls')),        #追加（アプリ）
+    path('accounts/', include('accounts.urls')),        #追加（アプリ）
     #path('qa/', include('QA.urls')),                    #追加（アプリ）
 ]#+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
  #+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 

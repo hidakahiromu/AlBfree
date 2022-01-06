@@ -1,0 +1,29 @@
+{% extends "login.html" %}
+{% load static %}
+
+{% block title %}
+  <title>アカウント新規作成</title>
+{% endblock title %}
+
+  <h1>{% block h1 %}新規作成{% endblock h1 %}</h1>
+    
+  {% block contents %}
+    <form method="POST" action="{% url 'create_account' %}">
+      {% csrf_token %}
+      <label class="form-item">ユーザー名</label>
+      {{ form.user }}
+      {{ form.user.errors }}
+      <label class="form-item">名前</label>
+      {{ form.name }}
+      {{ form.name.errors }}
+      <label class="form-item">メールアドレス</label>
+      {{ form.mail }}
+      {{ form.mail.errors }}
+      <label class="form-item">パスワード</label>
+      {{ form.password }}
+      {{ form.password.errors }}
+      <div class="button-panel">
+        <input type="submit" class="button" title="Sign In" value="ログイン"></input>
+      </div>
+    </form>
+  {% endblock %}

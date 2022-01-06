@@ -17,7 +17,7 @@ from pathlib import Path
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -153,3 +153,5 @@ LOGIN_URL = '/login'
 LOGIN_REDIRECT_URL = ''
 #ログアウト後にリダイレクト
 LOGOUT_REDIRECT_URL='/login'
+#ユーザーモデルを独自で設定しているので必要
+AUTH_USER_MODEL = 'accounts.user_information'

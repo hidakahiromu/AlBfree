@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from django.core.validators import MinLengthValidator, RegexValidator  #バリデーション関連のライブラリ
 from django.core.exceptions import ValidationError                     #上と同じく
