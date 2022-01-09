@@ -20,7 +20,7 @@ def RestaurantsList(request):
 
 def Form(request):
     if request.method == 'POST':
-        form = store_imagesForm(request.POST  , request.FILES , request.POST)
+        form = store_imagesForm(request.POST , request.FILES)
         if form.is_valid():
             form.save()
             return redirect('Form')

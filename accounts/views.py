@@ -1,7 +1,7 @@
 from django.shortcuts import render , redirect
 from django.conf import settings
 from .models import user_information
-from .forms import user_informationForm
+from .forms import registrationForm
 
 # Create your views here.
 
@@ -19,7 +19,7 @@ def ShopDetails(request):
 
 def registration(request):
     if request.method == 'POST':
-        form = registrationForm()
+        form = registrationForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('registration')
