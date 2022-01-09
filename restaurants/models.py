@@ -3,11 +3,11 @@ from django.core.validators import MinLengthValidator, RegexValidator  #バリ�
 from django.core.exceptions import ValidationError                     #上と同じく
 from accounts.models import user_information
 
-
+import uuid
 
 # Create your models here.
 class store_information(models.Model):
-    restaurant_id = models.IntegerField("飲食店ID" , primary_key=True)      #主キー
+    restaurant_id = models.UUIDField("飲食店ID" , primary_key=True , default=uuid.uuid4 , editable=False)      #主キー
     contributor = models.ForeignKey(user_information , on_delete=models.CASCADE)       #外部キー
     restaurant_name	= models.CharField( "飲食店名" , max_length = 50)
     explanation	= models.TextField( "説明文" , max_length = 1000)
@@ -50,7 +50,7 @@ class store_information(models.Model):
         return self.restaurant_name
 
 class store_menu(models.Model):
-    menu_id = models.IntegerField("メニューID" , primary_key=True)          #主キー
+    menu_id = models.UUIDField("メニューID" , primary_key=True , default=uuid.uuid4 , editable=False)          #主キー
     store = models.ForeignKey(store_information , on_delete=models.CASCADE)          #外部キー
     name = models.CharField( "メニュー名" , max_length = 50)
     allergy = models.CharField( "アレルギー" , blank = True , max_length = 100)
@@ -62,7 +62,7 @@ class store_menu(models.Model):
 
 
 class store_images(models.Model):
-    image_id = models.IntegerField("画像ID" , primary_key=True)         #主キー
+    image_id = models.UUIDField("画像ID" , primary_key=True , default=uuid.uuid4 , editable=False)         #主キー
     store = models.ForeignKey(store_information , on_delete=models.CASCADE)      #外部キー
     image = models.ImageField(upload_to='images')
     attribute = models.CharField("属性" , max_length = 20)

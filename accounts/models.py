@@ -2,6 +2,8 @@ from django.db import models
 from django.core.validators import MinLengthValidator, RegexValidator  #バリデーション関連のライブラリ
 from django.core.exceptions import ValidationError                     #上と同じく
 
+import uuid
+
 # Create your models here.
 class user_information(models.Model):
 
@@ -10,7 +12,7 @@ class user_information(models.Model):
         ('woman' , '女性'),
     )
 
-    user_id = models.IntegerField("ユーザーID" , primary_key=True)
+    user_id = models.UUIDField("ユーザーID" , primary_key=True , default=uuid.uuid4 , editable=False)
     user = models.CharField("ニックネーム" , null = False , max_length = 20)
     name = models.CharField("名前" , null = False , max_length = 20)
     kana = models.CharField("フリガナ" , null = False , max_length = 40)
