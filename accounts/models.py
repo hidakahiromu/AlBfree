@@ -17,12 +17,13 @@ class user_information(models.Model):
     name = models.CharField("名前" , null = False , max_length = 20)
     kana = models.CharField("フリガナ" , null = False , max_length = 40)
     address = models.CharField("住所" , null = False , max_length = 100)
-    password = models.CharField("パスワード" , null = False , max_length = 32)
     mail = models.CharField("メールアドレス" , null = False , max_length = 50)
-    gender = models.CharField("性別" , null = False , choices=GENDER , max_length = 5)
 
     phone_number_regex = RegexValidator(regex=r'^[0-9]+$', message = ("Tel Number must be entered in the format: '09012345678'. Up to 15 digits allowed."))
     phone_number = models.CharField("電話番号" , validators=[phone_number_regex] , max_length=15)
+
+    gender = models.CharField("性別" , null = False , choices=GENDER , max_length = 5)
+    password = models.CharField("パスワード" , null = False , max_length = 32)
 
     def __str__(self):
         return self.name

@@ -5,18 +5,19 @@ from .forms import registrationForm
 
 # Create your views here.
 
-
+#これは使っていないやつ
 def index_template(request):
     return render(request, 'index.html')
 
-
+#トップページ画面
 def TopPage(request):
     return render(request, 'TopPage.html')
 
-
+#これも使ってないはず
 def ShopDetails(request):
     return render(request, 'ShopDetails.html')
 
+#新規登録用フォーム
 def registration(request):
     if request.method == 'POST':
         form = registrationForm(request.POST)
