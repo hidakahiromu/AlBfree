@@ -31,3 +31,6 @@ def registration(request):
     return render(request, 'registration.html', {
         'form': form
     })
+ 
+def service(request):
+    return render(request , 'riyou.html')

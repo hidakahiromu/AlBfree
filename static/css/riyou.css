@@ -1,0 +1,32 @@
+#style{          /*ボディーの余白を作っています*/
+    margin-right : 140px;
+    margin-left  : 140px;
+    padding      : 1px; 
+    border       : 1px ;
+}
+/*番号付けてます*/
+#style ol{
+    counter-reset: item;
+    list-style-type: none;
+    padding-left: 0;
+  }
+  #style ol ol{
+    padding-left: 1em;
+  }
+  #style li{
+    text-indent: -1.3em;
+    padding-left: 1.3em;
+  }
+  #style li:before {
+    counter-increment: item;
+    content: counter(item)'.';
+    /* 以下は自由に装飾... */
+    padding-right: .5em;
+    font-weight: bold;
+    color: #b40000;
+  }
+  #style .nai li{
+    text-indent: -1.3em;
+    padding-left: 1.3em;
+  }
+  
