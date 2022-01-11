@@ -37,7 +37,6 @@ body {
     float: right;
 }
 
-
 .sortingButton{     /*○○順選択のボタンのスタイル*/
     width: 175px;
     height: 15px;
@@ -91,7 +90,7 @@ body {
     width: 200px;
     height: 20px;
     float: left;
-    margin-left: 150px;
+    margin-left: 200px;
     margin-top: 30px;
 }
 
@@ -100,23 +99,58 @@ body {
     height: auto;      /*ここも調節が必要*/
     float: right;
     clear: both;
-    margin-top: 5px;
+    margin-top: 20px;
+    margin-right: 10px;
     padding: 0.5em 1em;
     font-weight: bold;
     border: solid 3px #000;     /*線*/
     border-radius: 10px;          /*角の丸み*/
 }
 
+.conditions{        /*詳細条件の文字*/
+    font-size: 30px;
+    text-align: center;
+}
+
+.allergen{      /*アレルゲンの文字*/
+    margin: 0px 20px 5px 20px;
+    font-size: 20px;
+}
+
 .searchAllergen{    /*詳細条件のアレルゲン枠*/
-    width: 200px;
     height: auto;
     margin-top: 10px;
 }
 
+/*アレルゲンのチェックボックス*/
+.searchAllergen label {
+    margin: 15px 10px 10px 10px; /* ボタン同士の間隔 */
+}
+.searchAllergen label input {
+    display: none; /* デフォルトのinputは非表示にする */
+}
+.searchAllergen label span {
+    color: #333; /* 文字色を黒に */
+    font-size: 14px; /* 文字サイズを14pxに */
+    border: 1px solid #333; /* 淵の線を指定 */
+    border-radius: 20px; /* 角丸を入れて、左右が丸いボタンにする */
+    padding: 5px 20px; /* 上下左右に余白をトル */
+}
+.searchAllergen label input:hover + span{
+    background-color: #ffc0cb;
+    border: 1px solid #ffc0cb;
+}
+.searchAllergen label input:checked + span {
+    color: #FFF; /* 文字色を白に */
+    background: #f08080; /* 背景色を薄い赤に */
+    border: 1px solid #f08080; /* 淵の線を薄い赤に */
+}
+/*チェックボックスここまで*/
+
 .areaTitle{     /*エリア検索の文字*/
     margin: 20px 20px 0px 20px;
     font-size: 20px;
-    text-align: center;
+
 }
 
 /*都道府県プルダウンメニュー*/
@@ -129,6 +163,7 @@ body {
 	border: 1px solid #bbbbbb;
 	border-radius: 2px;
 	background: #ffffff;
+    font-size: 15px;
 }
 .areaSearch select {
 	width: 100%;
@@ -173,14 +208,225 @@ body {
 }
 /*都道府県プルダウンメニューここまで*/
 
+/*ジャンル選択の文字*/
+.genreTitle{
+    margin: 20px 20px 0px 20px;
+    font-size: 20px;
+}
+/*ジャンル選択プルダウンメニュー*/
+.genreList {
+	overflow: hidden;
+	width: 90%;
+	margin: 0.5rem 1rem auto auto; /*位置*/
+	text-align: center;
+    position: relative;
+	border: 1px solid #bbbbbb;
+	border-radius: 2px;
+	background: #ffffff;
+    font-size: 15px;
+}
+.genreList select {
+	width: 100%;
+	padding-right: 1em;
+	cursor: pointer;
+	text-indent: 0.01px;
+	text-overflow: ellipsis;
+	border: none;
+	outline: none;
+	background: transparent;
+	background-image: none;
+	box-shadow: none;
+	-webkit-appearance: none;
+	appearance: none;
+    padding: 8px 38px 8px 8px;
+	color: #000;
+}
+.genreList select::-ms-expand {
+    display: none;
+}
+.genreList::before {
+	position: absolute;
+	top: 0.8em;
+	right: 0.9em;
+	width: 0;
+	height: 0;
+	padding: 0;
+	content: '';
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-top: 6px solid #666666;
+	pointer-events: none;
+}
+.genreList:after {
+	position: absolute;
+	top: 0;
+	right: 2.5em;
+	bottom: 0;
+	width: 1px;
+	content: '';
+	border-left: 1px solid #bbbbbb;
+}
+/*ジャンル選択プルダウンメニューここまで*/
+
+/*日付選択の文字*/
+.dateTitle{
+    margin: 20px 20px 0px 20px;
+    font-size: 20px;
+}
+/*日付選択デザイン*/
+.dateList {
+    position: relative;
+    display: inline-block;
+    margin: 0.5rem 2rem auto 2.5rem;
+    width: 80%;
+    height: 36px;
+    border: 2px solid #ccc;
+    border-radius: 15px;
+}
+input[type="date"] {
+    position: relative;
+    padding: 0 10px;
+    width: 100%;
+    height: 36px;
+    border: 0;
+    background: transparent;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #000;
+}
+/*日付選択ここまで*/
+
+/*価格帯文字*/
+.budgetTitle{
+    margin: 20px 20px 0px 20px;
+    font-size: 20px;
+}
+/*予算選択プルダウンメニュー*/
+.budgetList {
+	overflow: hidden;
+	width: 90%;
+	margin: 0.5rem 1rem auto auto; /*位置*/
+	text-align: center;
+    position: relative;
+	border: 1px solid #bbbbbb;
+	border-radius: 2px;
+	background: #ffffff;
+    font-size: 15px;
+}
+.budgetList select {
+	width: 100%;
+	padding-right: 1em;
+	cursor: pointer;
+	text-indent: 0.01px;
+	text-overflow: ellipsis;
+	border: none;
+	outline: none;
+	background: transparent;
+	background-image: none;
+	box-shadow: none;
+	-webkit-appearance: none;
+	appearance: none;
+    padding: 8px 38px 8px 8px;
+	color: #000;
+}
+.budgetList select::-ms-expand {
+    display: none;
+}
+.budgetList::before {
+	position: absolute;
+	top: 0.8em;
+	right: 0.9em;
+	width: 0;
+	height: 0;
+	padding: 0;
+	content: '';
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-top: 6px solid #666666;
+	pointer-events: none;
+}
+.budgetList:after {
+	position: absolute;
+	top: 0;
+	right: 2.5em;
+	bottom: 0;
+	width: 1px;
+	content: '';
+	border-left: 1px solid #bbbbbb;
+}
+/*予算選択プルダウンメニューここまで*/
+
+/*その他の条件の文字*/
+.otherConditionsTitle{
+    margin: 20px 20px 0px 20px;
+    font-size: 20px;
+}
+/*その他の条件チェックボックス*/
+.otherConditions label {
+    margin: 15px 10px 10px 10px; /* ボタン同士の間隔 */
+}
+.otherConditions label input {
+    display: none; /* デフォルトのinputは非表示にする */
+}
+.otherConditions label span {
+    color: #333; /* 文字色を黒に */
+    font-size: 14px; /* 文字サイズを14pxに */
+    border: 1px solid #333; /* 淵の線を指定 */
+    border-radius: 20px; /* 角丸を入れて、左右が丸いボタンにする */
+    padding: 5px 20px; /* 上下左右に余白をトル */
+}
+
+.otherConditions label input:hover + span{
+    background-color: #ffc0cb;
+    border: 1px solid #ffc0cb;
+}
+.otherConditions label input:checked + span {
+    color: #FFF; /* 文字色を白に */
+    background: #f08080; /* 背景色を薄い赤に */
+    border: 1px solid #f08080; /* 淵の線を薄い赤に */
+}
+/*その他の条件チェックボックスここまで*/
+
+/*詳細情報選択ボタン*/
+.informationButton {
+  color: #000;
+  background-color: #dcdcdc;
+  font-size: 15px;
+  width: 100%;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  margin-top: 20px;
+  border-radius: 100vh;
+}
+.informationButton:hover {
+  color: #fff;
+  background: #fa8072;
+}
+/*詳細情報選択ボタンここまで*/
+
+/*検索ボタン*/
+.listSearchButton {
+    color: #fff;
+    background-color: #666666;
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    margin: 15px 0 15px 0;
+    border-radius: 100vh;
+  }
+  .listSearchButton:hover {
+    color: #fff;
+    background: #fa8072;
+  }
+  /*検索ボタンここまで*/
 
 .storeList{         /*飲食店一覧のスタイル*/
-    width: 600px;        /*ここは調節が必要*/
+    width: 830px;        /*ここは調節が必要*/
     height: auto;       /*ここも調節がいる*/
     float: left;
     margin-top: 20px;
-    margin-left: 10px;
-    margin-right: 150px;
+    margin-left: 10px; 
     padding: 10px 10px;
     font-weight: bold;
     border: solid 3px #000;     /*線*/

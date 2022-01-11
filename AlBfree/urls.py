@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path , include #include追加
 from django.conf import settings       #行追加
 from django.conf.urls.static import static #行追加
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 #from .views import TopPage              #行追加
 
 
@@ -24,10 +25,15 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('restaurants/' , include('restaurants.urls')),
     path('' , include('accounts.urls')),
+    #url(r'^media/(?P<path>.*)$','django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),   #画像系の処理（いるかわかんない）
     #path('', TopPage.as_view(), name='toppage’),        #追加（トップページ）
     #path('blog/', include('blogs.urls')),               #追加（アプリ）
     #path('accounts/', include('accounts.urls')),        #追加（アプリ）
     #path('qa/', include('QA.urls')),                    #追加（アプリ）
-]#+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
+]
+#+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
  #+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 
  #追加（静的ファイル）
+
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

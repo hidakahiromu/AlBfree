@@ -38,90 +38,162 @@
 
     <!-- 詳細条件検索 -->
     <section class="listSearch">   <!-- 詳細条件の枠組み -->
-        <h2>詳細条件</h2>
-        <div class="searchAllergen">    <!-- アレルゲン検索 -->
-            <form action="#">
-                <button class="allergen">アレルゲン</button>
-                <br>
-                <label for="egg">
-                    <input type="checkbox">卵
-                </label>
-                <label for="milk">
-                    <input type="checkbox">乳
-                </label>
-                <label for="wheat">
-                    <input type="checkbox">小麦
-                </label>
-                <label for="shrimp">
-                    <input type="checkbox">えび
-                </label>
-                <label for="crab">
-                    <input type="checkbox">かに
-                </label>
-                <label for="peanut">
-                    <input type="checkbox">落花生
-                </label>
-                <label for="soba">
-                    <input type="checkbox">そば
-                </label>
-            </form>
-        </div>      <!-- アレルゲン検索ここまで -->
+        <p class="conditions">詳細条件</p>
+
+        <!--アレルゲン検索-->
+        <div class="searchAllergen">
+            <p class="allergen">アレルゲン</p>
+            <label class="allergenCheck"><input type="checkbox"><span>卵</span></label>
+            <label class="allergenCheck"><input type="checkbox"><span>乳</span></label>
+            <label class="allergenCheck"><input type="checkbox"><span>小麦</span></label>
+            <label class="allergenCheck"><input type="checkbox"><span>えび</span></label>
+            <label class="allergenCheck"><input type="checkbox"><span>かに</span></label>
+            <label class="allergenCheck"><input type="checkbox"><span>落花生</span></label>
+            <label class="allergenCheck"><input type="checkbox"><span>そば</span></label>
+        </div>
+        <!-- アレルゲン検索ここまで -->
+
         <!--エリア検索-->
-        <p class="areaTitle">エリア検索</p>
+        <p class="areaTitle">エリア</p>
         <div class="areaSearch">
             <select class="prefectures" name="pref">
                 <option value="" hidden>都道府県を選択</option>
-                <option value="北海道">北海道</option>
-                <option value="青森県">青森県</option>
-                <option value="岩手県">岩手県</option>
-                <option value="宮城県">宮城県</option>
-                <option value="秋田県">秋田県</option>
-                <option value="山形県">山形県</option>
-                <option value="福島県">福島県</option>
-                <option value="茨城県">茨城県</option>
-                <option value="栃木県">栃木県</option>
-                <option value="群馬県">群馬県</option>
-                <option value="埼玉県">埼玉県</option>
-                <option value="千葉県">千葉県</option>
-                <option value="東京都">東京都</option>
-                <option value="神奈川県">神奈川県</option>
-                <option value="新潟県">新潟県</option>
-                <option value="富山県">富山県</option>
-                <option value="石川県">石川県</option>
-                <option value="福井県">福井県</option>
-                <option value="山梨県">山梨県</option>
-                <option value="長野県">長野県</option>
-                <option value="岐阜県">岐阜県</option>
-                <option value="静岡県">静岡県</option>
-                <option value="愛知県">愛知県</option>
-                <option value="三重県">三重県</option>
-                <option value="滋賀県">滋賀県</option>
-                <option value="京都府">京都府</option>
-                <option value="大阪府">大阪府</option>
-                <option value="兵庫県">兵庫県</option>
-                <option value="奈良県">奈良県</option>
-                <option value="和歌山県">和歌山県</option>
-                <option value="鳥取県">鳥取県</option>
-                <option value="島根県">島根県</option>
-                <option value="岡山県">岡山県</option>
-                <option value="広島県">広島県</option>
-                <option value="山口県">山口県</option>
-                <option value="徳島県">徳島県</option>
-                <option value="香川県">香川県</option>
-                <option value="愛媛県">愛媛県</option>
-                <option value="高知県">高知県</option>
-                <option value="福岡県">福岡県</option>
-                <option value="佐賀県">佐賀県</option>
-                <option value="長崎県">長崎県</option>
-                <option value="熊本県">熊本県</option>
-                <option value="大分県">大分県</option>
-                <option value="宮崎県">宮崎県</option>
-                <option value="鹿児島県">鹿児島県</option>
-                <option value="沖縄県">沖縄県</option>
+                <optgroup label="北海道・東北">
+                    <option value="北海道">北海道</option>
+                    <option value="青森県">青森県</option>
+                    <option value="岩手県">岩手県</option>
+                    <option value="宮城県">宮城県</option>
+                    <option value="秋田県">秋田県</option>
+                    <option value="山形県">山形県</option>
+                    <option value="福島県">福島県</option>
+                </optgroup>
+                <optgroup label="関東">
+                    <option value="茨城県">茨城県</option>
+                    <option value="栃木県">栃木県</option>
+                    <option value="群馬県">群馬県</option>
+                    <option value="埼玉県">埼玉県</option>
+                    <option value="千葉県">千葉県</option>
+                    <option value="東京都">東京都</option>
+                    <option value="神奈川県">神奈川県</option>
+                </optgroup>
+                <optgroup label="中部">
+                    <option value="新潟県">新潟県</option>
+                    <option value="富山県">富山県</option>
+                    <option value="石川県">石川県</option>
+                    <option value="福井県">福井県</option>
+                    <option value="山梨県">山梨県</option>
+                    <option value="長野県">長野県</option>
+                    <option value="岐阜県">岐阜県</option>
+                    <option value="静岡県">静岡県</option>
+                    <option value="愛知県">愛知県</option>
+                </optgroup>
+                <optgroup label="近畿">
+                    <option value="三重県">三重県</option>
+                    <option value="滋賀県">滋賀県</option>
+                    <option value="京都府">京都府</option>
+                    <option value="大阪府">大阪府</option>
+                    <option value="兵庫県">兵庫県</option>
+                    <option value="奈良県">奈良県</option>
+                    <option value="和歌山県">和歌山県</option>
+                </optgroup>
+                <optgroup label="中国">
+                    <option value="鳥取県">鳥取県</option>
+                    <option value="島根県">島根県</option>
+                    <option value="岡山県">岡山県</option>
+                    <option value="広島県">広島県</option>
+                    <option value="山口県">山口県</option>
+                </optgroup>
+                <optgroup label="四国">
+                    <option value="徳島県">徳島県</option>
+                    <option value="香川県">香川県</option>
+                    <option value="愛媛県">愛媛県</option>
+                    <option value="高知県">高知県</option>
+                </optgroup>
+                <optgroup label="九州・沖縄">
+                    <option value="福岡県">福岡県</option>
+                    <option value="佐賀県">佐賀県</option>
+                    <option value="長崎県">長崎県</option>
+                    <option value="熊本県">熊本県</option>
+                    <option value="大分県">大分県</option>
+                    <option value="宮崎県">宮崎県</option>
+                    <option value="鹿児島県">鹿児島県</option>
+                    <option value="沖縄県">沖縄県</option>
+                </optgroup>
               </select>
         </div>
         <!--エリア検索ここまで-->
+
+        <!--ジャンル選択-->
+        <div class="genreSelect">
+            <p class="genreTitle">ジャンル</p>
+            <div class="genreList">
+                <select name="genre">
+                    <option value="和食">和食</option>
+                    <option value="中華">中華</option>
+                    <option value="実家の味">実家の味</option>
+                    <option value="洋風">洋風</option>
+                    <option value="イタリアン">イタリアン</option>
+                    <option value="フレンチ">フレンチ</option>
+                </select>
+            </div>
+        </div>
+        <!--ジャンル選択ここまで-->
+
+        <!--日付選択-->
+        <div class="dateSelect">
+            <p class="dateTitle">日付</p>
+            <label class="dateList">
+                <input type="date">
+            </label>
+        </div>
+        <!--日付選択ここまで-->
+
+        <!--予算選択-->
+        <div class="budgetSelect">
+            <p class="budgetTitle">価格帯</p>
+            <div class="budgetList">
+                <select name="" id="">
+                    <option value="指定なし" hidden>指定なし</option>
+                    <option value="500">～￥500</option>
+                    <option value="1000">～￥1000</option>
+                    <option value="3000">～￥3000</option>
+                    <option value="5000">～￥5000</option>
+                    <option value="8000">～￥8000</option>
+                    <option value="10000">～￥10000</option>
+                    <option value="15000">～￥15000</option>
+                    <option value="20000">～￥20000</option>
+                    <option value="それ以上">￥20001～</option>
+                </select>
+            </div>
+            <p></p>
+        </div>
+        <!--予算選択ここまで-->
+
+        <!--席の種類-->
+        <div class="otherConditions">
+            <p class="otherConditionsTitle">その他の条件</p>
+            <label class="otherCheck"><input type="checkbox"><span>全席禁煙</span></label>
+            <label class="otherCheck"><input type="checkbox"><span>おしゃれな空間</span></label>
+            <label class="otherCheck"><input type="checkbox"><span>座敷あり</span></label>
+            <label class="otherCheck"><input type="checkbox"><span>席が広い</span></label>
+            <label class="otherCheck"><input type="checkbox"><span>無料Wi-Fiあり</span></label>
+            <label class="otherCheck"><input type="checkbox"><span>車椅子入店可</span></label>
+            <label class="otherCheck"><input type="checkbox"><span>カラオケあり</span></label>
+            <label class="otherCheck"><input type="checkbox"><span>駐車場あり</span></label>
+        </div>
+        <!--席の種類ここまで-->
+
+        <!--詳細情報選択ボタン-->
+        <div class="infomation">
+            <button class="informationButton" type="button">詳細情報選択</button>
+        </div>
+
+        <!-- 検索ボタン -->
+        <button class="listSearchButton">検索</button>
+
     </section>
+    <!--詳細条件の枠組みここまで-->
+
 
     <!--詳細画面に飛ぶやつ-->
     {% for data in restaurants_db %}
@@ -135,7 +207,7 @@
             <p class="explanation">{{ data.explanation }}</p>
         </div>
     {% endfor %}
-
+    
     
         
 {% endblock content %}
