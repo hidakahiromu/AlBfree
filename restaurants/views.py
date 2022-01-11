@@ -1,7 +1,8 @@
 from django.shortcuts import render , redirect
 from django.conf import settings
-from .forms import store_imagesForm
-from .models import store_information , store_images , store_menu
+from .models import restaurant_information , menus , images , review , customer_question , customer_answer
+from .forms import restaurantInformationForm , restaurantMenusForm , restaurantImagesForm , restaurantReviewForm , customerQuestionForm , customerAnswerForm
+
 
 
 # Create your views here.
@@ -13,23 +14,98 @@ def StoreDetails(request):
 #飲食店一覧画面
 def RestaurantsList(request):
     db = {
-        'restaurants_db' : store_information.objects.all(),
+        'restaurants_db' : information.objects.all(),
         #'user_db' : store_information.objects.get(contributor = 0),
     }
     return render(request , 'restaurantsList.html' , db)
 
-
-#飲食店の画像(飲食店のトップ画像など)投稿フォーム　※後で関数名は変えるかも
-def Form(request):
+#飲食店の情報投稿フォーム
+def RestaurantsForm(request):
     if request.method == 'POST':
-        form = store_imagesForm(request.POST , request.FILES)
+        form = restaurantInformationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('Form')
+            return redirect('RestaurantsForm')
     else:
-        form = store_imagesForm()
+        form = restaurantInformationForm()
     
 
-    return render(request, 'modelForm.html', {
+    return render(request, 'restaurantsInformationForm.html', {
+        'form': form
+    })
+
+#飲食店のメニュー投稿フォーム
+def RestaurantMenuForm(request):
+    if request.method == 'POST':
+        form = restaurantMenusForm(request.POST , request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('RestaurantMenuForm')
+    else:
+        form = restaurantMenusForm()
+    
+
+    return render(request, 'restaurantMenusForm.html', {
+        'form': form
+    })
+
+#飲食店の画像(飲食店のトップ画像など)投稿フォーム　※後で関数名は変えるかも
+def RestaurantImageForm(request):
+    if request.method == 'POST':
+        form = restaurantImagesForm(request.POST , request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('RestaurantImagesForm')
+    else:
+        form = restaurantImagesForm()
+    
+
+    return render(request, 'restaurantImagesForm.html', {
+        'form': form
+    })
+
+#レビュー投稿用フォーム
+def RestaurantReviewForm(request):
+    if request.method == 'POST':
+        form = restaurantReviewForm(request.POST , request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('RestaurantReviewForm')
+    else:
+        form = restaurantReviewForm()
+    
+
+    return render(request, 'restaurantReviewForm.html', {
+        'form': form
+    })
+
+#カスタマーQ&A質問投稿用フォーム
+def CustomerQuestionForm(request):
+    if request.method == 'POST':
+        form = customerQuestionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('CustomerQuestionForm')
+    else:
+        form = customerQuestionForm()
+    
+
+    return render(request, 'customerQuestionForm.html', {
+        'form': form
+    })
+
+
+#カスタマーQ&A回答投稿用フォーム
+def CustomerAnswerForm(request):
+    if request.method == 'POST':
+        form = customerAnswerForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('CustomerAnswerForm')
+    else:
+        form = customerAnswerForm()
+    
+
+    return render(request, 'customerAnswerForm.html', {
         'form': form
     })

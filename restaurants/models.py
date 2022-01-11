@@ -7,7 +7,7 @@ import uuid
 
 # Create your models here.
 #飲食店の情報を管理するテーブル
-class store_information(models.Model):
+class restaurant_information(models.Model):
     restaurant_id = models.UUIDField("飲食店ID" , primary_key=True , default=uuid.uuid4 , editable=False)      #主キー
     contributor = models.ForeignKey(user_information , on_delete=models.CASCADE)       #外部キー
     restaurant_name	= models.CharField( "飲食店名" , max_length = 50)
@@ -51,9 +51,9 @@ class store_information(models.Model):
         return self.restaurant_name
 
 #飲食店のメニューに関するテーブル
-class store_menu(models.Model):
+class menus(models.Model):
     menu_id = models.UUIDField("メニューID" , primary_key=True , default=uuid.uuid4 , editable=False)          #主キー
-    store = models.ForeignKey(store_information , on_delete=models.CASCADE)          #外部キー
+    store = models.ForeignKey(restaurant_information , on_delete=models.CASCADE)          #外部キー
     name = models.CharField( "メニュー名" , max_length = 50)
     image = models.ImageField("画像" , upload_to='menu')
     allergy = models.CharField( "アレルギー" , blank = True , max_length = 100)
@@ -64,7 +64,7 @@ class store_menu(models.Model):
         return self.name
 
 #飲食店の画像に関するテーブル
-class store_images(models.Model):
+class images(models.Model):
     ATTRIBUTE = (
         ('exterior' , 'お店の外観'),
         ('introspection' , 'お店の内観'),
@@ -75,7 +75,7 @@ class store_images(models.Model):
     )
     
     image_id = models.UUIDField("画像ID" , primary_key=True , default=uuid.uuid4 , editable=False)         #主キー
-    store = models.ForeignKey(store_information , on_delete=models.CASCADE)      #外部キー
+    store = models.ForeignKey(restaurant_information , on_delete=models.CASCADE)      #外部キー
     image = models.ImageField("画像" , upload_to='images')
     attribute = models.CharField("属性" , choices=ATTRIBUTE , max_length = 20)
 
@@ -83,10 +83,34 @@ class store_images(models.Model):
         return self.attribute
 
 #飲食店のレビュー（評価）に関するテーブル
-class store_review(models.Model):
+class review(models.Model):
     review_id = models.UUIDField("レビューID" , primary_key=True , default=uuid.uuid4 , editable=False)         #主キー
-    store = models.ForeignKey(store_information , on_delete=models.CASCADE)      #外部キー
+    store = models.ForeignKey(restaurant_information , on_delete=models.CASCADE)      #外部キー
     review = models.TextField( "レビュー" , blank=True , max_length = 500)
     image = models.ImageField("画像" , upload_to='review')
     evaluation = models.IntegerField("評価")
+
+    def __str__(self):
+        return self.store
+    
+
+#カスタマーQ&Aの質問管理テーブル
+class customer_question(models.Model):
+    question_id = models.UUIDField("質問ID" , primary_key=True , default=uuid.uuid4 , editable=False)         #主キー
+    store = models.ForeignKey(restaurant_information , on_delete=models.CASCADE)      #外部キー
+    question = models.TextField( "質問" , blank=True , max_length = 400)
+
+    def __str__(self):
+        return self.store
+    
+
+#カスタマーQ&Aの回答管理テーブル
+class customer_answer(models.Model):
+    answer_id = models.UUIDField("回答ID" , primary_key=True , default=uuid.uuid4 , editable=False)         #主キー
+    question = models.ForeignKey(customer_question , on_delete=models.CASCADE)      #外部キー
+    answer = models.TextField( "回答" , blank=True , max_length = 400)
+
+    def __str__(self):
+        return self.question
+    
 
