@@ -44,7 +44,9 @@
     <p>〒{{showdetail_restaurants.postal_code}}</p>
     <p>{{showdetail_restaurants.address}}</p>
     <p>{{showdetail_restaurants.transportation}}</p>
-    <p>※ここにgoogle map</p>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3280.221249650056!2d135.19094770084797!3d34.699599090688814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60008edd1fe54845%3A0xb872547b0f538bea!2z56We5oi46Zu75a2Q5bCC6ZaA5a2m5qCh!5e0!3m2!1sja!2sjp!4v1641875305141!5m2!1sja!2sjp"
+      width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 
     <!--プロトタイプ3枚目-->
   </div>
@@ -76,7 +78,7 @@
     </tr>
     <tr>
       <th>アレルゲン</th>
-      <td>ごま・さば</td>
+      <td>{{showdetail_restaurants.restaurant_allergy}}</td>
     </tr>
     <tr>
       <th>定休日</th>
