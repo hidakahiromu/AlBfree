@@ -18,7 +18,7 @@
 {% endblock header %}
 
 {% block content %}
-        <h1>カスタマーQ&A質問フォーム</h1>
+        <h1>カスタマーQ&A回答フォーム</h1>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="registration">{{ form.as_p }}</div>
