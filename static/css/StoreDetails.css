@@ -1,19 +1,29 @@
+body{
+  background-color: #fffef2;
+  font-family: 'メイリオ';
+  font-size: 16px;
+}
+
+/*bodyのコンテンツ*/
 .center{
   width: 800px;
-  background-color: #f8faf9;
   margin:0 auto;
 }
-
-
-
-.inline{
+/*.inline{
   display: inline-block;
-}
+}*/
 
+/*店名*/
 .shopname{
   text-align: center;
   font-size:45px;
   color:black;
+  margin: 10px;
+}
+
+/*bodyのコンテンツ右の文字*/
+.clearfix{
+  margin-left: 40%;
 }
 .clearfix::after{
   content:"";
@@ -24,14 +34,34 @@ span.rating-name{
   font-size:20px;
     color:black;
 }
+
+/*評価*/
 span.star{
-  font-size:40px;
+  font-size:38px;
     color:orange;
 }
 
 .right{
   float : right;
 }
+
+/*アレルゲン表示とタグ*/
+.allergenList{
+  margin: 45px 0 25px 0;
+}
+.allergenTag{
+  margin-top: 50px;
+}
+
+/*住所、郵便番号*/
+.addressCode{
+  margin: 100px 0 25px 0;
+}
+.addressCode p{
+  margin-bottom: 0;
+}
+
+/*店舗イメージ画像位置*/
 .left{
   float:left;
 }
@@ -63,15 +93,12 @@ table{
   width: 100%;
   border-collapse: collapse;
 }
-
 table tr{
   border-bottom: solid 2px white;
 }
-
 table tr:last-child{
   border-bottom: none;
 }
-
 table th{
   position: relative;
   text-align: left;
@@ -79,17 +106,15 @@ table th{
   background-color: #e4e1c0;
   color: black;
   text-align: left;
-  padding: 10px 0;
+  padding: 10px;
 }
-
 table td{
   text-align: left;
   width: 70%;
   text-align: center;
   background-color: #eee;
-  padding: 10px 0;
+  padding: 10px;
 }
-
 .matrix{
   display:inline-block;
 }
@@ -100,7 +125,6 @@ table td{
         height: 100%;
       }
       
-
       
 
 /*プロトタイプ3枚目ここまで*/
