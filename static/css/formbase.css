@@ -20,6 +20,7 @@ form{
 /*入力タイトルのマージン*/
 label{
     margin-left   : 70px;
+    margin-right  : 400px;
     white-space   : normal;
 }
 /*入力バーのデザイン*/
@@ -36,6 +37,7 @@ input[type="text"] {
 /*性別の枠組み*/
 select{
     border-width  :thin;
+    margin-left: 70px;
 }
 /*ボタンについての位置*/
 .sub{
@@ -62,5 +64,13 @@ select{
   }
   /*リンク中央寄せ*/
 .rogin{
-    text-align: center;
+    text-align    : center;
+}
+
+textarea{
+    border-width  :thin;
+    margin-left   : 70px;
+}
+input{
+    margin-left   : 70px;
 }
