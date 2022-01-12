@@ -34,3 +34,6 @@ def registration(request):
  
 def service(request):
     return render(request , 'riyou.html')
+
+def forstores(request):
+    return render(request , 'forstores.html')
