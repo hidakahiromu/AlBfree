@@ -11,7 +11,15 @@ def index_template(request):
 
 #トップページ画面
 def TopPage(request):
-    return render(request, 'TopPage.html')
+    if 'id' in request.session:    
+        a = {
+            'name' : ','.join(request.session['name'])
+        }
+    else:
+        a = {
+            'name' : 'ゲスト'
+        }
+    return render(request, 'TopPage.html' , a)
 
 #これも使ってないはず
 def ShopDetails(request):
@@ -23,13 +31,17 @@ def registration(request):
         form = registrationForm(request.POST)
         if form.is_valid():
             form.save()
+            #ゲストからユーザーname表記へ
+            request.session['name'] = request.POST.getlist('user') 
+            #userIDをセッションに保存
+            request.session['id'] = request.POST.getlist('user_id')  
             return redirect('registration')
     else:
         form = registrationForm()
     
 
     return render(request, 'registration.html', {
-        'form': form
+        'form': form,
     })
  
 def service(request):

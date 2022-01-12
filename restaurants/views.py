@@ -13,11 +13,17 @@ def StoreDetails(request):
 
 #飲食店一覧画面
 def RestaurantsList(request):
-    db = {
-        'restaurants_db' : restaurant_information.objects.all(),
-        #'user_db' : store_information.objects.get(contributor = 0),
-    }
-    return render(request , 'restaurantsList.html' , db)
+    #セッション情報があればユーザ―名を無ければゲスト表記
+    if 'name' in request.session:
+        name = ','.join(request.session['name'])
+    else:
+        name = 'ゲスト'
+    
+    db = restaurant_information.objects.all()
+    return render(request , 'restaurantsList.html' , {
+        'restaurants_db' : db,
+        'name' : name
+    })
 
 #飲食店の情報投稿フォーム
 def RestaurantsForm(request):
