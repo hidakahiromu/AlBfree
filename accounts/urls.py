@@ -7,5 +7,5 @@ urlpatterns = [
     path('storedetails/', views.StoreDetails, name='ShopDetails'),  #店舗詳細
     path('registration/' , views.registration , name='registration'),   #アカウント新規作成
     path('terms/' , views.terms , name='terms'), #利用規約
-    path('forstores/' , views.forstores , name='forstores') #店舗向け案内
+    path('forstores/' , views.forstores , name='forstores'), #店舗向け案内
 ]

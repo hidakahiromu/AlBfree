@@ -109,3 +109,6 @@ def CustomerAnswerForm(request):
     return render(request, 'customerAnswerForm.html', {
         'form': form
     })
+
+def confirmation(request):
+    return render(request , 'confirmation.html')
