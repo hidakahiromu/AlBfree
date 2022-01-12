@@ -18,7 +18,7 @@
     {% block css %}
     <!-- ここに各ページのcss書くよ -->
     {% endblock css %}
-    <!< /head>
+</head>
 
 
 
@@ -27,7 +27,7 @@
         <ul class="h_menuBar">
             <li><a class="h_link" href="{% url 'RestaurantsList' %}">店舗検索</a></li>
             <li><a class="h_link" href=" ">おしらせ</a></li>
-            <li><a class="h_link" href=" ">利用規約</a></li>
+            <li><a class="h_link" href="{% url 'terms' %}">利用規約</a></li>
             <li><a class="h_link" href=" ">ログイン</a></li>
         </ul>
         <hr>

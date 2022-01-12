@@ -14,7 +14,7 @@ def TopPage(request):
     return render(request, 'TopPage.html')
 
 #これも使ってないはず
-def ShopDetails(request):
+def StoreDetails(request):
     return render(request, 'ShopDetails.html')
 
 #新規登録用フォーム
@@ -32,7 +32,7 @@ def registration(request):
         'form': form
     })
  
-def service(request):
+def terms(request):
     return render(request , 'riyou.html')
 
 def forstores(request):
