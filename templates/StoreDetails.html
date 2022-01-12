@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block title %}
-<title>店舗詳細画面</title>
+<title>{{showdetail_restaurants.restaurant_name}}</title>
 {% endblock title %}
 
 
@@ -39,56 +39,46 @@
     <br><br>
 
 
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3280.221249650056!2d135.19094770084797!3d34.699599090688814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60008edd1fe54845%3A0xb872547b0f538bea!2z56We5oi46Zu75a2Q5bCC6ZaA5a2m5qCh!5e0!3m2!1sja!2sjp!4v1641875305141!5m2!1sja!2sjp"
-      width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-
     <!--アレルゲン表示とタグ-->
     <div class="allergenList">
       <p class="bold-text">使用しているアレルゲン</p>
-      <h5>ごま　たまご　いわし</h5>
-    </div>
+      <h5>{{showdetail_restaurants.restaurant_allergy}}</h5>
+      <!--アレルゲン画像-->
+      <div class="allergenImg">
+        <img src="{% static 'allergy_pic/egg.png' %}" width="100" height="100">
+        <img src="{% static 'allergy_pic/milk.png' %}" width="100" height="100">
+        <img src="{% static 'allergy_pic/wheat.png' %}" width="100" height="100">
+        <img src="{% static 'allergy_pic/shurimp.png' %}" width="100" height="100">
+        <img src="{% static 'allergy_pic/salmonroe.png' %}" width="100" height="100">
+        <img src="{% static 'allergy_pic/banana.png' %}" width="100" height="100">
+      </div>
     <div class="allergenTag">
       <h5>タグ：{{showdetail_restaurants.tags }}</h5>
     </div>
     <!--アレルゲンタグここまで-->
 
-    <!--住所、郵便番号-->
-    <div class="addressCode">
-      <p>〒{{showdetail_restaurants.postal_code}}</p>
-      <p>{{showdetail_restaurants.address}}</p>
-      <p>{{showdetail_restaurants.transportation}}</p>
-    </div>
-  
-
-
+    
     <!--プロトタイプ3枚目-->
   </div>
 
-  <!--マップ-->
-  <div id="map"></div>
-  <script>
-    var map;
-    function initMap() {
-      map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: -34.397, lng: 150.644 },
-        zoom: 8,
-      });
-    }
-  </script>
-  <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-  <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPru-bEhxv6GA0EKk0ggzrDwDFCE-tfiQ&callback=initMap&v=weekly"
-    async></script>
-    <!--マップここまで-->
 
+  <!--マップ-->
+    <!--住所、郵便番号-->
+    <div class="addressCode">
+      <b class="bold-text">アクセス</b>
+      <p class="address">〒{{showdetail_restaurants.postal_code}}<br>
+      {{showdetail_restaurants.address}}<br>
+      {{showdetail_restaurants.transportation}}</p>
+
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3280.221249650056!2d135.19094770084797!3d34.699599090688814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60008edd1fe54845%3A0xb872547b0f538bea!2z56We5oi46Zu75a2Q5bCC6ZaA5a2m5qCh!5e0!3m2!1sja!2sjp!4v1641875305141!5m2!1sja!2sjp"
+      width="300" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <!--マップここまで-->
+  </div>
     <!--店舗基本情報のテーブル-->
-  <table class="inline right">
-    <ul class="rst-info-title">
-      <p>
-        <li><b>店舗基本情報</b></li>
-      </p>
-    </ul>
+  <table class="inlineRight">
+        <b class="tableTitle">店舗基本情報</b>
     <tr>
       <th>店名</th>
       <td>{{showdetail_restaurants.restaurant_name}}</td>
@@ -113,24 +103,26 @@
   <!--店舗基本情報ここまで-->
 
 
-  <!--星の画像使わなあかん-->
 
   <!--プロトタイプ4枚目(メニューリスト)-->
-  <div class=" left">
-    <br>
+  <div class="menuList">
+    <b class="menuTitle">メニュー</b>
+      <li>コーヒー</li>
+        <p>使用アレルゲン</p>
+        <p>￥200</p>
+        <p>お店からのコメント</p>
+      <li>スピリタス</li>
+        <p>使用アレルゲン</p>
+        <p>￥300</p>
+        <p>うまい</p>
+      <li>ラーメン</li>
+        <p>使用アレルゲン</p>
+        <p>￥800</p>
+        <p>うまい</p>
   </div>
-  <br>
-  <h4>ホットコーヒー </h4>
-  <h5>500円</h5>
-  <div class=" left">
-  </div>
-  <h4>ホットコーヒー </h4>
-  <h5>5000円</h5>
-</div>
   <!--メニューここまで-->
 
 
-</div>
 
 
 {% endblock content %}

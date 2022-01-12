@@ -1,29 +1,32 @@
-body{
-  background-color: #fffef2;
+html{
+  margin: 0;
   font-family: 'メイリオ';
   font-size: 16px;
 }
+body{
+  background-color: #fffef2;
+}
 
 /*bodyのコンテンツ*/
-.center{
+/*.center{
   width: 800px;
   margin:0 auto;
-}
-/*.inline{
-  display: inline-block;
 }*/
+
 
 /*店名*/
 .shopname{
   text-align: center;
   font-size:45px;
   color:black;
-  margin: 10px;
+  margin: 15px;
+  font-family: 'monospace';
 }
 
 /*bodyのコンテンツ右の文字*/
 .clearfix{
   margin-left: 40%;
+  margin-bottom: 30px;
 }
 .clearfix::after{
   content:"";
@@ -41,33 +44,44 @@ span.star{
     color:orange;
 }
 
-.right{
+/*.right{
   float : right;
-}
+}*/
 
 /*アレルゲン表示とタグ*/
 .allergenList{
-  margin: 45px 0 25px 0;
+  background-color: #fff;
+  margin-right: 4em;
 }
 .allergenTag{
-  margin-top: 50px;
+  margin: 20px 0px 30px 70%;
+}
+.allergenImg{
+  margin-left: 2em;
 }
 
 /*住所、郵便番号*/
 .addressCode{
-  margin: 100px 0 25px 0;
+  
+  background-color: aqua;
+  /*margin: 0 4em 2em 0;*/
+  padding: 20px;
 }
-.addressCode p{
-  margin-bottom: 0;
+.address{
+  margin-left: 20px;
 }
-
+iframe{
+  margin: 0 3em;
+}
 /*店舗イメージ画像位置*/
 .left{
   float:left;
+  margin-left: 11%;
 }
-
 .bold-text{
   font-weight:  bold;
+  font-size: 20px;
+  margin: 10px;
 }
 
 /*プロトタイプ3枚目*/
@@ -90,8 +104,13 @@ span.ul.rst-info-title li {
 
 /*店舗基本情報(表)*/
 table{
-  width: 100%;
+  width: 75%;
+  margin: auto;
   border-collapse: collapse;
+}
+.tableTitle{
+  margin: 0 4em;
+  font-size: 28px;
 }
 table tr{
   border-bottom: solid 2px white;
@@ -117,6 +136,14 @@ table td{
 }
 .matrix{
   display:inline-block;
+}
+/*メニューリスト*/
+.menuList{
+  margin: 2em;
+}
+.menuTitle{
+  margin: 0 4em 0 3em;
+  font-size: 28px;
 }
 
 /* Always set the map height explicitly to define the size of the div
