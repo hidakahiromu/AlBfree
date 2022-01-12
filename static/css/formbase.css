@@ -64,10 +64,13 @@ select{
   }
   /*リンク中央寄せ*/
 .rogin{
-    text-align: center;
+    text-align    : center;
 }
 
 textarea{
     border-width  :thin;
-    margin-left: 70px;
+    margin-left   : 70px;
+}
+input{
+    margin-left   : 70px;
 }
