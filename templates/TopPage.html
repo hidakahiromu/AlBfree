@@ -10,6 +10,9 @@
     <!-- ここにcss書くよ -->
     <link rel="stylesheet" href="{% static 'css/TopPage.css' %}">
     <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/select.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.js"></script>  
     
 {% endblock css %}
 
@@ -36,11 +39,30 @@
         <div class="search_list">
             <!--簡易検索フォーム-->
             <form action="店舗一覧(検索結果)" method="post">
-                  <!-- 折り畳み展開ポインタ -->
-                <span onclick="obj=document.getElementById('open').style; obj.display=(obj.display=='none')?'block':'none';">
-                    <a>アレルギー食品を除外</a>
-                </span>
-                    <!--// 折り畳み展開ポインタ -->
+                  <!-- 折り畳み展開 -->
+                  <select multiple="multiple" class="multiple"> 
+                    <option value="egg">卵</option>
+                    <option value="milk">乳</option>
+                    <option value="wheat">小麦</option>
+                    <option value="shrimp">えび</option>
+                    <option value="crab">かに</option>
+                    <option value="peant">落花生</option>
+                    <option value="soba">そば</option>
+                  </select>
+                  <script>
+                    $(function () {
+                      $(".multiple").multipleSelect({
+                      width: 180,
+                      placeholder:"アレルギー7品目除外",
+                      formatSelectAll: function() {
+                          return 'すべて';
+                      },
+                      formatAllSelected: function() {
+                          return '全て選択されています';
+                      }
+                  });
+                    });
+                  </script>
                     
                     <!-- 折り畳まれ部分 -->
                 <div id="open" style="display:none;clear:both;">
@@ -173,6 +195,7 @@
             </form>
             </div>
 <div id="style">
+    
     <div><!--紹介プレ-->
         <br>
         <p class="Title">アレルギー7品目対応店</p>
@@ -304,6 +327,8 @@
 <script type="text/javascript" src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/slick.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/tops.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<script src="https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.js"></script>
 </div>
 {% endblock content %}
 
