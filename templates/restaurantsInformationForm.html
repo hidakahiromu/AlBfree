@@ -21,7 +21,35 @@
         <h1>飲食店登録</h1>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <div class="registration">{{ form.as_p }}</div>
+            <div class="registration">
+                <!--{{ form.contributor }}-->
+                <p>飲食店名:</p>{{ form.restaurant_name }}
+                <p>説明文:</p>{{ form.explanation }}
+                <p>電話番号:</p>{{ form.tel }}
+                <p>郵便番号:</p>{{ form.postal_code }}
+                <p>住所:</p>{{ form.address }}
+                <p>アクセス:</p>{{ form.transportation }}
+                <p>営業時間:</p>{{ form.time }}
+                <p>予算:</p>{{ form.budget }}
+                <p>支払方法:</p>{{ form.payment }}
+                <p>席:</p>{{ form.seat }}
+                <p>個室:</p>{{ form.private_room }}
+                <p>貸切:</p>{{ form.reserved }}
+                <p>禁煙・喫煙情報:</p>{{ form.smoking }}
+                <p>駐車場:</p>{{ form.parking }}
+                <p>空間&設備:</p>{{ form.equipment }}
+                <p>メニュー:</p>{{ form.menu }}
+                <p>料理:</p>{{ form.cooking }}
+                <p>コース:</p>{{ form.course }}
+                <p>利用シーン:</p>{{ form.use_scene }}
+                <p>ロケーション:</p>{{ form.location }}
+                <p>サービス:</p>{{ form.service }}
+                <p>お子様連れ:</p>{{ form.children }}
+                <p>ドレスコード:</p>{{ form.dress_code }}
+                <p>備考:</p>{{ form.remarks }}
+                <p>アレルギー:</p>{{ form.restaurant_allergy }}
+                <p>タグ:</p>{{ form.tags }}
+            </div>
             <div class="sub"><button class="submit" type="submit">登録</button></div>
         </form>
         <p class="rogin"><a href="">ログイン画面に戻る<a></p>

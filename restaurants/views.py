@@ -27,17 +27,22 @@ def RestaurantsList(request):
 
 #飲食店の情報投稿フォーム
 def RestaurantsForm(request):
+    #m = request.session['id']
+
     if request.method == 'POST':
         form = restaurantInformationForm(request.POST)
         if form.is_valid():
-            form.save()
+            m = form.save(commit=False)
+            m.contributor = request.session['id']
+            m.save()
+            request.session['restaurant_id'] = request.POST.getlist('restaurant_id')
             return redirect('RestaurantsForm')
     else:
         form = restaurantInformationForm()
     
 
     return render(request, 'restaurantsInformationForm.html', {
-        'form': form
+        'form': form,
     })
 
 #飲食店のメニュー投稿フォーム
@@ -57,17 +62,22 @@ def RestaurantMenuForm(request):
 
 #飲食店の画像(飲食店のトップ画像など)投稿フォーム　※後で関数名は変えるかも
 def RestaurantImageForm(request):
+    #セッション情報があればユーザ―名を無ければゲスト表記
+    if 'restaurant_id' in request.session:
+        id = ','.join(request.session['restaurant_id'])
+
     if request.method == 'POST':
         form = restaurantImagesForm(request.POST , request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('RestaurantImagesForm')
+            return redirect('RestaurantImageForm')
     else:
         form = restaurantImagesForm()
     
 
     return render(request, 'restaurantImagesForm.html', {
-        'form': form
+        'form': form,
+        'id' : id,
     })
 
 #レビュー投稿用フォーム
