@@ -8,7 +8,11 @@ import uuid
 # Create your models here.
 #飲食店の情報を管理するテーブル
 class restaurant_information(models.Model):
-    restaurant_id = models.UUIDField("飲食店ID" , primary_key=True , default=uuid.uuid4 , editable=False)      #主キー
+    def get_uuid_no_dash():
+        return uuid.uuid4().hex
+
+
+    restaurant_id = models.CharField("飲食店ID" , primary_key=True , default=get_uuid_no_dash, max_length=33, editable=False, unique=True)      #主キー
     contributor = models.ForeignKey(user_information , on_delete=models.CASCADE)       #外部キー
     restaurant_name	= models.CharField( "飲食店名" , max_length = 50)
     explanation	= models.TextField( "説明文" , max_length = 1000)
@@ -52,7 +56,10 @@ class restaurant_information(models.Model):
 
 #飲食店のメニューに関するテーブル
 class menus(models.Model):
-    menu_id = models.UUIDField("メニューID" , primary_key=True , default=uuid.uuid4 , editable=False)          #主キー
+    def get_uuid_no_dash():
+        return uuid.uuid4().hex
+
+    menu_id = models.CharField("メニューID" , primary_key=True ,default=get_uuid_no_dash, max_length=33, editable=False, unique=True)          #主キー
     store = models.ForeignKey(restaurant_information , on_delete=models.CASCADE)          #外部キー
     name = models.CharField( "メニュー名" , max_length = 50)
     image = models.ImageField("画像" , upload_to='menu')
@@ -65,6 +72,9 @@ class menus(models.Model):
 
 #飲食店の画像に関するテーブル
 class images(models.Model):
+    def get_uuid_no_dash():
+        return uuid.uuid4().hex
+
     ATTRIBUTE = (
         ('exterior' , 'お店の外観'),
         ('introspection' , 'お店の内観'),
@@ -74,7 +84,7 @@ class images(models.Model):
         ('others' , 'その他'),
     )
     
-    image_id = models.UUIDField("画像ID" , primary_key=True , default=uuid.uuid4 , editable=False)         #主キー
+    image_id = models.CharField("画像ID" , primary_key=True , default=get_uuid_no_dash, max_length=33, editable=False, unique=True)         #主キー
     store = models.ForeignKey(restaurant_information , on_delete=models.CASCADE)      #外部キー
     image = models.ImageField("画像" , upload_to='images')
     attribute = models.CharField("属性" , choices=ATTRIBUTE , max_length = 20)
@@ -84,7 +94,10 @@ class images(models.Model):
 
 #飲食店のレビュー（評価）に関するテーブル
 class review(models.Model):
-    review_id = models.UUIDField("レビューID" , primary_key=True , default=uuid.uuid4 , editable=False)         #主キー
+    def get_uuid_no_dash():
+        return uuid.uuid4().hex
+
+    review_id = models.CharField("レビューID" ,primary_key=True , default=get_uuid_no_dash, max_length=33, editable=False, unique=True)         #主キー
     store = models.ForeignKey(restaurant_information , on_delete=models.CASCADE)      #外部キー
     review = models.TextField( "レビュー" , blank=True , max_length = 500)
     image = models.ImageField("画像" , upload_to='review')
@@ -96,7 +109,10 @@ class review(models.Model):
 
 #カスタマーQ&Aの質問管理テーブル
 class customer_question(models.Model):
-    question_id = models.UUIDField("質問ID" , primary_key=True , default=uuid.uuid4 , editable=False)         #主キー
+    def get_uuid_no_dash():
+        return uuid.uuid4().hex
+
+    question_id = models.CharField("質問ID" , primary_key=True , default=get_uuid_no_dash, max_length=33, editable=False, unique=True)         #主キー
     store = models.ForeignKey(restaurant_information , on_delete=models.CASCADE)      #外部キー
     question = models.TextField( "質問" , blank=True , max_length = 400)
 
@@ -106,7 +122,10 @@ class customer_question(models.Model):
 
 #カスタマーQ&Aの回答管理テーブル
 class customer_answer(models.Model):
-    answer_id = models.UUIDField("回答ID" , primary_key=True , default=uuid.uuid4 , editable=False)         #主キー
+    def get_uuid_no_dash():
+        return uuid.uuid4().hex
+
+    answer_id = models.CharField("回答ID" , primary_key=True , default=get_uuid_no_dash, max_length=33, editable=False, unique=True)         #主キー
     question = models.ForeignKey(customer_question , on_delete=models.CASCADE)      #外部キー
     answer = models.TextField( "回答" , blank=True , max_length = 400)
 

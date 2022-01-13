@@ -6,13 +6,15 @@ import uuid
 
 # Create your models here.
 class user_information(models.Model):
+    def get_uuid_no_dash():
+        return uuid.uuid4().hex
 
     GENDER = (
         ('man' , '男性'),
         ('woman' , '女性'),
     )
 
-    user_id = models.UUIDField("ユーザーID" , primary_key=True , default=uuid.uuid4 , editable=False)
+    user_id = models.CharField("ユーザーID" , primary_key=True , default=get_uuid_no_dash, max_length=33, editable=False, unique=True)
     user = models.CharField("ニックネーム" , null = False , max_length = 20)
     name = models.CharField("名前" , null = False , max_length = 20)
     kana = models.CharField("フリガナ" , null = False , max_length = 40)
