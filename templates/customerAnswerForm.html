@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!-- headの継承 -->
+{% block title %}
+    <title>カスタマーQ&A回答フォーム</title>
+{% endblock title %}
+
+{% block css %}
+    <!-- ここにcss書くよ -->
+   
+    <link rel="stylesheet" href="{% static 'css/formbase.css' %}">
+{% endblock css %}
+
+<!-- bodyの継承 -->
+{% block header %}
+    <!-- ここにheader書くよ -->
+{% endblock header %}
+
+{% block content %}
+        <h1>カスタマーQ&A回答フォーム</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="registration">{{ form.as_p }}</div>
+            <div class="sub"><button class="submit" type="submit">登録</button></div>
+        </form>
+
+{% endblock content %}
+
+{% block footer %}
+            <!-- ここにfooter書くよ -->
+{% endblock footer %}

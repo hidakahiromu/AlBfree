@@ -19,9 +19,11 @@
     <!-- ここに各ページのcss書くよ -->
     {% endblock css %}
 
+
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <link rel="stylesheet" type="text/css" href="./style.css" />
     <script src="./index.js"></script>
+
 </head>
 
 
@@ -30,8 +32,8 @@
     <header>
         <ul class="h_menuBar">
             <li><a class="h_link" href=" ">店舗検索</a></li>
-            <li><a class="h_link" href=" ">おしらせ</a></li>
-            <li><a class="h_link" href=" ">利用規約</a></li>
+            <li><a class="h_link" href="{% url 'RestaurantsList' %}">詳細検索</a></li>
+            <li><a class="h_link" href="{% url 'terms' %}">利用規約</a></li>
             <li><a class="h_link" href=" ">ログイン</a></li>
         </ul>
         <hr>
@@ -48,12 +50,13 @@
     <footer>
         <ul class="h_footer">
             <li><a class="h_foo" href=" ">利用条件</a></li>
-            <li><a class="h_foo" href=" ">利用規約</a></li>
-            <li><a class="h_foo" href=" ">個人情報保護方針</a></li>
-            <li><a class="h_foo" href=" ">FAQ</a></li>
-            <li><a class="h_foo" href=" ">ヘルプ・お問い合わせ</a></li>
-            <li><a class="h_foo" href=" ">ALBfreeの特徴</a></li>
-            <li><a class="h_foo" href=" ">店舗様に向けてのご案内</a></li>
+            <li><a class="h_foo"href="{% url 'terms' %}">利用規約</a></li>
+            <li><a class="h_foo"href=" ">個人情報保護方針</a></li>
+            <li><a class="h_foo"href=" ">FAQ</a></li>
+            <li><a class="h_foo"href=" ">ヘルプ・お問い合わせ</a></li>
+            <li><a class="h_foo"href=" ">ALBfreeの特徴</a></li>
+            <li><a class="h_foo"href="{% url 'forstores' %}">店舗様に向けてのご案内</a></li>
+
         </ul>
         <p class="c">©ALBfree</p>
         {% block footer %}

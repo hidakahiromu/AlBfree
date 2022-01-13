@@ -30,15 +30,17 @@ hr{
 
 footer {
   width: 100%;
-  height: 120px; 
+  height: 100px; 
   text-align: center;
   padding: 20px 0;
   background-color: #e7e6e5;
   bottom: 0;
+  clear: both;
 }
 
 .h_footer{
   text-align: center;
+  font-size: 13px;
 }
 .h_footer li{
   font-family: 'Meiryo UI';
@@ -58,4 +60,5 @@ footer {
 .c{
   text-align:center;
   color: black;
+  font-size: 14px;
 }

@@ -9,6 +9,8 @@
 {% block css %}
     <!-- ここにcss書くよ -->
     <link rel="stylesheet" href="{% static 'css/TopPage.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    
 {% endblock css %}
 
 <!-- bodyの継承 -->
@@ -19,36 +21,115 @@
 {% block content %}
     <!-- ここに本文書くよ -->
     <div class="img">
-        <h1 class="Heading">ALBfree</h1>
-        <h2>アレルギー別でお店検索が出来るサイトやで</h2>
-    </div>
+    <!--スライドショー-->
+    <ul class="slider">
+        <li><a href="#"><img class = "sliders" src={% static 'img/power.jpg' %} alt="image01"></a></li>
+        <li><a href="#"><img class = "sliders" src={% static 'img/power.jpg' %} alt="image02"></a></li>
+        <li><a href="#"><img class = "sliders" src="images/03.jpg" alt="image03"></a></li>
+        <li><a href="#"><img class = "sliders" src="images/04.jpg" alt="image04"></a></li>
+        <li><a href="#"><img class = "sliders" src="images/05.jpg" alt="image05"></a></li>
+        <li><a href="#"><img class = "sliders" src="images/06.jpg" alt="image06"></a></li>
+        <li><a href="#"><img class = "sliders" src="images/07.jpg" alt="image07"></a></li>
+        <li><a href="#"><img class = "sliders" src="images/08.jpg" alt="image08"></a></li>
+    </ul>
+</div>
         <div class="search_list">
             <!--簡易検索フォーム-->
-            <form action="店舗一覧(検索結果)" method="get">
-                <select name="Prefecture">
+            <form action="店舗一覧(検索結果)" method="post">
+                  <!-- 折り畳み展開ポインタ -->
+                <span onclick="obj=document.getElementById('open').style; obj.display=(obj.display=='none')?'block':'none';">
+                    <a>アレルギー食品を除外</a>
+                </span>
+                    <!--// 折り畳み展開ポインタ -->
+                    
+                    <!-- 折り畳まれ部分 -->
+                <div id="open" style="display:none;clear:both;">
+                    <span>
+                        <input type="checkbox" id="egg" name="egg" >
+                        <label for="egg">卵</label>
+                   
+                        <input type="checkbox" id="milk" name="milk">
+                        <label for="milk">乳</label>
+                    
+                        <input type="checkbox" id="wheat" name="wheat">
+                        <label for="wheat">小麦</label>
+                    
+                        <input type="checkbox" id="shrimp" name="shrimp">
+                        <label for="shrimp">えび</label>
+                    
+                        <input type="checkbox" id="crab" name="crab">
+                        <label for="crab">かに</label>
+                    
+                        <input type="checkbox" id="peant" name="peant">
+                        <label for="peant">落花生</label>
+                   
+                        <input type="checkbox" id="soba" name="soba">
+                        <label for="soba">そば</label>
+                    </span>
+                    <p>検索から除外したい食品にチェックを入れてね</p>
+                </div>
+                <!--// 折り畳まれ部分 --> <select name="Prefecture">
                     <option class="tab_select">県を選ぶ</option>
                     <optgroup label="北海道・東北">
-                        <option value="hokkaido">北海道</option>
-                        <option value="aomori">青森</option>
-                        <option value="akita">秋田</option>
+                        <option value="北海道">北海道</option>
+                        <option value="青森県">青森県</option>
+                        <option value="岩手県">岩手県</option>
+                        <option value="宮城県">宮城県</option>
+                        <option value="秋田県">秋田県</option>
+                        <option value="山形県">山形県</option>
+                        <option value="福島県">福島県</option>
                     </optgroup>
                     <optgroup label="関東">
-                        <option value="tokyo">東京</option>
-                        <option value="tiba">千葉</option>
-                        <option value="kanagawa">神奈川</option>
+                        <option value="茨城県">茨城県</option>
+                        <option value="栃木県">栃木県</option>
+                        <option value="群馬県">群馬県</option>
+                        <option value="埼玉県">埼玉県</option>
+                        <option value="千葉県">千葉県</option>
+                        <option value="東京都">東京都</option>
+                        <option value="神奈川県">神奈川県</option>
                     </optgroup>
                     <optgroup label="中部">
+                        <option value="新潟県">新潟県</option>
+                        <option value="富山県">富山県</option>
+                        <option value="石川県">石川県</option>
+                        <option value="福井県">福井県</option>
+                        <option value="山梨県">山梨県</option>
+                        <option value="長野県">長野県</option>
+                        <option value="岐阜県">岐阜県</option>
+                        <option value="静岡県">静岡県</option>
+                        <option value="愛知県">愛知県</option>
                     </optgroup>
                     <optgroup label="近畿">
-                        <option value="hyogo">兵庫</option>
-                        <option value="osaka">大阪</option>
-                        <option value="kyoto">京都</option>
+                        <option value="三重県">三重県</option>
+                        <option value="滋賀県">滋賀県</option>
+                        <option value="京都府">京都府</option>
+                        <option value="大阪府">大阪府</option>
+                        <option value="兵庫県">兵庫県</option>
+                        <option value="奈良県">奈良県</option>
+                        <option value="和歌山県">和歌山県</option>
                     </optgroup>
                     <optgroup label="中国">
+                        <option value="鳥取県">鳥取県</option>
+                        <option value="島根県">島根県</option>
+                        <option value="岡山県">岡山県</option>
+                        <option value="広島県">広島県</option>
+                        <option value="山口県">山口県</option>
                     </optgroup>
                     <optgroup label="四国">
+                        <option value="徳島県">徳島県</option>
+                        <option value="香川県">香川県</option>
+                        <option value="愛媛県">愛媛県</option>
+                        <option value="高知県">高知県</option>
                     </optgroup>
                     <optgroup label="九州・沖縄">
+                        <option value="福岡県">福岡県</option>
+                        <option value="佐賀県">佐賀県</option>
+                        <option value="長崎県">長崎県</option>
+                        <option value="熊本県">熊本県</option>
+                        <option value="大分県">大分県</option>
+                        <option value="宮崎県">宮崎県</option>
+                        <option value="鹿児島県">鹿児島県</option>
+                        <option value="沖縄県">沖縄県</option>
                     </optgroup>
                 </select>
 
@@ -83,80 +164,40 @@
                     <option value="9">9人</option>
                     <option value="10">10人</option>
                 </select>
+                <input name="date" type="date" />
+                <input class="kiy"type="search" name="search" placeholder="キーワードを入力">
 
-                <input type="search" name="search" placeholder="キーワードを入力">
-
-                <!-- 折り畳み展開ポインタ -->
-                <span onclick="obj=document.getElementById('open').style; obj.display=(obj.display=='none')?'block':'none';">
-                    <a>アレルギー食品を除外</a>
-                </span>
-                    <!--// 折り畳み展開ポインタ -->
-                    
-                    <!-- 折り畳まれ部分 -->
-                <div id="open" style="display:none;clear:both;">
-                    <span>
-                        <input type="checkbox" id="egg" name="egg" checked>
-                        <label for="egg">卵</label>
-                    </span>
-                    <span>
-                        <input type="checkbox" id="milk" name="milk">
-                        <label for="milk">乳</label>
-                    </span>
-                    <span>
-                        <input type="checkbox" id="wheat" name="wheat">
-                        <label for="wheat">小麦</label>
-                    </span>
-                    <span>
-                        <input type="checkbox" id="shrimp" name="shrimp">
-                        <label for="shrimp">えび</label>
-                    </span>
-                    <span>
-                        <input type="checkbox" id="crab" name="crab">
-                        <label for="crab">かに</label>
-                    </span>
-                    <span>
-                        <input type="checkbox" id="peant" name="peant">
-                        <label for="peant">落花生</label>
-                    </span>
-                    <span>
-                        <input type="checkbox" id="soba" name="soba">
-                        <label for="soba">そば</label>
-                    </span>
-                    <p>検索から除外したい食品にチェックを入れてね</p>
-                </div>
-                <!--// 折り畳まれ部分 --> 
+              
 
                 <input type="submit" name="submit" value="検索">
             </form>
-            <a>さらに詳しく検索したい方はこちらから→</a>
-            <a class="shop_link" href="店舗一覧">詳細検索</a>
-        </div>
+            </div>
 <div id="style">
     <div><!--紹介プレ-->
         <br>
         <p class="Title">アレルギー7品目対応店</p>
         <hr>
         <br>
-        <ul class="items">
-            <li class="ite"><a href=""><img src= "{% static 'img/shop_funinki.png' %}" alt="対応店舗0">
-                <p>オーガレストラン</p>
+        <ul class="item">
+            <li class="ite"><a href=""><img src= "{% static 'img/Cookingsample01.jpg' %}" alt="対応店舗0">
+                <p>32文字対応中32文字対応中32文字対応中32文字対応中32文字対応中・・</p>
                 </a></li>
-            <li class="ite"><a href=""><img src= "{% static 'img/shop_ninnki.jpg' %}" alt="対応店舗1">
-                <p>居酒屋　宅</p>
+            <li class="ite"><a href=""><img src= "{% static 'img/Cookingsample02.jpg' %}" alt="対応店舗1">
+                <p>お造り処　杏</p>
                 </a></li>
-            <li class="ite"><a href=""><img src="file01.jpg" alt="対応店舗2">
+            <li class="ite"><a href=""><img src= "{% static 'img/Cookingsample03.jpg' %}" alt="対応店舗2">
                 <p>居酒屋　層</p>
                 </a></li>
-            <li class="ite"><a href=""><img src="file01.jpg" alt="対応店舗3">
+            <li class="ite"><a href=""><img src= "{% static 'img/Cookingsample04.jpg' %}" alt="対応店舗3">
+                <p>大好き　梅工房</p>
+                </a></li>
+            <li class="ite"><a href=""><img src= "{% static 'img/Cookingsample05.jpg' %}" alt="対応店舗3">
                 <p>大好き　酒</p>
                 </a></li>
-            <li class="ite"><a href=""><img src="file01.jpg" alt="対応店舗3">
+            <li class="ite"><a href=""><img src= "{% static 'img/Cookingsample06.jpg' %}" alt="対応店舗3">
                 <p>大好き　酒</p>
                 </a></li>
-            <li class="ite"><a href=""><img src="file01.jpg" alt="対応店舗3">
-                <p>大好き　酒</p>
-                </a></li>
-            <li class="ite"><a href=""><img src="file01.jpg" alt="対応店舗3">
+            <li class="ite"><a href=""><img src= "{% static 'img/Cookingsample07.jpg' %}" alt="対応店舗3">
                 <p>大好き　酒</p>
                 </a></li>
         </ul>
@@ -164,56 +205,106 @@
             <a href="">アレルギー7品目店詳細へ</a>
             </div>
     </div>
-
+    <br>
     <div><!--ランキングテンプレ-->
         <br>
-        <p class="Title">ooランキング</p>
+        <p class="Title">サイトおすすめランキング</p>
         <hr>
         
         <br>
         <ul class="ranking">
-            <li class="item"><a href=""><img src= "{% static 'img/shop_funinki.png' %}" alt="バナー0">
-                <p>arerugi-taoufjalfjadjfoadjfahfo</p></a></li>
-            <li class="item"><a href=""><img src="file01.jpg" alt="バナー1">
+            <li class="item"><a href=""><img src= "{% static 'img/ranking01.jpg' %}" alt="1位">
+                <p>32文字対応中32文字対応中32文字対応中32文字対応中32文字対応中・・</p></a></li>
+            <li class="item"><a href=""><img src="{% static 'img/ranking02.jpg' %}" alt="2位">
+                <p>32文字対応中32文字対応中32文字対応中32文字対応中32文字対応中・・</p></a></li>
+            <li class="item"><a href=""><img src="{% static 'img/ranking03.jpg' %}" alt="3位">
+                <p>32文字対応中32文字対応中32文字対応中32文字対応中32文字対応中・・</p></a></li>
+            <li class="item"><a href=""><img src="{% static 'img/ranking04.jpg' %}" alt="4位">
                 <p></p></a></li>
-            <li class="item"><a href=""><img src="file01.jpg" alt="バナー2">
-                <p></p></a></li>
-            <li class="item"><a href=""><img src="file01.jpg" alt="バナー3">
+            <li class="item"><a href=""><img src="{% static 'img/ranking05.jpg' %}" alt="5位">
                 <p></p></a></li>
         </ul>
         <div class="detail">
         <a href="">００ランキング詳細へ</a>
         </div>
     </div>
-
-
+    <br>
     <div><!--ランキングテンプレ-->
         <br>
-        <p class="Title">ロケーションから探す</p>
-        <hr>
-        
+        <p class="Title">利用シーンから探す</p>
+        <hr>   
         <br>
         <ul class="location">
-            <li class="item"><a href=""><img src= "{% static 'img/shop_funinki.png' %}" alt="バナー0">
+            <li class="item"><a href=""><img src="{% static 'img/scene01.jpg' %}" alt="バナー0">
                 <p>おひとり様</p></a></li>
-            <li class="item"><a href=""><img src="file01.jpg" alt="バナー1">
+            <li class="item"><a href=""><img src="{% static 'img/scene02.jpg' %}" alt="バナー1">
                 <p>家族・子供と</p></a></li>
-            <li class="item"><a href=""><img src="file01.jpg" alt="バナー2">
+            <li class="item"><a href=""><img src="{% static 'img/scene03.jpg' %}" alt="バナー2">
                 <p>接待</p></a></li>
-            <li class="item"><a href=""><img src="file01.jpg" alt="バナー3">
+            <li class="item"><a href=""><img src="{% static 'img/scene04.jpg' %}" alt="バナー3">
                 <p>デート</p></a></li>
-            <li class="item"><a href=""><img src="file01.jpg" alt="バナー3">
+            <li class="item"><a href=""><img src="{% static 'img/scene05.jpg' %}" alt="バナー3">
                 <p>合コン</p></a></li>
-            <li class="item"><a href=""><img src="file01.jpg" alt="バナー3">
+            <li class="item"><a href=""><img src="{% static 'img/scene06.jpg' %}" alt="バナー3">
                 <p>宴会</p></a></li>
         </ul>
-        <div class="detail">
-        <a href="">ロケーション詳細へ</a>
-        </div>
+    </div>
+    <br>
+    <div><!--お知らせ-->
+        <br>
+        <p class="Title">お知らせ</p>
+        <hr>   
+        <br>
+        <ul class="msr_newslist">
+            <li>
+              <a href="#">
+              <div>
+                <time datetime="2016-1-1">2016.01.01</time>
+                <p class="cat01">cat01</p>
+              </div>
+              <p> デザインを変更しました </p>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+              <div>
+                <time datetime="2016-1-1">2016.01.01</time>
+                <p class="cat02">cat02</p>
+              </div>
+              <p> サイトをアップグレードしました。 </p>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+              <div>
+                <time datetime="2016-1-1">2016.01.01</time>
+                <p class="cat01">cat01</p>
+              </div>
+              <p> 現在行き詰っています </p>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+              <div>
+                <time datetime="2016-1-1">2016.01.01</time>
+                <p class="cat02">cat02</p>
+              </div>
+              <p> テキストテキスト </p>
+              </a>
+            </li>
+          </ul>
     </div>
 
 
+    
+
+<br>
 </div>  
+<div><!--js・jq-->
+<script type="text/javascript" src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/slick.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/tops.js' %}"></script>
+</div>
 {% endblock content %}
 
 {% block footer %}

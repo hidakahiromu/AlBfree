@@ -3,12 +3,14 @@ from django.core.validators import MinLengthValidator, RegexValidator  #バリ�
 from django.core.exceptions import ValidationError                     #上と同じく
 from accounts.models import user_information
 
-
+import uuid
 
 # Create your models here.
-class store_information(models.Model):
-    restaurant_id = models.ForeignKey(user_information , on_delete=models.CASCADE)
-    restaurant_name	= models.CharField( "飲食店名" , null = True , max_length = 50)
+#飲食店の情報を管理するテーブル
+class restaurant_information(models.Model):
+    restaurant_id = models.UUIDField("飲食店ID" , primary_key=True , default=uuid.uuid4 , editable=False)      #主キー
+    contributor = models.ForeignKey(user_information , on_delete=models.CASCADE)       #外部キー
+    restaurant_name	= models.CharField( "飲食店名" , max_length = 50)
     explanation	= models.TextField( "説明文" , max_length = 1000)
 
     #拾ってきたコード
@@ -46,13 +48,69 @@ class store_information(models.Model):
     tags = models.TextField("タグ" , blank=True , max_length = 500)
 
     def __str__(self):
-        return self.name
+        return self.restaurant_name
 
-class store_menu(models.Model):
-    store_id = models.ForeignKey(store_information , on_delete=models.CASCADE)
+#飲食店のメニューに関するテーブル
+class menus(models.Model):
+    menu_id = models.UUIDField("メニューID" , primary_key=True , default=uuid.uuid4 , editable=False)          #主キー
+    store = models.ForeignKey(restaurant_information , on_delete=models.CASCADE)          #外部キー
     name = models.CharField( "メニュー名" , max_length = 50)
+    image = models.ImageField("画像" , upload_to='menu')
     allergy = models.CharField( "アレルギー" , blank = True , max_length = 100)
     remarks = models.TextField( "備考" , blank = True , max_length = 300)
+    price = models.IntegerField("値段" )
 
     def __str__(self):
         return self.name
+
+#飲食店の画像に関するテーブル
+class images(models.Model):
+    ATTRIBUTE = (
+        ('exterior' , 'お店の外観'),
+        ('introspection' , 'お店の内観'),
+        ('seat' , '席'),
+        ('Kitchen' , '調理場'),
+        ('cooking' , '料理'),
+        ('others' , 'その他'),
+    )
+    
+    image_id = models.UUIDField("画像ID" , primary_key=True , default=uuid.uuid4 , editable=False)         #主キー
+    store = models.ForeignKey(restaurant_information , on_delete=models.CASCADE)      #外部キー
+    image = models.ImageField("画像" , upload_to='images')
+    attribute = models.CharField("属性" , choices=ATTRIBUTE , max_length = 20)
+
+    def __str__(self):
+        return self.attribute
+
+#飲食店のレビュー（評価）に関するテーブル
+class review(models.Model):
+    review_id = models.UUIDField("レビューID" , primary_key=True , default=uuid.uuid4 , editable=False)         #主キー
+    store = models.ForeignKey(restaurant_information , on_delete=models.CASCADE)      #外部キー
+    review = models.TextField( "レビュー" , blank=True , max_length = 500)
+    image = models.ImageField("画像" , upload_to='review')
+    evaluation = models.IntegerField("評価")
+
+    def __str__(self):
+        return self.store
+    
+
+#カスタマーQ&Aの質問管理テーブル
+class customer_question(models.Model):
+    question_id = models.UUIDField("質問ID" , primary_key=True , default=uuid.uuid4 , editable=False)         #主キー
+    store = models.ForeignKey(restaurant_information , on_delete=models.CASCADE)      #外部キー
+    question = models.TextField( "質問" , blank=True , max_length = 400)
+
+    def __str__(self):
+        return self.store
+    
+
+#カスタマーQ&Aの回答管理テーブル
+class customer_answer(models.Model):
+    answer_id = models.UUIDField("回答ID" , primary_key=True , default=uuid.uuid4 , editable=False)         #主キー
+    question = models.ForeignKey(customer_question , on_delete=models.CASCADE)      #外部キー
+    answer = models.TextField( "回答" , blank=True , max_length = 400)
+
+    def __str__(self):
+        return self.question
+    
+
