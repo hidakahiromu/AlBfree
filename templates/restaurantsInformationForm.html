@@ -22,7 +22,7 @@
         <form  method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="registration">
-                <!--{{ form.contributor }}-->
+                <p hidden>{{ form.contributor }}</p>
                 <p>飲食店名:</p>{{ form.restaurant_name }}
                 <p>説明文:</p>{{ form.explanation }}
                 <p>電話番号:</p>{{ form.tel }}

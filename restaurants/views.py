@@ -12,15 +12,20 @@ from django.shortcuts import get_object_or_404
 
 #飲食店詳細画面
 def StoreDetails(request , pk):
+    #セッション情報があればユーザ―名を無ければゲスト表記
+    if 'name' in request.session:
+        name = ','.join(request.session['name'])
+    else:
+        name = 'ゲスト'
     
-    db = {
-        'restaurants_db': restaurant_information.objects.get(pk=pk),
-        #'user_db': restaurant_information.objects.get(restaurant_id_id=0),
-        #'showdetail_restaurants': restaurant_information.objects.get(restaurant_id=0)
-
-
-    }
-    return render(request, 'StoreDetails.html', db)
+    
+    #restaurants_db = restaurant_information.objects.get(pk=pk),
+    #'user_db': restaurant_information.objects.get(restaurant_id_id=0),
+    #'showdetail_restaurants': restaurant_information.objects.get(restaurant_id=0)
+    return render(request, 'StoreDetails.html', {
+        'name' : name,
+        'restaurants_db' : restaurant_information.objects.get(pk=pk),
+    })
 
 
 def DbStoreDetails(request, id):
@@ -43,28 +48,37 @@ def RestaurantsList(request):
 
 #飲食店の情報投稿フォーム
 def RestaurantsForm(request):
-    #m = request.session['id']
+    #セッション情報があればユーザ―名を無ければゲスト表記
+    if 'name' in request.session:
+        name = ','.join(request.session['name'])
+    else:
+        name = 'ゲスト'
 
     if request.method == 'POST':
         form = restaurantInformationForm(request.POST)
         if form.is_valid():
-            m = form.save(commit=False)
-            m.contributor = request.session['id']
-            m.save()
-            request.session['restaurant_id'] = request.POST.getlist('restaurant_id')
+            form.save()
+            #request.session['restaurant_id'] = request.POST.getlist('restaurant_id')
             #登録確認画面へ移行
             return redirect('confirmation')
 
     else:
-        form = restaurantInformationForm()
+        form = restaurantInformationForm(initial={'contributor': request.session['id'],})
     
 
     return render(request, 'restaurantsInformationForm.html', {
         'form': form,
+        'name' : name,
     })
 
 #飲食店のメニュー投稿フォーム
 def RestaurantMenuForm(request):
+    #セッション情報があればユーザ―名を無ければゲスト表記
+    if 'name' in request.session:
+        name = ','.join(request.session['name'])
+    else:
+        name = 'ゲスト'
+
     if request.method == 'POST':
         form = restaurantMenusForm(request.POST , request.FILES)
         if form.is_valid():
@@ -75,14 +89,17 @@ def RestaurantMenuForm(request):
     
 
     return render(request, 'restaurantMenusForm.html', {
-        'form': form
+        'form': form,
+        'name' : name,
     })
 
 #飲食店の画像(飲食店のトップ画像など)投稿フォーム　※後で関数名は変えるかも
 def RestaurantImageForm(request):
     #セッション情報があればユーザ―名を無ければゲスト表記
-    if 'restaurant_id' in request.session:
-        id = ','.join(request.session['restaurant_id'])
+    if 'name' in request.session:
+        name = ','.join(request.session['name'])
+    else:
+        name = 'ゲスト'
 
     if request.method == 'POST':
         form = restaurantImagesForm(request.POST , request.FILES)
@@ -95,11 +112,17 @@ def RestaurantImageForm(request):
 
     return render(request, 'restaurantImagesForm.html', {
         'form': form,
-        'id' : id,
+        'name' : name,
     })
 
 #レビュー投稿用フォーム
 def RestaurantReviewForm(request):
+#セッション情報があればユーザ―名を無ければゲスト表記
+    if 'name' in request.session:
+        name = ','.join(request.session['name'])
+    else:
+        name = 'ゲスト'
+
     if request.method == 'POST':
         form = restaurantReviewForm(request.POST , request.FILES)
         if form.is_valid():
@@ -146,8 +169,24 @@ def CustomerAnswerForm(request):
 
 #飲食店情報確認画面
 def confirmation(request):
-    return render(request , 'confirmation.html')
+    #セッション情報があればユーザ―名を無ければゲスト表記
+    if 'name' in request.session:
+        name = ','.join(request.session['name'])
+    else:
+        name = 'ゲスト'
+    
+    return render(request , 'confirmation.html',{
+        'name' : name,
+    })
 
 
 def restaurantFinishi(request):
-    return render(request , 'restaurantFinishi.html')
+    #セッション情報があればユーザ―名を無ければゲスト表記
+    if 'name' in request.session:
+        name = ','.join(request.session['name'])
+    else:
+        name = 'ゲスト'
+
+    return render(request , 'restaurantFinishi.html',{
+        'name' : name,
+    })
