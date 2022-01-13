@@ -5,4 +5,13 @@ from .models import user_information
 class registrationForm(forms.ModelForm):
     class Meta:
         model = user_information
-        fields = ('user' , 'name' , 'kana' , 'address' , 'mail' , 'phone_number' , 'gender',  'password')
+        fields = (
+            'user',
+            'name',
+            'kana',
+            'address',
+            'mail',
+            'phone_number',
+            'gender',
+            'password'
+            )

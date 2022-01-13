@@ -31,10 +31,15 @@
 <body>
     <header>
         <ul class="h_menuBar">
-            <li><a class="h_link" href="{% url 'TopPage' %}">店舗検索</a></li>
-            <li><a class="h_link" href="{% url 'RestaurantsList' %}">詳細検索</a></li>
-            <li><a class="h_link" href="{% url 'terms' %}">利用規約</a></li>
-            <li><a class="h_link" href="{% url 'login' %}">ログイン</a></li>
+            <li><a class="h_link" href="{% url 'RestaurantsList' %}">店舗検索</a></li>
+            <li><a class="h_link" href=" ">おしらせ</a></li>
+            <li><a class="h_link" href=" ">利用規約</a></li>
+            {% if name == 'ゲスト' %}
+                <li><a class="h_link" href=" ">ログイン</a></li>
+            {% else %}
+                <li><a class="h_link" href=" ">マイページ</a></li>
+            {% endif %}
+            <li><a class="name_link">{{ name }}様</a></li>
         </ul>
         <hr>
 

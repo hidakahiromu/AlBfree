@@ -6,7 +6,7 @@ class restaurantInformationForm(forms.ModelForm):
     class Meta:
         model = restaurant_information
         fields = (
-            'contributor',
+            #'contributor',
             'restaurant_name',
             'explanation',
             'tel',

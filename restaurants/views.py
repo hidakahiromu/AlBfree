@@ -29,26 +29,38 @@ def DbStoreDetails(request, id):
 
 #飲食店一覧画面
 def RestaurantsList(request):
-    db = {
-        'restaurants_db' : restaurant_information.objects.all(),
-        #'user_db' : store_information.objects.get(contributor = 0),
-    }
-    return render(request , 'restaurantsList.html' , db)
+    #セッション情報があればユーザ―名を無ければゲスト表記
+    if 'name' in request.session:
+        name = ','.join(request.session['name'])
+    else:
+        name = 'ゲスト'
+    
+    db = restaurant_information.objects.all()
+    return render(request , 'restaurantsList.html' , {
+        'restaurants_db' : db,
+        'name' : name
+    })
 
 #飲食店の情報投稿フォーム
 def RestaurantsForm(request):
+    #m = request.session['id']
+
     if request.method == 'POST':
         form = restaurantInformationForm(request.POST)
         if form.is_valid():
-            form.save()
+            m = form.save(commit=False)
+            m.contributor = request.session['id']
+            m.save()
+            request.session['restaurant_id'] = request.POST.getlist('restaurant_id')
             #登録確認画面へ移行
             return redirect('confirmation')
+
     else:
         form = restaurantInformationForm()
     
 
     return render(request, 'restaurantsInformationForm.html', {
-        'form': form
+        'form': form,
     })
 
 #飲食店のメニュー投稿フォーム
@@ -68,6 +80,10 @@ def RestaurantMenuForm(request):
 
 #飲食店の画像(飲食店のトップ画像など)投稿フォーム　※後で関数名は変えるかも
 def RestaurantImageForm(request):
+    #セッション情報があればユーザ―名を無ければゲスト表記
+    if 'restaurant_id' in request.session:
+        id = ','.join(request.session['restaurant_id'])
+
     if request.method == 'POST':
         form = restaurantImagesForm(request.POST , request.FILES)
         if form.is_valid():
@@ -78,7 +94,8 @@ def RestaurantImageForm(request):
     
 
     return render(request, 'restaurantImagesForm.html', {
-        'form': form
+        'form': form,
+        'id' : id,
     })
 
 #レビュー投稿用フォーム

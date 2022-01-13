@@ -11,7 +11,22 @@ def index_template(request):
 
 #トップページ画面
 def TopPage(request):
-    return render(request, 'TopPage.html')
+    #a = user_information.objects.filter(user="aaaa")
+    #if not 'id' in request.session:
+    #    del request.session['id']
+    #    #userIDをセッションに保存
+    #    request.session['id'] = user_information.objects.values_list('user_id', flat=True).get(user=['aaaa'])
+    #    a = request.session['id']
+
+    if 'name' in request.session:
+        name = ','.join(request.session['name'])
+    else:
+        name = 'ゲスト'
+        
+    return render(request, 'TopPage.html' , {
+        'name' : name,
+        'id' : a,
+    })
 
 #これも使ってないはず
 def StoreDetails(request):
@@ -23,13 +38,17 @@ def registration(request):
         form = registrationForm(request.POST)
         if form.is_valid():
             form.save()
+            #ゲストからユーザーname表記へ
+            del request.session['name']
+            request.session['name'] = request.POST.getlist('user')
+            request.session['id'] = request.POST.getlist('user_id')  
             return redirect('registration')
     else:
         form = registrationForm()
     
 
     return render(request, 'registration.html', {
-        'form': form
+        'form': form,
     })
  
 def terms(request):
