@@ -22,10 +22,13 @@ def TopPage(request):
         name = ','.join(request.session['name'])
     else:
         name = 'ゲスト'
+
+    if name != 'ゲスト':
+        a = user_information.objects.get(user=name)
+        request.session['id'] = a.user_id
         
     return render(request, 'TopPage.html' , {
         'name' : name,
-        'id' : a,
     })
 
 #これも使ってないはず
