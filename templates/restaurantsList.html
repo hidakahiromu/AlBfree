@@ -200,7 +200,7 @@
 
     <!--詳細画面に飛ぶやつ-->
     {% for data in restaurants_db %}
-        <a href = "{% url 'StoreDetail' %}">
+        <a href = "{% url 'StoreDetail' pk=data.pk %}">
             <div class="storeList">
                 <img src="cafe.jpg" height="125px" width="125px">
                 <p class="restaurant_name">{{ data.restaurant_name }}</p>

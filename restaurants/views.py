@@ -11,10 +11,10 @@ from django.shortcuts import get_object_or_404
 # Create your views here.
 
 #飲食店詳細画面
-def StoreDetails(request):
-
+def StoreDetails(request , pk):
+    
     db = {
-        'restaurants_db': restaurant_information.objects.all(),
+        'restaurants_db': restaurant_information.objects.get(pk=pk),
         #'user_db': restaurant_information.objects.get(restaurant_id_id=0),
         #'showdetail_restaurants': restaurant_information.objects.get(restaurant_id=0)
 

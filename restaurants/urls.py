@@ -6,7 +6,7 @@ from . import views
 
 urlpatterns = [
     #http://127.0.0.1:8000/restaurants/XXX/
-    path('storedetails/', views.StoreDetails, name='StoreDetail'),  #店舗詳細
+    path('storedetails/<str:pk>/', views.StoreDetails, name='StoreDetail'),  #店舗詳細
     path('restaurantslist/', views.RestaurantsList, name='RestaurantsList'),    #店舗一覧
     path('restaurantimageform/' , views.RestaurantImageForm , name="RestaurantImageForm"),  #画像登録
     path('restaurantsform/' , views.RestaurantsForm , name='RestaurantsForm'),  #飲食店登録
