@@ -31,10 +31,10 @@
 <body>
     <header>
         <ul class="h_menuBar">
-            <li><a class="h_link" href=" ">店舗検索</a></li>
+            <li><a class="h_link" href="{% url 'TopPage' %}">店舗検索</a></li>
             <li><a class="h_link" href="{% url 'RestaurantsList' %}">詳細検索</a></li>
             <li><a class="h_link" href="{% url 'terms' %}">利用規約</a></li>
-            <li><a class="h_link" href=" ">ログイン</a></li>
+            <li><a class="h_link" href="{% url 'login' %}">ログイン</a></li>
         </ul>
         <hr>
 
