@@ -3,8 +3,10 @@
 {% load static %}
 
 {% block title %}
-<title>店舗詳細画面</title>
+<title>{{showdetail_restaurants.restaurant_name}}</title>
 {% endblock title %}
+
+
 
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/StoreDetails.css' %}">
@@ -12,55 +14,117 @@
 {% endblock css %}
 
 {% block content %}
-<div contents>
-  <div class="clearfix ">
 
-    <div class=" left">
-      <img src="{% static 'img/cafe.jpg' %}" width="300" height="200"><br><br>
-      <img src="{% static 'img/waffle.jpg' %}" width="300" height="200"><br><br>
-      <img src="{% static 'img/coffe.jpg' %}" width="300" height="200"><br><br>
-      <img src="{% static 'img/coffe.jpg' %}" width="300" height="200"><br><br>
+<div class="center">
 
-    </div>
-    <div class="shopname">店舗名：カフェマリア </div>
+  <p class="shopname">{{showdetail_restaurants.restaurant_name}}&nbsp;
+    <img src="{% static 'img/ok.jpg' %}" width="40" height="40">
+  </p>
+  <!--店舗イメージ画像-->
+  <div class=" left">
+    <img src="{% static 'img/cafe.jpg' %}" width="300" height="200"><br><br>
+    <img src="{% static 'img/waffle.jpg' %}" width="300" height="200"><br><br>
+    <img src="{% static 'img/coffe.jpg' %}" width="300" height="200"><br><br>
+  </div>
+
+  <!--評価-->
+  <div class="clearfix">
     <span class=" rating-name">トータルの評価</span>
     <span class="star">★★☆☆☆ 2.0</span>
     <br>
     <span class="rating-name">アレルギー対応の評価</span>
     <span class="star">★★★★☆ 4.0</span>
-    <h2>使用しているアレルゲン</h2>
-    <h5>ごま　たまご　いわし</h5>
-    <h5>タグ：カフェ,1000~2000,ランチ</h5>
+  <!--評価ここまで-->
 
-    <div style="padding: 100px; margin-bottom: 10px; border: 1px solid #333333;">
-      <h4>アレルギー含め店のアピールポイント</h4>
+    <br><br>
+
+
+    <!--アレルゲン表示とタグ-->
+    <div class="allergenList">
+      <p class="bold-text">使用しているアレルゲン</p>
+      <h5>{{showdetail_restaurants.restaurant_allergy}}</h5>
+      <!--アレルゲン画像-->
+      <div class="allergenImg">
+        <img src="{% static 'allergy_pic/egg.png' %}" width="100" height="100">
+        <img src="{% static 'allergy_pic/milk.png' %}" width="100" height="100">
+        <img src="{% static 'allergy_pic/wheat.png' %}" width="100" height="100">
+        <img src="{% static 'allergy_pic/shurimp.png' %}" width="100" height="100">
+        <img src="{% static 'allergy_pic/salmonroe.png' %}" width="100" height="100">
+        <img src="{% static 'allergy_pic/banana.png' %}" width="100" height="100">
+      </div>
+    <div class="allergenTag">
+      <h5>タグ：{{showdetail_restaurants.tags }}</h5>
     </div>
+    <!--アレルゲンタグここまで-->
 
-    <h5>〒×××-×××
-      ××県××市××町××ビル×階
-    </h5>
-
+    
+    <!--プロトタイプ3枚目-->
   </div>
 
-  <!--星の画像使わなあかん-->
 
-  <!--ここからメニューリスト(プロトタイプ6枚目)-->
-  <div class="clearfix">
-    <div class=" left">
-      <br>
-      <img src="{% static 'img/coffe.jpg' %}" width="300" height="200"><br><br>
+  <!--マップ-->
+    <!--住所、郵便番号-->
+    <div class="addressCode">
+      <b class="bold-text">アクセス</b>
+      <p class="address">〒{{showdetail_restaurants.postal_code}}<br>
+      {{showdetail_restaurants.address}}<br>
+      {{showdetail_restaurants.transportation}}</p>
+
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3280.221249650056!2d135.19094770084797!3d34.699599090688814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60008edd1fe54845%3A0xb872547b0f538bea!2z56We5oi46Zu75a2Q5bCC6ZaA5a2m5qCh!5e0!3m2!1sja!2sjp!4v1641875305141!5m2!1sja!2sjp"
+      width="300" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
-    <br>
-    <h4>ホットコーヒー </h4>
-    <h5>500円</h5>
-    <hr>
-    <div class=" left">
-      <img src="{% static 'img/coffe.jpg' %}" width="300" height="200"><br><br>
-    </div>
-    <h4>ホットコーヒー </h4>
-    <h5>5000円</h5>
+    <!--マップここまで-->
   </div>
-</div>
+    <!--店舗基本情報のテーブル-->
+  <table class="inlineRight">
+        <b class="tableTitle">店舗基本情報</b>
+    <tr>
+      <th>店名</th>
+      <td>{{showdetail_restaurants.restaurant_name}}</td>
+    </tr>
+    <tr>
+      <th>アレルゲン</th>
+      <td>{{showdetail_restaurants.restaurant_allergy}}</td>
+    </tr>
+    <tr>
+      <th>定休日</th>
+      <td>{{showdetail_restaurants.time}}</td>
+    </tr>
+    <tr>
+      <th>住所</th>
+      <td>〒{{showdetail_restaurants.postal_code}}<br>{{showdetail_restaurants.address}}</td>
+    </tr>
+    <tr>
+      <th>電話番号</th>
+      <td>{{showdetail_restaurants.tel}}</td>
+    </tr>
+  </table>
+  <!--店舗基本情報ここまで-->
+
+
+
+  <!--プロトタイプ4枚目(メニューリスト)-->
+  <div class="menuList">
+    <b class="menuTitle">メニュー</b>
+      <li>コーヒー</li>
+        <p>使用アレルゲン</p>
+        <p>￥200</p>
+        <p>お店からのコメント</p>
+      <li>スピリタス</li>
+        <p>使用アレルゲン</p>
+        <p>￥300</p>
+        <p>うまい</p>
+      <li>ラーメン</li>
+        <p>使用アレルゲン</p>
+        <p>￥800</p>
+        <p>うまい</p>
+  </div>
+  <!--メニューここまで-->
+
+
+
+
 {% endblock content %}
 
 {% block footer %}

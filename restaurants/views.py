@@ -3,12 +3,28 @@ from django.conf import settings
 from .models import restaurant_information , menus , images , review , customer_question , customer_answer
 from .forms import restaurantInformationForm , restaurantMenusForm , restaurantImagesForm , restaurantReviewForm , customerQuestionForm , customerAnswerForm
 
+from django.shortcuts import get_object_or_404
+
+
 
 
 # Create your views here.
 
 #飲食店詳細画面
 def StoreDetails(request):
+
+    db = {
+        'restaurants_db': store_information.objects.all(),
+        'user_db': store_information.objects.get(restaurant_id_id=0),
+        'showdetail_restaurants': store_information.objects.get(restaurant_id=0)
+
+
+    }
+    return render(request, 'StoreDetails.html', db)
+
+
+def DbStoreDetails(request, id):
+
     return render(request, 'StoreDetails.html')
 
 #飲食店一覧画面
