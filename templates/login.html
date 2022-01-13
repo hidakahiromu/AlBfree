@@ -3,7 +3,7 @@
 
 <!-- headの継承 -->
 {% block title %}
-    <title>飲食店登録</title>
+    <title>ログイン</title>
 {% endblock title %}
 
 {% block css %}
@@ -18,13 +18,13 @@
 {% endblock header %}
 
 {% block content %}
-        <h1>飲食店登録</h1>
-        <form  method="post" enctype="multipart/form-data">
+        <h1>ログイン</h1>
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="registration">{{ form.as_p }}</div>
-            <div class="sub"><button class="submit" type="submit">登録</button></div>
+            <div class="sub"><button class="submit" type="submit">ログイン</button></div>
         </form>
-        <p class="rogin"><a href="">ログイン画面に戻る<a></p>
+        <p class="login"><a href="{% url 'registration' %}">アカウントをお持ちでない方はこちら<a></p>
 
 {% endblock content %}
 

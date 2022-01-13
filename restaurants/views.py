@@ -41,7 +41,8 @@ def RestaurantsForm(request):
         form = restaurantInformationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('RestaurantsForm')
+            #登録確認画面へ移行
+            return redirect('confirmation')
     else:
         form = restaurantInformationForm()
     
@@ -56,7 +57,7 @@ def RestaurantMenuForm(request):
         form = restaurantMenusForm(request.POST , request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('RestaurantMenuForm')
+            return redirect('restaurantFinishi')
     else:
         form = restaurantMenusForm()
     
@@ -71,7 +72,7 @@ def RestaurantImageForm(request):
         form = restaurantImagesForm(request.POST , request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('RestaurantImagesForm')
+            return redirect('RestaurantMenuForm')
     else:
         form = restaurantImagesForm()
     
@@ -126,5 +127,10 @@ def CustomerAnswerForm(request):
         'form': form
     })
 
+#飲食店情報確認画面
 def confirmation(request):
     return render(request , 'confirmation.html')
+
+
+def restaurantFinishi(request):
+    return render(request , 'restaurantFinishi.html')

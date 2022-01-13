@@ -37,3 +37,6 @@ def terms(request):
 
 def forstores(request):
     return render(request , 'forstores.html')
+
+def login(request):
+    return render(request ,'login.html')

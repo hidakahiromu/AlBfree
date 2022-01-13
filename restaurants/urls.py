@@ -14,5 +14,6 @@ urlpatterns = [
     path('restaurantreviewform/' , views.RestaurantReviewForm , name='RestaurantReviewForm'),  #レビュー登録 
     path('customerquestionform/' , views.CustomerQuestionForm , name='CustomerQuestionForm'),   #カスタマーQ&A回答フォーム
     path('customeranswerform/' , views.CustomerAnswerForm , name='CustomerAnswerForm'), #カスタマーQ&A回答フォーム
-    path('confirmation/' , views.confirmation , name='confirmation') #完了画面
+    path('confirmation/' , views.confirmation , name='confirmation'), #飲食店情報完了画面
+    path('restaurantfinishi/' , views.restaurantFinishi , name='restaurantFinishi'), #飲食店情報(全て)完了画面
 ]
