@@ -3,12 +3,28 @@ from django.conf import settings
 from .models import restaurant_information , menus , images , review , customer_question , customer_answer
 from .forms import restaurantInformationForm , restaurantMenusForm , restaurantImagesForm , restaurantReviewForm , customerQuestionForm , customerAnswerForm
 
+from django.shortcuts import get_object_or_404
+
+
 
 
 # Create your views here.
 
 #飲食店詳細画面
-def StoreDetails(request):
+def StoreDetails(request , pk):
+    
+    db = {
+        'restaurants_db': restaurant_information.objects.get(pk=pk),
+        #'user_db': restaurant_information.objects.get(restaurant_id_id=0),
+        #'showdetail_restaurants': restaurant_information.objects.get(restaurant_id=0)
+
+
+    }
+    return render(request, 'StoreDetails.html', db)
+
+
+def DbStoreDetails(request, id):
+
     return render(request, 'StoreDetails.html')
 
 #飲食店一覧画面
@@ -36,7 +52,9 @@ def RestaurantsForm(request):
             m.contributor = request.session['id']
             m.save()
             request.session['restaurant_id'] = request.POST.getlist('restaurant_id')
-            return redirect('RestaurantsForm')
+            #登録確認画面へ移行
+            return redirect('confirmation')
+
     else:
         form = restaurantInformationForm()
     
@@ -51,7 +69,7 @@ def RestaurantMenuForm(request):
         form = restaurantMenusForm(request.POST , request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('RestaurantMenuForm')
+            return redirect('restaurantFinishi')
     else:
         form = restaurantMenusForm()
     
@@ -70,7 +88,7 @@ def RestaurantImageForm(request):
         form = restaurantImagesForm(request.POST , request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('RestaurantImageForm')
+            return redirect('RestaurantMenuForm')
     else:
         form = restaurantImagesForm()
     
@@ -125,3 +143,11 @@ def CustomerAnswerForm(request):
     return render(request, 'customerAnswerForm.html', {
         'form': form
     })
+
+#飲食店情報確認画面
+def confirmation(request):
+    return render(request , 'confirmation.html')
+
+
+def restaurantFinishi(request):
+    return render(request , 'restaurantFinishi.html')

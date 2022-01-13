@@ -10,6 +10,9 @@
     <!-- ここにcss書くよ -->
     <link rel="stylesheet" href="{% static 'css/TopPage.css' %}">
     <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/select.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.js"></script>  
     
 {% endblock css %}
 
@@ -27,25 +30,44 @@
     <div class="img">
     <!--スライドショー-->
     <ul class="slider">
-        <li><a href="#"><img class"sliders" src={% static 'img/power.jpg' %} alt="image01"></a></li>
-        <li><a href="#"><img class"sliders" src={% static 'img/power.jpg' %} alt="image02"></a></li>
-        <li><a href="#"><img class"sliders" src="images/03.jpg" alt="image03"></a></li>
-        <li><a href="#"><img class"sliders" src="images/04.jpg" alt="image04"></a></li>
-        <li><a href="#"><img class"sliders" src="images/05.jpg" alt="image05"></a></li>
-        <li><a href="#"><img class"sliders" src="images/06.jpg" alt="image06"></a></li>
-        <li><a href="#"><img class"sliders" src="images/07.jpg" alt="image07"></a></li>
-        <li><a href="#"><img class"sliders" src="images/08.jpg" alt="image08"></a></li>
+        <li><a href="#"><img class = "sliders" src={% static 'img/power.jpg' %} alt="image01"></a></li>
+        <li><a href="#"><img class = "sliders" src={% static 'img/power.jpg' %} alt="image02"></a></li>
+        <li><a href="#"><img class = "sliders" src="images/03.jpg" alt="image03"></a></li>
+        <li><a href="#"><img class = "sliders" src="images/04.jpg" alt="image04"></a></li>
+        <li><a href="#"><img class = "sliders" src="images/05.jpg" alt="image05"></a></li>
+        <li><a href="#"><img class = "sliders" src="images/06.jpg" alt="image06"></a></li>
+        <li><a href="#"><img class = "sliders" src="images/07.jpg" alt="image07"></a></li>
+        <li><a href="#"><img class = "sliders" src="images/08.jpg" alt="image08"></a></li>
     </ul>
 </div>
 
         <div class="search_list">
             <!--簡易検索フォーム-->
             <form action="店舗一覧(検索結果)" method="post">
-                  <!-- 折り畳み展開ポインタ -->
-                <span onclick="obj=document.getElementById('open').style; obj.display=(obj.display=='none')?'block':'none';">
-                    <a>アレルギー食品を除外</a>
-                </span>
-                    <!--// 折り畳み展開ポインタ -->
+                  <!-- 折り畳み展開 -->
+                  <select multiple="multiple" class="multiple"> 
+                    <option value="egg">卵</option>
+                    <option value="milk">乳</option>
+                    <option value="wheat">小麦</option>
+                    <option value="shrimp">えび</option>
+                    <option value="crab">かに</option>
+                    <option value="peant">落花生</option>
+                    <option value="soba">そば</option>
+                  </select>
+                  <script>
+                    $(function () {
+                      $(".multiple").multipleSelect({
+                      width: 180,
+                      placeholder:"アレルギー7品目除外",
+                      formatSelectAll: function() {
+                          return 'すべて';
+                      },
+                      formatAllSelected: function() {
+                          return '全て選択されています';
+                      }
+                  });
+                    });
+                  </script>
                     
                     <!-- 折り畳まれ部分 -->
                 <div id="open" style="display:none;clear:both;">
@@ -178,6 +200,7 @@
             </form>
             </div>
 <div id="style">
+    
     <div><!--紹介プレ-->
         <br>
         <p class="Title">アレルギー7品目対応店</p>
@@ -218,15 +241,15 @@
         
         <br>
         <ul class="ranking">
-            <li class="item"><a href=""><img src= "{% static 'img/shop_funinki.png' %}" alt="一位">
+            <li class="item"><a href=""><img src= "{% static 'img/ranking01.jpg' %}" alt="1位">
                 <p>32文字対応中32文字対応中32文字対応中32文字対応中32文字対応中・・</p></a></li>
-            <li class="item"><a href=""><img src="file01.jpg" alt="2位">
+            <li class="item"><a href=""><img src="{% static 'img/ranking02.jpg' %}" alt="2位">
                 <p>32文字対応中32文字対応中32文字対応中32文字対応中32文字対応中・・</p></a></li>
-            <li class="item"><a href=""><img src="file01.jpg" alt="3位">
+            <li class="item"><a href=""><img src="{% static 'img/ranking03.jpg' %}" alt="3位">
                 <p>32文字対応中32文字対応中32文字対応中32文字対応中32文字対応中・・</p></a></li>
-            <li class="item"><a href=""><img src="file01.jpg" alt="4位">
+            <li class="item"><a href=""><img src="{% static 'img/ranking04.jpg' %}" alt="4位">
                 <p></p></a></li>
-            <li class="item"><a href=""><img src="file01.jpg" alt="5位">
+            <li class="item"><a href=""><img src="{% static 'img/ranking05.jpg' %}" alt="5位">
                 <p></p></a></li>
         </ul>
         <div class="detail">
@@ -240,7 +263,7 @@
         <hr>   
         <br>
         <ul class="location">
-            <li class="item"><a href=""><img src= "{% static 'img/scene01.jpg' %}" alt="バナー0">
+            <li class="item"><a href=""><img src="{% static 'img/scene01.jpg' %}" alt="バナー0">
                 <p>おひとり様</p></a></li>
             <li class="item"><a href=""><img src="{% static 'img/scene02.jpg' %}" alt="バナー1">
                 <p>家族・子供と</p></a></li>
@@ -309,6 +332,8 @@
 <script type="text/javascript" src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/slick.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/tops.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<script src="https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.js"></script>
 </div>
 {% endblock content %}
 

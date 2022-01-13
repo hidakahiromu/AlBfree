@@ -149,4 +149,7 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+#SESSION_COOKIE_AGE = 3600   #1時間後にセッション切れ
+#SESSION_SAVE_EVERY_REQUEST = True   #最後にページ更新したタイミングで保存
 #SESSION_ENGINE ="django.contrib.sessions.backends.cache"

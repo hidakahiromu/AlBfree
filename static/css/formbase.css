@@ -63,7 +63,7 @@ select{
     background    : #ffffff;     /* 文字色     */
   }
   /*リンク中央寄せ*/
-.rogin{
+.login{
     text-align    : center;
 }
 
