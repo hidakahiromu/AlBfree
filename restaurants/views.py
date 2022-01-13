@@ -14,9 +14,9 @@ from django.shortcuts import get_object_or_404
 def StoreDetails(request):
 
     db = {
-        'restaurants_db': store_information.objects.all(),
-        'user_db': store_information.objects.get(restaurant_id_id=0),
-        'showdetail_restaurants': store_information.objects.get(restaurant_id=0)
+        'restaurants_db': restaurant_information.objects.all(),
+        #'user_db': restaurant_information.objects.get(restaurant_id_id=0),
+        #'showdetail_restaurants': restaurant_information.objects.get(restaurant_id=0)
 
 
     }
