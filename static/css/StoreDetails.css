@@ -51,10 +51,11 @@ span.star{
 /*アレルゲン表示とタグ*/
 .allergenList{
   background-color: #fff;
-  margin-right: 4em;
+  margin: 0 4em 20px 0;
+  padding: 10px;
 }
 .allergenTag{
-  margin: 20px 0px 30px 70%;
+  margin: 2em 0px 1em 30em;
 }
 .allergenImg{
   margin-left: 2em;
@@ -62,10 +63,9 @@ span.star{
 
 /*住所、郵便番号*/
 .addressCode{
-  
-  background-color: aqua;
-  /*margin: 0 4em 2em 0;*/
-  padding: 20px;
+  background-color: #fff;
+  margin: 0 4em 2em 0;
+  padding: 10px;
 }
 .address{
   margin-left: 20px;
