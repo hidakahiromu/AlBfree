@@ -19,7 +19,7 @@
 
 {% block content %}
         <h1>飲食店登録</h1>
-        <form method="post" enctype="multipart/form-data">
+        <form  method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="registration">{{ form.as_p }}</div>
             <div class="sub"><button class="submit" type="submit">登録</button></div>
