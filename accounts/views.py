@@ -11,21 +11,18 @@ def index_template(request):
 
 #トップページ画面
 def TopPage(request):
-    #a = user_information.objects.filter(user="aaaa")
-    #if not 'id' in request.session:
-    #    del request.session['id']
-    #    #userIDをセッションに保存
-    #    request.session['id'] = user_information.objects.values_list('user_id', flat=True).get(user=['aaaa'])
-    #    a = request.session['id']
-
+#セッション情報があればユーザ―名を無ければゲスト表記
     if 'name' in request.session:
         name = ','.join(request.session['name'])
     else:
         name = 'ゲスト'
+#セッションの作成(id)
+    if name != 'ゲスト':
+        a = user_information.objects.get(user=name)
+        request.session['id'] = a.user_id
         
     return render(request, 'TopPage.html' , {
         'name' : name,
-        'id' : a,
     })
 
 #これも使ってないはず
@@ -52,10 +49,26 @@ def registration(request):
     })
  
 def terms(request):
-    return render(request , 'riyou.html')
+    #セッション情報があればユーザ―名を無ければゲスト表記
+    if 'name' in request.session:
+        name = ','.join(request.session['name'])
+    else:
+        name = 'ゲスト'
+
+    return render(request , 'riyou.html' , {
+        'name' : name,
+    })
 
 def forstores(request):
-    return render(request , 'forstores.html')
+    #セッション情報があればユーザ―名を無ければゲスト表記
+    if 'name' in request.session:
+        name = ','.join(request.session['name'])
+    else:
+        name = 'ゲスト'
+
+    return render(request , 'forstores.html' , {
+        'name' : name,
+    })
 
 def login(request):
     return render(request ,'login.html')
