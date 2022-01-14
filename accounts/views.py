@@ -36,7 +36,7 @@ def registration(request):
         if form.is_valid():
             form.save()
             #ゲストからユーザーname表記へ
-            del request.session['name']
+            #del request.session['name']
             request.session['name'] = request.POST.getlist('user')
             request.session['id'] = request.POST.getlist('user_id')  
             return redirect('registration')

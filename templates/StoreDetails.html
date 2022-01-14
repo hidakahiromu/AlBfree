@@ -15,17 +15,117 @@
 
 {% block content %}
 
-<div class="center">
-
   <p class="shopname">{{restaurants_db.restaurant_name}}&nbsp;
     <img src="{% static 'img/ok.jpg' %}" width="40" height="40">
   </p>
   <!--店舗イメージ画像-->
-  <div class=" left">
-    <img src="{% static 'img/cafe.jpg' %}" width="300" height="200"><br><br>
-    <img src="{% static 'img/waffle.jpg' %}" width="300" height="200"><br><br>
-    <img src="{% static 'img/coffe.jpg' %}" width="300" height="200"><br><br>
+  <div class="storeImg">
+    <img src="{% static 'img/cafe.jpg' %}" width="350" height="300"><br><br>
+    <img src="{% static 'img/waffle.jpg' %}" width="350" height="300"><br><br>
+    <img src="{% static 'img/coffe.jpg' %}" width="350" height="300"><br><br>
   </div>
+  <!--店舗イメージ画像ここまで-->
+
+  <!--アレルゲン表示とタグ-->
+    <div class="allergenList">
+      <b>お店のひとこと</b>
+      <p>あああああああああああ</p>
+      <b>同じ器具で調理しているアレルゲン</b>
+      <p>{{restaurants_db.restaurant_allergy}}</p>
+         <!--アレルゲンアイコン-->
+      <div class="allergenImg">
+        <img src="{% static 'allergy_pic/egg.png' %}" width="80" height="80">
+        <img src="{% static 'allergy_pic/milk.png' %}" width="80" height="80">
+        <img src="{% static 'allergy_pic/wheat.png' %}" width="80" height="80">
+        <img src="{% static 'allergy_pic/shurimp.png' %}" width="80" height="80">
+        <img src="{% static 'allergy_pic/crab.png' %}" width="80" height="80">
+        <img src="{% static 'allergy_pic/peanut.png' %}" width="80" height="80">
+        <img src="{% static 'allergy_pic/soba.png' %}" width="80" height="80">
+        <img src="{% static 'allergy_pic/apple.png' %}" width="80" height="80">
+        <img src="{% static 'allergy_pic/abalone.png' %}" width="80" height="80">
+        <img src="{% static 'allergy_pic/squid.png' %}" width="80" height="80">
+        <img src="{% static 'allergy_pic/salmonroe.png' %}" width="80" height="80">
+        <img src="{% static 'allergy_pic/orange.png' %}" width="80" height="80">
+        <img src="{% static 'allergy_pic/cashewnuts.png' %}" width="80" height="80">
+        <img src="{% static 'allergy_pic/kiwi.png' %}" width="80" height="80">
+        <img src="{% static 'allergy_pic/beaf.png' %}" width="80" height="80">
+        <img src="{% static 'allergy_pic/walnut.png' %}" width="80" height="80">
+        <img src="{% static 'allergy_pic/sesame.png' %}" width="80" height="80">
+        <img src="{% static 'allergy_pic/salmon.png' %}" width="80" height="80">
+        <img src="{% static 'allergy_pic/mackerel.png' %}" width="80" height="80">
+        <img src="{% static 'allergy_pic/soy.png' %}" width="80" height="80">
+        <img src="{% static 'allergy_pic/chiken.png' %}" width="80" height="80">
+        <img src="{% static 'allergy_pic/banana.png' %}" width="80" height="80">
+        <img src="{% static 'allergy_pic/pork.png' %}" width="80" height="80">
+        <img src="{% static 'allergy_pic/matsutake.png' %}" width="80" height="80">
+        <img src="{% static 'allergy_pic/peach.png' %}" width="80" height="80">
+        <img src="{% static 'allergy_pic/yam.png' %}" width="80" height="80">
+        <img src="{% static 'allergy_pic/almond.png' %}" width="80" height="80">
+        <img src="{% static 'allergy_pic/gelatin.png' %}" width="80" height="80">
+      </div>
+    <div class="allergenTag">
+      <h5>タグ：{{restaurants_db.tags }}</h5>
+    </div>
+  </div>
+    <!--アレルゲンタグここまで-->
+
+
+  <!--メニューここにいれたい-->
+    <!--プロトタイプ4枚目(メニューリスト)-->
+    <div class="menuList">
+      <b class="menuTitle">メニュー</b>
+        <li>コーヒー</li>
+          <p>使用アレルゲン</p>
+          <p>￥200</p>
+          <p>お店からのコメント</p>
+        <li>スピリタス</li>
+          <p>使用アレルゲン</p>
+          <p>￥300</p>
+          <p>うまい</p>
+        <li>ラーメン</li>
+          <p>使用アレルゲン</p>
+          <p>￥800</p>
+          <p>うまい</p>
+    </div>
+    <!--メニューここまで-->
+
+    <!--店舗基本情報のテーブル-->
+  <div class="informationTable">
+    <table class="inlineRight">
+          <b class="tableTitle">店舗基本情報</b>
+      <tr>
+        <th>店名</th>
+        <td>{{restaurants_db.restaurant_name}}</td>
+      </tr>
+      <tr>
+        <th>アレルゲン</th>
+        <td>{{restaurants_db.restaurant_allergy}}</td>
+      </tr>
+      <tr>
+        <th>定休日</th>
+        <td>{{restaurants_db.time}}</td>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <!--<td>〒{{restaurants_db.postal_code}}<br>{{restaurants_db.address}}</td>-->
+        <td>
+          <div class="addressCode">
+          <p class="address">〒{{restaurants_db.postal_code}}<br>
+          {{restaurants_db.address}}<br>
+          {{restaurants_db.transportation}}</p>
+  
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3280.221249650056!2d135.19094770084797!3d34.699599090688814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60008edd1fe54845%3A0xb872547b0f538bea!2z56We5oi46Zu75a2Q5bCC6ZaA5a2m5qCh!5e0!3m2!1sja!2sjp!4v1641875305141!5m2!1sja!2sjp"
+          width="400" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div></td>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <td>{{restaurants_db.tel}}</td>
+      </tr>
+    </table>
+  </div>
+  <!--店舗基本情報ここまで-->
 
   <!--評価-->
   <div class="clearfix">
@@ -35,97 +135,9 @@
       <br>
       <span class="rating-name">アレルギー対応の評価</span>
       <span class="star">★★★★☆ 4.0</span>
-    </div>
+    </div>  <!--rating-->
+  </div>
   <!--評価ここまで-->
-
-    <br><br>
-
-
-    <!--アレルゲン表示とタグ-->
-    <div class="allergenList">
-      <p class="bold-text">使用しているアレルゲン</p>
-      <h5>{{restaurants_db.restaurant_allergy}}</h5>
-      <!--アレルゲン画像-->
-      <div class="allergenImg">
-        <img src="{% static 'allergy_pic/egg.png' %}" width="100" height="100">
-        <img src="{% static 'allergy_pic/milk.png' %}" width="100" height="100">
-        <img src="{% static 'allergy_pic/wheat.png' %}" width="100" height="100">
-        <img src="{% static 'allergy_pic/shurimp.png' %}" width="100" height="100">
-        <img src="{% static 'allergy_pic/salmonroe.png' %}" width="100" height="100">
-        <img src="{% static 'allergy_pic/banana.png' %}" width="100" height="100">
-      </div>
-    <div class="allergenTag">
-      <h5>タグ：{{restaurants_db.tags }}</h5>
-    </div>
-    <!--アレルゲンタグここまで-->
-
-    
-    <!--プロトタイプ3枚目-->
-  </div>
-
-
-  <!--マップ-->
-    <!--住所、郵便番号-->
-    <div class="addressCode">
-      <b class="bold-text">アクセス</b>
-      <p class="address">〒{{restaurants_db.postal_code}}<br>
-      {{restaurants_db.address}}<br>
-      {{restaurants_db.transportation}}</p>
-
-    <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3280.221249650056!2d135.19094770084797!3d34.699599090688814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60008edd1fe54845%3A0xb872547b0f538bea!2z56We5oi46Zu75a2Q5bCC6ZaA5a2m5qCh!5e0!3m2!1sja!2sjp!4v1641875305141!5m2!1sja!2sjp"
-      width="550" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-    </div>
-    <!--マップここまで-->
-  </div>
-    <!--店舗基本情報のテーブル-->
-  <table class="inlineRight">
-        <b class="tableTitle">店舗基本情報</b>
-    <tr>
-      <th>店名</th>
-      <td>{{restaurants_db.restaurant_name}}</td>
-    </tr>
-    <tr>
-      <th>アレルゲン</th>
-      <td>{{restaurants_db.restaurant_allergy}}</td>
-    </tr>
-    <tr>
-      <th>定休日</th>
-      <td>{{restaurants_db.time}}</td>
-    </tr>
-    <tr>
-      <th>住所</th>
-      <td>〒{{restaurants_db.postal_code}}<br>{{restaurants_db.address}}</td>
-    </tr>
-    <tr>
-      <th>電話番号</th>
-      <td>{{restaurants_db.tel}}</td>
-    </tr>
-  </table>
-  <!--店舗基本情報ここまで-->
-
-
-
-  <!--プロトタイプ4枚目(メニューリスト)-->
-  <div class="menuList">
-    <b class="menuTitle">メニュー</b>
-      <li>コーヒー</li>
-        <p>使用アレルゲン</p>
-        <p>￥200</p>
-        <p>お店からのコメント</p>
-      <li>スピリタス</li>
-        <p>使用アレルゲン</p>
-        <p>￥300</p>
-        <p>うまい</p>
-      <li>ラーメン</li>
-        <p>使用アレルゲン</p>
-        <p>￥800</p>
-        <p>うまい</p>
-  </div>
-  <!--メニューここまで-->
-
-
-
 
 {% endblock content %}
 

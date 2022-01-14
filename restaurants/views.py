@@ -56,6 +56,7 @@ def RestaurantsForm(request):
 
     if request.method == 'POST':
         form = restaurantInformationForm(request.POST)
+        
         if form.is_valid():
             form.save()
             #request.session['restaurant_id'] = request.POST.getlist('restaurant_id')
