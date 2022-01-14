@@ -39,16 +39,17 @@
 </div>
         <div class="search_list">
             <!--簡易検索フォーム-->
-            <form action="店舗一覧(検索結果)" method="post">
+            <form action="{% url 'RestaurantsList' %}" method="get">
+                {% csrf_token %}
                   <!-- 折り畳み展開 -->
-                  <select multiple="multiple" class="multiple"> 
-                    <option value="egg">卵</option>
-                    <option value="milk">乳</option>
-                    <option value="wheat">小麦</option>
-                    <option value="shrimp">えび</option>
-                    <option value="crab">かに</option>
-                    <option value="peant">落花生</option>
-                    <option value="soba">そば</option>
+                  <select multiple="multiple" class="multiple" name="aller"> 
+                    <option value="卵">卵</option>
+                    <option value="乳">乳</option>
+                    <option value="小麦">小麦</option>
+                    <option value="えび">えび</option>
+                    <option value="かに">かに</option>
+                    <option value="落花生">落花生</option>
+                    <option value="そば">そば</option>
                   </select>
                   <script>
                     $(function () {
@@ -91,8 +92,9 @@
                     </span>
                     <p>検索から除外したい食品にチェックを入れてね</p>
                 </div>
-                <!--// 折り畳まれ部分 --> <select name="Prefecture">
-                    <option class="tab_select">県を選ぶ</option>
+                <!--// 折り畳まれ部分 --> 
+                <select name="pref">
+                    <option class="tab_select" value="" hidden>県を選ぶ</option>
                     <optgroup label="北海道・東北">
                         <option value="北海道">北海道</option>
                         <option value="青森県">青森県</option>
@@ -157,7 +159,7 @@
                 </select>
 
                 <select name="time">
-                    <option>時間を選ぶ</option>
+                    <option value="">時間を選ぶ</option>
                     <option value="800">8:00</option>             
                     <option value="900">9:00</option>
                     <option value="1000">10:00</option>
@@ -175,7 +177,7 @@
                     <option value="2200">22:00</option>
                 </select>
                 <select name="member">
-                    <option>人数を選ぶ</option>
+                    <option value="" hidden>人数を選ぶ</option>
                     <option value="1">1人</option>             
                     <option value="2">2人</option>
                     <option value="3">3人</option>
@@ -187,12 +189,10 @@
                     <option value="9">9人</option>
                     <option value="10">10人</option>
                 </select>
-                <input name="date" type="date" />
+                <input name="date" type="date">
                 <input class="kiy"type="search" name="search" placeholder="キーワードを入力">
 
-              
-
-                <input type="submit" name="submit" value="検索">
+                <input type="submit" value="検索">
             </form>
             </div>
 <div id="style">
