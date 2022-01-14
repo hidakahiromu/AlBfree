@@ -11,7 +11,19 @@ def index_template(request):
 
 #トップページ画面
 def TopPage(request):
-    return render(request, 'TopPage.html')
+#セッション情報があればユーザ―名を無ければゲスト表記
+    if 'name' in request.session:
+        name = ','.join(request.session['name'])
+    else:
+        name = 'ゲスト'
+#セッションの作成(id)
+    if name != 'ゲスト':
+        a = user_information.objects.get(user=name)
+        request.session['id'] = a.user_id
+        
+    return render(request, 'TopPage.html' , {
+        'name' : name,
+    })
 
 #これも使ってないはず
 def StoreDetails(request):
@@ -23,20 +35,40 @@ def registration(request):
         form = registrationForm(request.POST)
         if form.is_valid():
             form.save()
+            #ゲストからユーザーname表記へ
+            del request.session['name']
+            request.session['name'] = request.POST.getlist('user')
+            request.session['id'] = request.POST.getlist('user_id')  
             return redirect('registration')
     else:
         form = registrationForm()
     
 
     return render(request, 'registration.html', {
-        'form': form
+        'form': form,
     })
  
 def terms(request):
-    return render(request , 'riyou.html')
+    #セッション情報があればユーザ―名を無ければゲスト表記
+    if 'name' in request.session:
+        name = ','.join(request.session['name'])
+    else:
+        name = 'ゲスト'
+
+    return render(request , 'riyou.html' , {
+        'name' : name,
+    })
 
 def forstores(request):
-    return render(request , 'forstores.html')
+    #セッション情報があればユーザ―名を無ければゲスト表記
+    if 'name' in request.session:
+        name = ','.join(request.session['name'])
+    else:
+        name = 'ゲスト'
+
+    return render(request , 'forstores.html' , {
+        'name' : name,
+    })
 
 def login(request):
     return render(request ,'login.html')

@@ -21,7 +21,16 @@
         <h1>新規ユーザー登録</h1>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <div class="registration">{{ form.as_p }}</div>
+            <div class="registration">
+                <p>ユーザ―名:</p>{{ form.user }}
+                <p>本名:</p>{{ form.name }}
+                <p>カタカナ:</p>{{ form.kana }}
+                <p>住所:</p>{{ form.address }}
+                <p>メールアドレス:</p>{{ form.mail }}
+                <p>電話番号:</p>{{ form.phone_number }}
+                <p>性別:</p>{{ form.gender }}
+                <p>パスワード:</p>{{ form.password }}
+            </div>
             <div class="sub"><button class="submit" type="submit">登録</button></div>
         </form>
         <p class="rogin"><a href="">ログイン画面に戻る<a></p>

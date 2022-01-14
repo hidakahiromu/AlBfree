@@ -14,7 +14,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 #追加
 import os
 from pathlib import Path
-import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -149,6 +149,7 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#セッションの設定
-SESSION_COOKIE_AGE = 3600   #1時間後にセッション切れ
-SESSION_SAVE_EVERY_REQUEST = True   #最後にページ更新したタイミングで保存
+
+#SESSION_COOKIE_AGE = 3600   #1時間後にセッション切れ
+#SESSION_SAVE_EVERY_REQUEST = True   #最後にページ更新したタイミングで保存
+#SESSION_ENGINE ="django.contrib.sessions.backends.cache"
