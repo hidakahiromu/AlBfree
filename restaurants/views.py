@@ -42,8 +42,9 @@ def RestaurantsList(request):
     
     db = restaurant_information.objects.all()
     return render(request , 'restaurantsList.html' , {
-        'restaurants_db' : db,
-        'name' : name
+        'restaurants_db' : db,  #飲食店情報テーブル
+        'image_db' : images.objects.all(),
+        'name' : name,
     })
 
 #飲食店の情報投稿フォーム
