@@ -27,10 +27,10 @@
     <div class="img">
     <!--スライドショー-->
     <ul class="slider">
-        <li><a href="#"><img class = "sliders" src={% static 'img/power.jpg' %} alt="image01"></a></li>
-        <li><a href="#"><img class = "sliders" src={% static 'img/power.jpg' %} alt="image02"></a></li>
-        <li><a href="#"><img class = "sliders" src="images/03.jpg" alt="image03"></a></li>
-        <li><a href="#"><img class = "sliders" src="images/04.jpg" alt="image04"></a></li>
+        <li><a href="#"><img class = "sliders" src={% static 'img/power01.jpg' %} alt="image01"></a></li>
+        <li><a href="#"><img class = "sliders" src={% static 'img/power02.jpg' %} alt="image02"></a></li>
+        <li><a href="#"><img class = "sliders" src={% static 'img/power03.jpg' %} ></a></li>
+        <li><a href="#"><img class = "sliders" src={% static 'img/power04.jpg' %} ></a></li>
         <li><a href="#"><img class = "sliders" src="images/05.jpg" alt="image05"></a></li>
         <li><a href="#"><img class = "sliders" src="images/06.jpg" alt="image06"></a></li>
         <li><a href="#"><img class = "sliders" src="images/07.jpg" alt="image07"></a></li>
@@ -191,10 +191,14 @@
                 </select>
                 <input name="date" type="date">
                 <input class="kiy"type="search" name="search" placeholder="キーワードを入力">
-
+                
                 <input type="submit" value="検索">
             </form>
             </div>
+    <div>
+        <br>
+        <p class="AL"><a href="{% url 'AllergyManual' %}">＜アレルギーマニュアル＞</a></p>
+    </div>        
 <div id="style">
     
     <div><!--紹介プレ-->
@@ -204,25 +208,25 @@
         <br>
         <ul class="item">
             <li class="ite"><a href=""><img src= "{% static 'img/Cookingsample01.jpg' %}" alt="対応店舗0">
-                <p>32文字対応中32文字対応中32文字対応中32文字対応中32文字対応中・・</p>
+                <p>牛の里　丼助</p>
                 </a></li>
             <li class="ite"><a href=""><img src= "{% static 'img/Cookingsample02.jpg' %}" alt="対応店舗1">
                 <p>お造り処　杏</p>
                 </a></li>
             <li class="ite"><a href=""><img src= "{% static 'img/Cookingsample03.jpg' %}" alt="対応店舗2">
-                <p>居酒屋　層</p>
+                <p>レッドリーベル</p>
                 </a></li>
             <li class="ite"><a href=""><img src= "{% static 'img/Cookingsample04.jpg' %}" alt="対応店舗3">
                 <p>大好き　梅工房</p>
                 </a></li>
             <li class="ite"><a href=""><img src= "{% static 'img/Cookingsample05.jpg' %}" alt="対応店舗3">
-                <p>大好き　酒</p>
+                <p>レストランパテリーヌ</p>
                 </a></li>
             <li class="ite"><a href=""><img src= "{% static 'img/Cookingsample06.jpg' %}" alt="対応店舗3">
-                <p>大好き　酒</p>
+                <p>鍋料理　風見屋</p>
                 </a></li>
             <li class="ite"><a href=""><img src= "{% static 'img/Cookingsample07.jpg' %}" alt="対応店舗3">
-                <p>大好き　酒</p>
+                <p>カレー料理　ガネーシャ</p>
                 </a></li>
         </ul>
         <div class="detail">
@@ -238,15 +242,15 @@
         <br>
         <ul class="ranking">
             <li class="item"><a href=""><img src= "{% static 'img/ranking01.jpg' %}" alt="1位">
-                <p>32文字対応中32文字対応中32文字対応中32文字対応中32文字対応中・・</p></a></li>
+                <p>カフェ　夜の森</p></a></li>
             <li class="item"><a href=""><img src="{% static 'img/ranking02.jpg' %}" alt="2位">
-                <p>32文字対応中32文字対応中32文字対応中32文字対応中32文字対応中・・</p></a></li>
+                <p>お造り処　杏</p></a></li>
             <li class="item"><a href=""><img src="{% static 'img/ranking03.jpg' %}" alt="3位">
-                <p>32文字対応中32文字対応中32文字対応中32文字対応中32文字対応中・・</p></a></li>
+                <p>たこ焼き　金だこ</p></a></li>
             <li class="item"><a href=""><img src="{% static 'img/ranking04.jpg' %}" alt="4位">
-                <p></p></a></li>
+                <p>石窯ピザ　ビリリ</p></a></li>
             <li class="item"><a href=""><img src="{% static 'img/ranking05.jpg' %}" alt="5位">
-                <p></p></a></li>
+                <p>ステーキハウス　山吹</p></a></li>
         </ul>
         <div class="detail">
         <a href="">００ランキング詳細へ</a>
@@ -304,7 +308,7 @@
                 <time datetime="2016-1-1">2016.01.01</time>
                 <p class="cat01">cat01</p>
               </div>
-              <p> 現在行き詰っています </p>
+              <p> 一部の県で蔓延防止等重点措置の要請が出ています </p>
               </a>
             </li>
             <li>
@@ -313,7 +317,7 @@
                 <time datetime="2016-1-1">2016.01.01</time>
                 <p class="cat02">cat02</p>
               </div>
-              <p> テキストテキスト </p>
+              <p> コロナの影響について </p>
               </a>
             </li>
           </ul>
