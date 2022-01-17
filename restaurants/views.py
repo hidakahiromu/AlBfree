@@ -1,6 +1,6 @@
 from django.shortcuts import render , redirect
 from django.conf import settings
-from .models import restaurant_information , menus , images , review , customer_question , customer_answer
+from .models import allergy_tags , restaurant_information , menus , images , review , customer_question , customer_answer
 from .forms import restaurantInformationForm , restaurantMenusForm , restaurantImagesForm , restaurantReviewForm , customerQuestionForm , customerAnswerForm
 
 from django.shortcuts import get_object_or_404
@@ -191,4 +191,19 @@ def restaurantFinishi(request):
 
     return render(request , 'restaurantFinishi.html',{
         'name' : name,
+    })
+
+
+def testForm(request):
+    if request.method == 'POST':
+        form = testsForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('testForm')
+    else:
+        form = testsForm()
+    
+
+    return render(request, 'test.html', {
+        'form': form
     })

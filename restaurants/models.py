@@ -3,7 +3,15 @@ from django.core.validators import MinLengthValidator, RegexValidator  #バリ�
 from django.core.exceptions import ValidationError                     #上と同じく
 from accounts.models import user_information
 
+from django_mysql.models import ListCharField
+
 import uuid
+
+class allergy_tags(models.Model):
+    tag = models.CharField('タグ名' , max_length=25)
+
+    def __str__(self):
+        return self.tag
 
 # Create your models here.
 #飲食店の情報を管理するテーブル
@@ -48,6 +56,8 @@ class restaurant_information(models.Model):
     children = models.TextField( "お子様連れ" , blank=True , max_length = 255)
     dress_code = models.TextField( "ドレスコード" , blank=True , max_length = 100)
     remarks = models.TextField( "備考" , blank=True , max_length = 1000)
+    support_allergy = models.BooleanField("対応可能店" , blank = True)
+    allergy_tag = models.ManyToManyField(allergy_tags , blank=True)
     restaurant_allergy = models.TextField( "アレルギー" , blank=True , max_length = 1000)
     tags = models.TextField("タグ" , blank=True , max_length = 500)
 
@@ -132,4 +142,3 @@ class customer_answer(models.Model):
     def __str__(self):
         return self.question
     
-
