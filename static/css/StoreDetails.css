@@ -21,6 +21,12 @@ body{
   margin: 20px 6em;
 }
 
+.boldText{      /*各項目の表題(基本情報以外)*/
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
 /*店舗イメージ画像*/
 .storeImg{
   display: flex;
@@ -38,7 +44,7 @@ body{
   border-radius: 20px;
   padding: 20px;
 }
-.allergenList p{
+.allerInfo{
   margin: 5px 45px;
 }
 .allergenTag{
@@ -50,24 +56,49 @@ body{
 .allergenList b{
   font-weight:  bold;
   font-size: 20px;
-  margin: 10px;
+  margin: 20px;
 }
 
 /*メニューリスト*/
-.menuList{
+.menuList{    /*メニュー全体のデザイン*/
   margin: 2em 5em;
   background-color: #fff;
   border-radius: 20px;
+  padding: 20px;
 }
-.menuTitle{
-  margin: 0 4em 0 3em;
-  font-size: 28px;
+.menuList img{    /*メニューリストの画像*/
+  margin: 0 1em;
+  float: left;
 }
+.menuInfo{    /*メニューの詳細*/
+  height: 20em;
+}
+.menuName{   /*メニュー名*/
+  font-size: 25px;
+  font-weight: 500;
+  margin-left: 13.7em;
+  margin-right: 10px;
+  border-bottom: 8px dotted #ffa500;
+  padding-bottom: 15px;
+}
+.menuPrice{   /*料金*/
+  font-size: 23px;
+  float: right;
+}
+.menuAllergen{    /*アレルゲン表示*/
+  margin: 1em 0 1em 17em;
+  font-size: 20px;
+}
+.menuComment{   /*店のコメント*/
+  margin-left: 21.25em;
+}
+/*メニューリストここまで*/
+
 
 /*店舗基本情報*/
 .informationTable{
   background-color: #fff;
-  padding: 1.5em 4em;
+  padding: 1.5em 2em;
   margin: 0 5em 2em 5em;
   border-radius: 20px;
 }
@@ -76,7 +107,6 @@ span.ul.rst-info-title {
 	padding: 0;
 	list-style-type: none;
 }
-
 span.ul.rst-info-title li {
 	padding: 0.5em;
 	margin-bottom: 3px;
@@ -93,8 +123,9 @@ table{
   border-collapse: collapse;
 }
 .tableTitle{
-  margin: 0 4em;
   font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 table tr{
   border-bottom: solid 2px white;
@@ -142,7 +173,7 @@ span.rating-name{
 }
 .rating{
   background-color: #fff;
-  padding: 10px;
+  padding: 20px;
   border-radius: 20px;
 }
 span.star{

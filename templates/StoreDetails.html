@@ -28,10 +28,10 @@
 
   <!--アレルゲン表示とタグ-->
     <div class="allergenList">
-      <b>お店のひとこと</b>
-      <p>あああああああああああ</p>
+      <p class="boldText">お店のひとこと</p>
+      <p class="allerInfo">あああああああああああ</p>
       <b>同じ器具で調理しているアレルゲン</b>
-      <p>{{restaurants_db.restaurant_allergy}}</p>
+      <p class="allerInfo">{{restaurants_db.restaurant_allergy}}</p>
          <!--アレルゲンアイコン-->
       <div class="allergenImg">
         <img src="{% static 'allergy_pic/egg.png' %}" width="80" height="80">
@@ -73,12 +73,15 @@
   <!--メニューここにいれたい-->
     <!--プロトタイプ4枚目(メニューリスト)-->
     <div class="menuList">
-      <b class="menuTitle">メニュー</b>
-      <img src={% static 'menu_db.image' %} >
-        <li>コーヒー</li>
-          <p>使用アレルゲン</p>
-          <p>￥200</p>
-          <p>お店からのコメント</p>
+      <p class="boldText">メニュー</p>
+      <img src={{menu_db.image.url}} width="300" height="300">
+      <div class="menuInfo">
+        <p class="menuPrice">￥{{menu_db.price}}</p>
+        <div class="menuName">{{menu_db.name}}</div>
+        <p class="menuAllergen">使用アレルゲン　<span>{{menu_db.allergy}}</span></p>
+        <p class="menuComment">{{menu_db.remarks}}</p>
+      </div>
+
         <li>スピリタス</li>
           <p>使用アレルゲン</p>
           <p>￥300</p>
@@ -92,8 +95,8 @@
 
     <!--店舗基本情報のテーブル-->
   <div class="informationTable">
+    <p class="tableTitle">店舗基本情報</p>
     <table class="inlineRight">
-          <b class="tableTitle">店舗基本情報</b>
       <tr>
         <th>店名</th>
         <td>{{restaurants_db.restaurant_name}}</td>
@@ -131,6 +134,7 @@
   <!--評価-->
   <div class="clearfix">
     <div class="rating">
+      <p class="boldText">レビュー</p>
       <span class=" rating-name">トータルの評価</span>
       <span class="star">★★☆☆☆ 2.0</span>
       <br>
