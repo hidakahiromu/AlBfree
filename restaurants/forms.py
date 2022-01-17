@@ -1,5 +1,5 @@
 from django import forms
-from .models import restaurant_information , menus , images , review , customer_question , customer_answer
+from .models import allergy_tags , restaurant_information , menus , images , review , customer_question , customer_answer
 
 #飲食店情報投稿フォーム
 class restaurantInformationForm(forms.ModelForm):
@@ -31,9 +31,15 @@ class restaurantInformationForm(forms.ModelForm):
             'children',
             'dress_code',
             'remarks',
+            'support_allergy',
+            'allergy_tag',
             'restaurant_allergy',
             'tags'
             )
+        #複数選択可能にするためのwidgets
+        widgets = {
+            'allergy_tag': forms.CheckboxSelectMultiple
+        }
 
 #飲食店のメニュー投稿フォーム
 class restaurantMenusForm(forms.ModelForm):
@@ -90,3 +96,5 @@ class customerAnswerForm(forms.ModelForm):
             'question',
             'answer'
         )
+
+

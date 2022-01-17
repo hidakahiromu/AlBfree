@@ -130,6 +130,7 @@
                 <p class="genreTitle">ジャンル</p>
                 <div class="genreList">
                     <select name="genre">
+                        <option value="" hidden>ジャンルを選択</option>
                         <option value="和食">和食</option>
                         <option value="中華">中華</option>
                         <option value="実家の味">実家の味</option>
@@ -145,7 +146,7 @@
             <div class="dateSelect">
                 <p class="dateTitle">日付</p>
                 <label class="dateList">
-                    <input type="date">
+                    <input type="date" name="date">
                 </label>
             </div>
             <!--日付選択ここまで-->
@@ -154,8 +155,8 @@
             <div class="budgetSelect">
                 <p class="budgetTitle">価格帯</p>
                 <div class="budgetList">
-                    <select name="" id="">
-                        <option value="指定なし" hidden>指定なし</option>
+                    <select name="price" id="">
+                        <option value="" hidden>指定なし</option>
                         <option value="500">～￥500</option>
                         <option value="1000">～￥1000</option>
                         <option value="3000">～￥3000</option>
@@ -174,14 +175,14 @@
             <!--席の種類-->
             <div class="otherConditions">
                 <p class="otherConditionsTitle">その他の条件</p>
-                <label class="otherCheck"><input type="checkbox"><span>全席禁煙</span></label>
-                <label class="otherCheck"><input type="checkbox"><span>おしゃれな空間</span></label>
-                <label class="otherCheck"><input type="checkbox"><span>座敷あり</span></label>
-                <label class="otherCheck"><input type="checkbox"><span>席が広い</span></label>
-                <label class="otherCheck"><input type="checkbox"><span>無料Wi-Fiあり</span></label>
-                <label class="otherCheck"><input type="checkbox"><span>車椅子入店可</span></label>
-                <label class="otherCheck"><input type="checkbox"><span>カラオケあり</span></label>
-                <label class="otherCheck"><input type="checkbox"><span>駐車場あり</span></label>
+                <label class="otherCheck"><input type="checkbox" name="smoking" value="全席禁煙"><span>全席禁煙</span></label>
+                <label class="otherCheck"><input type="checkbox" name="other" value="おしゃれな空間"><span>おしゃれな空間</span></label>
+                <label class="otherCheck"><input type="checkbox" name="other" value="座敷あり"><span>座敷あり</span></label>
+                <label class="otherCheck"><input type="checkbox" name="other" value="席が広い"><span>席が広い</span></label>
+                <label class="otherCheck"><input type="checkbox" name="other" value="無料Wi-Fiあり"><span>無料Wi-Fiあり</span></label>
+                <label class="otherCheck"><input type="checkbox" name="other" value="車椅子入店可"><span>車椅子入店可</span></label>
+                <label class="otherCheck"><input type="checkbox" name="other" value="カラオケあり"><span>カラオケあり</span></label>
+                <label class="otherCheck"><input type="checkbox" name="other" value="駐車場あり"><span>駐車場あり</span></label>
             </div>
             <!--席の種類ここまで-->
 
@@ -200,19 +201,50 @@
 
     <!--詳細画面に飛ぶやつ-->
     {% for data in restaurants_db %}
-        <a href = "{% url 'StoreDetail' pk=data.pk %}">
-            <div class="storeList">
-                <img src="cafe.jpg" height="125px" width="125px">
-                <p class="restaurant_name">{{ data.restaurant_name }}</p>
-                <table border="1">
-                    <tr><td>卵</td><td>乳</td><td>小麦</td><td>えび</td><td>かに</td><td>落花生</td><td>そば</td></tr>
-                </table>
-                <br><br>
-                <p class="explanation">{{ data.explanation }}</p>
-            </div>
-        </a>
+        {% if aller in data.restaurant_allergy %}<!--restaurant_allergyのカラム名変わるかも-->
+        {% elif  pref != None and pref not in data.address%}<!--住所から県を照会-->
+        {% comment %}<!--
+            {% elif genre == data. %} ジャンルない？
+            {% elif price == data. %} フリーテキストでソートは困難
+            {% elif date == data. %} 定休日弾くにしてもカラムが無い
+        -->{% endcomment %}
+        {% elif smoking == "全席禁煙" %}
+            {% if smoking == data.smoking %}
+                <!--関数にできたら見やすいかもしれないけどサボった-->
+                <a href = "{% url 'StoreDetail' pk=data.pk %}">    
+                    <div class="storeList">
+                        {% for a in image_db %}
+                          {% if a.store_id == data.restaurant_id %}
+                            <img src="{{ a.image.url }}" height="125px" width="125px">
+                          {% endif%}
+                        {% endfor %}
+                        <p class="restaurant_name">{{ data.restaurant_name }}</p>
+                        <table border="1">
+                            <tr><td>卵</td><td>乳</td><td>小麦</td><td>えび</td><td>かに</td><td>落花生</td><td>そば</td></tr>
+                        </table>
+                        <br><br>
+                        <p class="explanation">{{ data.explanation }}</p>
+                    </div>
+                </a>
+            {% endif %}
+        {% else %}
+            <a href = "{% url 'StoreDetail' pk=data.pk %}">    
+                <div class="storeList">
+                    {% for a in image_db %}
+                       {% if a.store_id == data.restaurant_id %}
+                          <img src="{{ a.image.url }}" height="125px" width="125px">
+                       {% endif%}
+                    {% endfor %}
+                    <p class="restaurant_name">{{ data.restaurant_name }}</p>
+                    <table border="1">
+                        <tr><td>卵</td><td>乳</td><td>小麦</td><td>えび</td><td>かに</td><td>落花生</td><td>そば</td></tr>
+                    </table>
+                    <br><br>
+                    <p class="explanation">{{ data.explanation }}</p>
+                </div>
+            </a>
+        {% endif %}
     {% endfor %}
-    
     
         
 {% endblock content %}

@@ -1,6 +1,6 @@
 from django.shortcuts import render , redirect
 from django.conf import settings
-from .models import restaurant_information , menus , images , review , customer_question , customer_answer
+from .models import allergy_tags , restaurant_information , menus , images , review , customer_question , customer_answer
 from .forms import restaurantInformationForm , restaurantMenusForm , restaurantImagesForm , restaurantReviewForm , customerQuestionForm , customerAnswerForm
 
 from django.shortcuts import get_object_or_404
@@ -42,9 +42,27 @@ def RestaurantsList(request):
         name = 'ゲスト'
     
     db = restaurant_information.objects.all()
+
+    #検索結果を取得
+    aller = request.GET.getlist("aller")
+    pref = request.GET.get("pref")
+    genre = request.GET.get("genre")
+    date = request.GET.get("date")
+    price = request.GET.get("price")
+    other = request.GET.get("other")
+    smoking = request.GET.get("smoking")
+
     return render(request , 'restaurantsList.html' , {
+        'image_db' : images.objects.all(),
         'restaurants_db' : db,
-        'name' : name
+        'name' : name,
+        'aller' : aller,
+        'pref' : pref,
+        'genre' : genre,
+        'date' : date,
+        'price' : price,
+        'smoking' : smoking,
+        'other' : other,
     })
 
 #飲食店の情報投稿フォーム
@@ -191,4 +209,19 @@ def restaurantFinishi(request):
 
     return render(request , 'restaurantFinishi.html',{
         'name' : name,
+    })
+
+
+def testForm(request):
+    if request.method == 'POST':
+        form = testsForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('testForm')
+    else:
+        form = testsForm()
+    
+
+    return render(request, 'test.html', {
+        'form': form
     })

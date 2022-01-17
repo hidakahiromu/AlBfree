@@ -72,3 +72,6 @@ def forstores(request):
 
 def login(request):
     return render(request ,'login.html')
+
+def AllergyManual(request):
+    return render(request ,'AllergyManual.html')
