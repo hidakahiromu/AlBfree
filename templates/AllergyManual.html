@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!-- headの継承 -->
+{% block title %}
+    <title>アレルギーマニュアル</title>
+{% endblock title %}
+
+{% block css %}
+    <!-- ここにcss書くよ -->
+    
+    <link rel="stylesheet" href="{% static 'css/riyou.css' %}">
+{% endblock css %}
+
+<!-- bodyの継承 -->
+{% block header %}
+    <!-- ここにheader書くよ -->
+{% endblock header %}
+
+{% block content %}
+    <!-- ここに本文書くよ -->
+<div id="style">
+    <br>
+    <h2 style="text-align:center">アレルギーマニュアル</h2>
+    <p><a href="https://www.tmiph.metro.tokyo.lg.jp/">東京都健康安全研究センター　企画調整部健康危機管理情報課</a>　電話  03(3363)3487<br><a href="https://www.tmiph.metro.tokyo.lg.jp/files/kj_kankyo/allergy/to_public/kinkyu-manual/7f76eea5e9ad849c49f85c28056a14b21.pdf">　
+        　食物アレルギー緊急時対応マニュアル.pdf　　</a></p>
+<p style="text-align:right">以上</p>
+</div>
+{% endblock content %}
+
+{% block footer %}
+    <!-- ここにfooter書くよ -->
+{% endblock footer %}

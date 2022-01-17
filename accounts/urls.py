@@ -9,4 +9,5 @@ urlpatterns = [
     path('terms/' , views.terms , name='terms'), #利用規約
     path('forstores/' , views.forstores , name='forstores'), #店舗向け案内
     path('login/', views.login ,name='login'),   #ログイン画面
+    path('AllergyManual/' ,views.AllergyManual, name='AllergyManual')
 ]

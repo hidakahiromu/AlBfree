@@ -41,10 +41,27 @@ def RestaurantsList(request):
         name = 'ゲスト'
     
     db = restaurant_information.objects.all()
+
+    #検索結果を取得
+    aller = request.GET.getlist("aller")
+    pref = request.GET.get("pref")
+    genre = request.GET.get("genre")
+    date = request.GET.get("date")
+    price = request.GET.get("price")
+    other = request.GET.get("other")
+    smoking = request.GET.get("smoking")
+
     return render(request , 'restaurantsList.html' , {
-        'restaurants_db' : db,  #飲食店情報テーブル
         'image_db' : images.objects.all(),
+        'restaurants_db' : db,
         'name' : name,
+        'aller' : aller,
+        'pref' : pref,
+        'genre' : genre,
+        'date' : date,
+        'price' : price,
+        'smoking' : smoking,
+        'other' : other,
     })
 
 #飲食店の情報投稿フォーム
