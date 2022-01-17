@@ -22,7 +22,7 @@
         <form  method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="registration">
-                <p hidden>{{ form.contributor }}</p>
+                <p>{{ form.contributor }}</p>
                 <p>飲食店名:</p>{{ form.restaurant_name }}
                 <p>説明文:</p>{{ form.explanation }}
                 <p>電話番号:</p>{{ form.tel }}
@@ -47,6 +47,8 @@
                 <p>お子様連れ:</p>{{ form.children }}
                 <p>ドレスコード:</p>{{ form.dress_code }}
                 <p>備考:</p>{{ form.remarks }}
+                <p>アレルギ対応店:</p>{{ form.support_allergy }}
+                <p>アレルギータグ:</p>{{ form.allergy_tag }}
                 <p>アレルギー:</p>{{ form.restaurant_allergy }}
                 <p>タグ:</p>{{ form.tags }}
             </div>

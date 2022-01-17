@@ -4,14 +4,9 @@ html{
   font-size: 16px;
 }
 body{
-  background-color: InfoBackground;
+  background-color: #ffebcd;
+  /*InfoBackground*/
 }
-
-/*bodyのコンテンツ*/
-/*.center{
-  width: 800px;
-  margin:0 auto;
-}*/
 
 
 /*店名*/
@@ -19,79 +14,63 @@ body{
   text-align: center;
   font-size:45px;
   color:black;
-  margin: 15px;
-  font-family: 'monospace';
-}
-
-/*bodyのコンテンツ右の文字*/
-.clearfix{
-  margin-left: 40%;
-  margin-bottom: 30px;
-}
-.clearfix::after{
-  content:"";
-  display:block;
-  clear:both;
-}
-span.rating-name{
-  font-size:20px;
-    color:black;
-}
-
-/*評価*/
-.rating{
+  padding: 15px;
   background-color: #fff;
-  padding: 10px;
-  margin-right: 4em;
-}
-span.star{
-  font-size:38px;
-    color:orange;
+  border-radius: 20px;
+  font-family: 'monospace';
+  margin: 20px 6em;
 }
 
-/*.right{
-  float : right;
-}*/
+/*店舗イメージ画像*/
+.storeImg{
+  display: flex;
+  justify-content: center;
+}
+.storeImg img{
+  margin: 0 10px 20px 10px;
+  border-radius: 15px;
+}
 
 /*アレルゲン表示とタグ*/
 .allergenList{
   background-color: #fff;
-  margin: 0 4em 20px 0;
-  padding: 10px;
+  margin: 0 5em 20px 5em;
+  border-radius: 20px;
+  padding: 20px;
+}
+.allergenList p{
+  margin: 5px 45px;
 }
 .allergenTag{
-  margin: 2em 0px 1em 30em;
+  margin: auto;
 }
 .allergenImg{
   margin-left: 2em;
 }
-
-/*住所、郵便番号*/
-.addressCode{
-  background-color: #fff;
-  margin: 0 4em 2em 0;
-  padding: 10px;
-}
-.address{
-  margin-left: 20px;
-}
-iframe{
-  margin: 0 3em;
-}
-/*店舗イメージ画像位置*/
-.left{
-  float:left;
-  margin-left: 11%;
-}
-.bold-text{
+.allergenList b{
   font-weight:  bold;
   font-size: 20px;
   margin: 10px;
 }
 
-/*プロトタイプ3枚目*/
+/*メニューリスト*/
+.menuList{
+  margin: 2em 5em;
+  background-color: #fff;
+  border-radius: 20px;
+}
+.menuTitle{
+  margin: 0 4em 0 3em;
+  font-size: 28px;
+}
 
 /*店舗基本情報*/
+.informationTable{
+  background-color: #fff;
+  padding: 1.5em 4em;
+  margin: 0 5em 2em 5em;
+  border-radius: 20px;
+}
 span.ul.rst-info-title {
 	position: relative;
 	padding: 0;
@@ -109,7 +88,7 @@ span.ul.rst-info-title li {
 
 /*店舗基本情報(表)*/
 table{
-  width: 75%;
+  width: 80%;
   margin: auto;
   border-collapse: collapse;
 }
@@ -142,14 +121,35 @@ table td{
 .matrix{
   display:inline-block;
 }
-/*メニューリスト*/
-.menuList{
-  margin: 2em;
+/*住所、郵便番号*/
+iframe{
+  margin: 0 3em;
 }
-.menuTitle{
-  margin: 0 4em 0 3em;
-  font-size: 28px;
+/*表ここまで*/
+
+/*評価*/
+.clearfix{
+  margin: 0 5em 30px 5em;
 }
+.clearfix::after{
+  content:"";
+  display:block;
+  clear:both;
+}
+span.rating-name{
+  font-size:20px;
+    color:black;
+}
+.rating{
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 20px;
+}
+span.star{
+  font-size:38px;
+    color:orange;
+}
+
 
 /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */

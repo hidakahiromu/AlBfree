@@ -213,7 +213,11 @@
                 <!--関数にできたら見やすいかもしれないけどサボった-->
                 <a href = "{% url 'StoreDetail' pk=data.pk %}">    
                     <div class="storeList">
-                        <img src="cafe.jpg" height="125px" width="125px">
+                        {% for a in image_db %}
+                          {% if a.store_id == data.restaurant_id %}
+                            <img src="{{ a.image.url }}" height="125px" width="125px">
+                          {% endif%}
+                        {% endfor %}
                         <p class="restaurant_name">{{ data.restaurant_name }}</p>
                         <table border="1">
                             <tr><td>卵</td><td>乳</td><td>小麦</td><td>えび</td><td>かに</td><td>落花生</td><td>そば</td></tr>
@@ -226,7 +230,11 @@
         {% else %}
             <a href = "{% url 'StoreDetail' pk=data.pk %}">    
                 <div class="storeList">
-                    <img src="cafe.jpg" height="125px" width="125px">
+                    {% for a in image_db %}
+                       {% if a.store_id == data.restaurant_id %}
+                          <img src="{{ a.image.url }}" height="125px" width="125px">
+                       {% endif%}
+                    {% endfor %}
                     <p class="restaurant_name">{{ data.restaurant_name }}</p>
                     <table border="1">
                         <tr><td>卵</td><td>乳</td><td>小麦</td><td>えび</td><td>かに</td><td>落花生</td><td>そば</td></tr>
@@ -237,7 +245,6 @@
             </a>
         {% endif %}
     {% endfor %}
-    
     
         
 {% endblock content %}
