@@ -126,14 +126,33 @@
   <div class="clearfix">
     <div class="rating">
       <p class="boldText">レビュー</p>
-      <span class=" rating-name">トータルの評価</span>
+      <span class="rating-name">トータルの評価</span>
       <span class="star">★★☆☆☆ 2.0</span>
       <br>
       <span class="rating-name">アレルギー対応の評価</span>
       <span class="star">★★★★☆ 4.0</span>
+        <br><br>  <!--突貫の空白-->
+      <div class="reviews">   <!--個人のレビュー-->
+        <p class="reviewsName">レビューした人の名前</p><!--IDか名前か-->
+        <span class="reviewsStar">★★★★☆ 4.0</span><!--とりあえず★にしてる-->
+        <p class="reviewsComments">美味しかったです</p><!--コメント-->
+      </div>    <!--個人のレビューここまで-->
     </div>  <!--rating-->
   </div>
   <!--評価ここまで-->
+
+  <div class="customerQA">    <!--カスタマーQ＆A-->
+    <div class="customerQuestion">
+      <p class="questionName">質問者名前</p><!--IDか名前か-->
+      <p class="question">アレルギー対応可能ですか</p><!--質問-->
+    </div>
+    <div class="customerAnswer">
+      <p class="AnswerName">回答者名前</p><!--IDか名前か-->
+      <p class="Answer">はい</p><!--回答-->
+    </div>
+    <a href="#">質問したい方はこちら</a><!--質問・回答したい方はみたいに-->
+    <a href="#">回答したい方はこちら</a><!--まとめてもOK-->
+  </div>
 
 {% endblock content %}
 

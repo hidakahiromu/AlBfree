@@ -181,6 +181,13 @@ span.star{
     color:orange;
 }
 
+.customerQA{
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  margin: 0 5em 30px 5em;
+}
+
 
 /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
