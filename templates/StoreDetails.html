@@ -69,21 +69,6 @@
   </div>
     <!--アレルゲンタグここまで-->
 
-
-  <!--メニューここにいれたい-->
-    <!--プロトタイプ4枚目(メニューリスト)-->
-    <div class="menuList">
-      <p class="boldText">メニュー</p>
-      <img src={{menu_db.image.url}} width="300" height="300">
-      <div class="menuInfo">
-        <p class="menuPrice">￥{{menu_db.price}}</p>
-        <div class="menuName">{{menu_db.name}}</div>
-        <p class="menuAllergen">使用アレルゲン　<span>{{menu_db.allergy}}</span></p>
-        <p class="menuComment">{{menu_db.remarks}}</p>
-      </div>
-    </div>
-    <!--メニューここまで-->
-
     <!--店舗基本情報のテーブル-->
   <div class="informationTable">
     <p class="tableTitle">店舗基本情報</p>
@@ -121,6 +106,20 @@
     </table>
   </div>
   <!--店舗基本情報ここまで-->
+
+    <!--メニューここにいれたい-->
+    <!--プロトタイプ4枚目(メニューリスト)-->
+    <div class="menuList">
+      <p class="boldText">メニュー</p>
+      <img src={{menu_db.image.url}} width="300" height="300">
+      <div class="menuInfo">
+        <p class="menuPrice">￥{{menu_db.price}}</p>
+        <div class="menuName">{{menu_db.name}}</div>
+        <p class="menuAllergen">使用アレルゲン　<span>{{menu_db.allergy}}</span></p>
+        <p class="menuComment">{{menu_db.remarks}}</p>
+      </div>
+    </div>
+    <!--メニューここまで-->
 
   <!--評価-->
   <div class="clearfix">
