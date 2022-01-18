@@ -21,13 +21,13 @@
         <h1>飲食店登録</h1>
         <form  method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <div class="registration">
+            <div class="registration"> <!--Class="required" これで必須マークがつけれるよ-->
                 <p>{{ form.contributor }}</p>
-                <p>飲食店名:</p>{{ form.restaurant_name }}
-                <p>説明文:</p>{{ form.explanation }}
-                <p>電話番号:</p>{{ form.tel }}
+                <p Class="required" >飲食店名:</p>{{ form.restaurant_name }}
+                <p Class="required" >説明文:</p>{{ form.explanation }}
+                <p Class="required">電話番号:</p>{{ form.tel }}
                 <p>郵便番号:</p>{{ form.postal_code }}
-                <p>住所:</p>{{ form.address }}
+                <p Class="required" >住所:</p>{{ form.address }}
                 <p>アクセス:</p>{{ form.transportation }}
                 <p>営業時間:</p>{{ form.time }}
                 <p>予算:</p>{{ form.budget }}
