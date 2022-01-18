@@ -135,7 +135,7 @@ class review(models.Model):
     allergy_evaluation = models.IntegerField("アレルギー対応の評価" , blank=True , validators=[MinValueValidator(1), MaxValueValidator(5)])
 
     def __str__(self):
-        return self.store
+        return self.title
 
 
 # カスタマーQ&Aの質問管理テーブル
@@ -150,7 +150,7 @@ class customer_question(models.Model):
 
 
     def __str__(self):
-        return self.store
+        return self.question
 
 
 # カスタマーQ&Aの回答管理テーブル
@@ -166,4 +166,4 @@ class customer_answer(models.Model):
 
 
     def __str__(self):
-        return self.question
+        return self.title

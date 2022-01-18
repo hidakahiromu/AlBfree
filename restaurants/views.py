@@ -19,14 +19,32 @@ def StoreDetails(request , pk):
     else:
         name = 'ゲスト'
 
-    if review.objects.filter(store=pk):
-        review_db = review.objects.filter(store=pk)
-        count1 = review_db.aggregate(Avg('evaluation', output_field=IntegerField()))
-        count2 = review_db.aggregate(Avg('allergy_evaluation', output_field=IntegerField()))
+    if review.objects.filter(store=pk):         #レビューがあれば
+        review_db = review.objects.filter(store=pk)     #レビューの取り出し
+        count1 = review_db.aggregate(Avg('evaluation', output_field=IntegerField()))            #お店の評価の平均
+        count2 = review_db.aggregate(Avg('allergy_evaluation', output_field=IntegerField()))    #アレルギー対応の評価平均
     else:
         review_db = None
         count1 = None
         count2 = None
+
+    if customer_question.objects.filter(store=pk):      #カスタマーQ&Aの質問が有るのか判定
+        question_db = customer_question.objects.filter(store=pk)
+    else:
+        question_db = None
+
+    flg = 0
+    if question_db != None:
+        for db in question_db:
+            if customer_answer.objects.filter(question=db.pk): 
+                answer_db = customer_answer.objects.filter(question=db.pk)
+                flg = 1
+    else:
+        answer_db = None
+
+    if flg == 0:
+        answer_db = None
+
     
     return render(request, 'StoreDetails.html', {
         'name' : name,
@@ -34,8 +52,10 @@ def StoreDetails(request , pk):
         'menu_db' : menus.objects.filter(store=pk),
         'image_db' : images.objects.filter(store=pk),
         'review_db' : review_db,
+        'question_db' : question_db,
+        'answer_db' : answer_db,
         'count1' : count1,
-        'count2' : count2, 
+        'count2' : count2,
     })
 
 
@@ -234,7 +254,7 @@ def CustomerAnswerForm(request):
     
 
     return render(request, 'customerAnswerForm.html', {
-        'form': form
+        'form': form,
     })
 
 #飲食店情報確認画面
