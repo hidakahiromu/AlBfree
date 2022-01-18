@@ -16,7 +16,9 @@
 {% block content %}
 
   <p class="shopname">{{restaurants_db.restaurant_name}}&nbsp;
-    <img src="{% static 'img/ok.jpg' %}" width="40" height="40">
+    {% if restaurants_db.support_allergy == True %}
+      <img src="{% static 'img/Corresponding.png' %}" width="180" height="100">
+    {% endif %}
   </p>
   <!--店舗イメージ画像-->
   <div class="storeImg">
@@ -35,7 +37,7 @@
 
          <!--アレルゲンアイコン-->
       <div class="allergenImg">
-        {%for aller in restaurants_db.allergy_tag.all%}
+        {%for aller in restaurants_db.allergy_tag.all %}
           <img src="{{ aller.image.url }}" width="80" height="80">
         {% endfor %}
       </div>
