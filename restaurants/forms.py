@@ -74,9 +74,12 @@ class restaurantReviewForm(forms.ModelForm):
         model = review
         fields = (
             'store',
+            'user',
+            'title',
             'review',
             'image',
-            'evaluation'
+            'evaluation',
+            'allergy_evaluation'
         )
 
 #カスタマーQ&A質問投稿用フォーム
@@ -85,6 +88,7 @@ class customerQuestionForm(forms.ModelForm):
         model = customer_question
         fields = (
             'store',
+            'user',
             'question'
         )
 
@@ -94,6 +98,7 @@ class customerAnswerForm(forms.ModelForm):
         model = customer_answer
         fields = (
             'question',
+            'user',
             'answer'
         )
 

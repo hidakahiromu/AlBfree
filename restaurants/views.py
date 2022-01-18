@@ -4,6 +4,7 @@ from .models import allergy_tags , restaurant_information , menus , images , rev
 from .forms import restaurantInformationForm , restaurantMenusForm , restaurantImagesForm , restaurantReviewForm , customerQuestionForm , customerAnswerForm
 
 from django.shortcuts import get_object_or_404
+from django.db.models import Avg , IntegerField
 
 
 
@@ -17,18 +18,24 @@ def StoreDetails(request , pk):
         name = ','.join(request.session['name'])
     else:
         name = 'ゲスト'
+
+    if review.objects.filter(store=pk):
+        review_db = review.objects.filter(store=pk)
+        count1 = review_db.aggregate(Avg('evaluation', output_field=IntegerField()))
+        count2 = review_db.aggregate(Avg('allergy_evaluation', output_field=IntegerField()))
+    else:
+        review_db = None
+        count1 = None
+        count2 = None
     
-    
-    #restaurants_db = restaurant_information.objects.get(pk=pk),
-    #'user_db': restaurant_information.objects.get(restaurant_id_id=0),
-    #'showdetail_restaurants': restaurant_information.objects.get(restaurant_id=0)
     return render(request, 'StoreDetails.html', {
         'name' : name,
         'restaurants_db' : restaurant_information.objects.get(pk=pk),
-        'menu_db' : menus.objects.all(),
-        'image_db' : images.objects.all(),
-        'allergy_db' : allergy_tags.objects.all(),
-        'all' : restaurant_information.objects.all(),
+        'menu_db' : menus.objects.filter(store=pk),
+        'image_db' : images.objects.filter(store=pk),
+        'review_db' : review_db,
+        'count1' : count1,
+        'count2' : count2, 
     })
 
 
@@ -252,19 +259,4 @@ def restaurantFinishi(request):
 
     return render(request , 'restaurantFinishi.html',{
         'name' : name,
-    })
-
-
-def testForm(request):
-    if request.method == 'POST':
-        form = testsForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('testForm')
-    else:
-        form = testsForm()
-    
-
-    return render(request, 'test.html', {
-        'form': form
     })

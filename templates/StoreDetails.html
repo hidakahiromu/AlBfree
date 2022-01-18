@@ -108,17 +108,47 @@
   <div class="clearfix">
     <div class="rating">
       <p class="boldText">レビュー</p>
-      <span class="rating-name">トータルの評価</span>
-      <span class="star">★★☆☆☆ 2.0</span>
-      <br>
+
+      {% if review_db != None %}
+        {%for a in review_db%}
+        <div class="reviews">   <!--個人のレビュー-->
+          ———————————————————————————————————————————————————
+          <p class="reviewsName">{{ a.user.user }}:{{ a.title }}</p><!--名前+タイトル-->
+          <p class="reviewsComments">{{ a.review }}</p><!--コメント-->
+          <span class="reviewsStar">お店の評価</span>
+          <span class="star-mini">
+            {% for _ in ''|center:a.evaluation %}<!--星の数-->
+              ★
+            {%endfor%}
+          </span>
+          <br>
+          <span class="reviewsStar">アレルギー対応の評価</span>
+          <span class="star-mini">
+            {% for _ in ''|center:a.allergy_evaluation %}<!--星の数-->
+              ★
+            {%endfor%}
+          </span><!--とりあえず★にしてる--><br>
+          ———————————————————————————————————————————————————
+        </div>    <!--個人のレビューここまで-->
+        {% endfor %}
+
       <span class="rating-name">アレルギー対応の評価</span>
-      <span class="star">★★★★☆ 4.0</span>
-        <br><br>  <!--突貫の空白-->
-      <div class="reviews">   <!--個人のレビュー-->
-        <p class="reviewsName">レビューした人の名前</p><!--IDか名前か-->
-        <span class="reviewsStar">★★★★☆ 4.0</span><!--とりあえず★にしてる-->
-        <p class="reviewsComments">美味しかったです</p><!--コメント-->
-      </div>    <!--個人のレビューここまで-->
+      <span class="star">
+      {% for _ in ''|center:count2.allergy_evaluation__avg %}<!--星の数-->
+        ★
+      {%endfor%}
+      {{count2.allergy_evaluation__avg}}.0</span>
+      <br>
+      <span class="rating-name">トータルの評価</span>
+      <span class="star">
+      {% for _ in ''|center:count2.allergy_evaluation__avg %}<!--星の数-->
+        ★
+      {%endfor%}
+      {{count2.allergy_evaluation__avg}}.0</span>
+      
+      {% else %}
+        <h3>まだレビューは投稿されていません</h3>
+      {% endif %}
     </div>  <!--rating-->
   </div>
   <!--評価ここまで-->
