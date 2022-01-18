@@ -1,6 +1,7 @@
 from django.shortcuts import render , redirect
 from django.conf import settings
 from .models import user_information
+from restaurants.models import restaurant_information , images
 from .forms import registrationForm
 
 # Create your views here.
@@ -23,6 +24,8 @@ def TopPage(request):
         
     return render(request, 'TopPage.html' , {
         'name' : name,
+        'restaurant_db' : restaurant_information.objects.all(),
+        'restaurant_image' : images.objects.all(),
     })
 
 #これも使ってないはず
