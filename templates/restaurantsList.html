@@ -14,7 +14,6 @@
 {% endblock header %}
 
 {% block content %}
-
     <nav class="hierarchies">           <!--どこのページにいるか表示(階層)-->
         <ul>
             <li class="hierarchy"><a href = "{% url 'TopPage' %}">トップぺージ</a></li><!--リンクをurlに(仮)-->
@@ -121,7 +120,7 @@
                         <option value="鹿児島県">鹿児島県</option>
                         <option value="沖縄県">沖縄県</option>
                     </optgroup>
-                    </select>
+                </select>
             </div>
             <!--エリア検索ここまで-->
 
@@ -176,13 +175,13 @@
             <div class="otherConditions">
                 <p class="otherConditionsTitle">その他の条件</p>
                 <label class="otherCheck"><input type="checkbox" name="smoking" value="全席禁煙"><span>全席禁煙</span></label>
-                <label class="otherCheck"><input type="checkbox" name="other" value="おしゃれな空間"><span>おしゃれな空間</span></label>
+                <label class="otherCheck"><input type="checkbox" name="reserved" value="貸切あり"><span>おしゃれな空間</span></label>
                 <label class="otherCheck"><input type="checkbox" name="other" value="座敷あり"><span>座敷あり</span></label>
-                <label class="otherCheck"><input type="checkbox" name="other" value="席が広い"><span>席が広い</span></label>
+                <label class="otherCheck"><input type="checkbox" name="support_allergy" value="アレルギー対応可"><span>席が広い</span></label>
                 <label class="otherCheck"><input type="checkbox" name="other" value="無料Wi-Fiあり"><span>無料Wi-Fiあり</span></label>
-                <label class="otherCheck"><input type="checkbox" name="other" value="車椅子入店可"><span>車椅子入店可</span></label>
-                <label class="otherCheck"><input type="checkbox" name="other" value="カラオケあり"><span>カラオケあり</span></label>
-                <label class="otherCheck"><input type="checkbox" name="other" value="駐車場あり"><span>駐車場あり</span></label>
+                <label class="otherCheck"><input type="checkbox" name="equipment" value="車いす入店可"><span>車椅子入店可</span></label>
+                <label class="otherCheck"><input type="checkbox" name="private_room" value="個室あり"><span>カラオケあり</span></label>
+                <label class="otherCheck"><input type="checkbox" name="parking" value="駐車場あり"><span>駐車場あり</span></label>
             </div>
             <!--席の種類ここまで-->
 
@@ -200,40 +199,16 @@
 
 
     <!--詳細画面に飛ぶやつ-->
+
     {% for data in restaurants_db %}
-        {% if aller in data.restaurant_allergy %}<!--restaurant_allergyのカラム名変わるかも-->
-        {% elif  pref != None and pref not in data.address%}<!--住所から県を照会-->
-        {% comment %}<!--
-            {% elif genre == data. %} ジャンルない？
-            {% elif price == data. %} フリーテキストでソートは困難
-            {% elif date == data. %} 定休日弾くにしてもカラムが無い
-        -->{% endcomment %}
-        {% elif smoking == "全席禁煙" %}
-            {% if smoking == data.smoking %}
-                <!--関数にできたら見やすいかもしれないけどサボった-->
-                <a href = "{% url 'StoreDetail' pk=data.pk %}">    
-                    <div class="storeList">
-                        {% for a in image_db %}
-                          {% if a.store_id == data.restaurant_id %}
-                            <img src="{{ a.image.url }}" height="125px" width="125px">
-                          {% endif%}
-                        {% endfor %}
-                        <p class="restaurant_name">{{ data.restaurant_name }}</p>
-                        <table border="1">
-                            <tr><td>卵</td><td>乳</td><td>小麦</td><td>えび</td><td>かに</td><td>落花生</td><td>そば</td></tr>
-                        </table>
-                        <br><br>
-                        <p class="explanation">{{ data.explanation }}</p>
-                    </div>
-                </a>
-            {% endif %}
-        {% else %}
+        {% if data.restaurant_id != serch_result.restaurant_id %}
+            <p>{{serch_result.restaurant_name}}</p>
             <a href = "{% url 'StoreDetail' pk=data.pk %}">    
                 <div class="storeList">
                     {% for a in image_db %}
-                       {% if a.store_id == data.restaurant_id %}
-                          <img src="{{ a.image.url }}" height="125px" width="125px">
-                       {% endif%}
+                        {% if a.store_id == data.restaurant_id %}
+                            <img src="{{ a.image.url }}" height="125px" width="125px">
+                        {% endif%}
                     {% endfor %}
                     <p class="restaurant_name">{{ data.restaurant_name }}</p>
                     <table border="1">
@@ -246,7 +221,6 @@
         {% endif %}
     {% endfor %}
     
-        
 {% endblock content %}
 
 {% block footer %}

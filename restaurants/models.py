@@ -3,8 +3,6 @@ from django.core.validators import MinLengthValidator, RegexValidator  #バリ�
 from django.core.exceptions import ValidationError                     #上と同じく
 from accounts.models import user_information
 
-from django_mysql.models import ListCharField
-
 import uuid
 
 class allergy_tags(models.Model):
