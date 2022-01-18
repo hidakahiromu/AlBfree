@@ -56,12 +56,12 @@ def RestaurantsList(request):
     parking = request.GET.get("parking")                #駐車場
 
     serch_list = restaurant_information.objects.none()    #除外リストの空のクエリを作成
-    serch_result = []    #表示リストの空のクエリを作成
+    serch_result = restaurant_information.objects.none()    #表示リストの空のクエリを作成
 
     if 'たまご' in aller:
-        serch_list = serch_list | restaurant_information.objects.filter(allergy_tags='1')
+        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='1')
     if '牛乳' in aller:
-        serch_list = serch_list | restaurant_information.objects.filter(allergy_tags='2')
+        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='2')
     if '小麦' in aller:
         serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='3')
     if 'えび' in aller:
@@ -88,9 +88,12 @@ def RestaurantsList(request):
         serch_list = serch_list | restaurant_information.objects.exclude(parking = '駐車場あり')
 
     for n in db:
+        flg = 0
         for i in serch_list:
-            if n.restaurant_id != i.restaurant_id:
-                serch_result = serch_result | n.restaurant_id
+            if n.restaurant_id == i.restaurant_id:
+                flg = 1
+        if flg == 0:
+            serch_result = serch_result | restaurant_information.objects.filter(restaurant_id = n.restaurant_id)
 
 
 
