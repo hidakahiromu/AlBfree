@@ -40,21 +40,57 @@ def RestaurantsList(request):
         name = ','.join(request.session['name'])
     else:
         name = 'ゲスト'
-    
-    db = restaurant_information.objects.all()
 
+    db = restaurant_information.objects.all()
+    
     #検索結果を取得
-    aller = request.GET.getlist("aller")
-    pref = request.GET.get("pref")
-    genre = request.GET.get("genre")
-    date = request.GET.get("date")
-    price = request.GET.get("price")
-    other = request.GET.get("other")
-    smoking = request.GET.get("smoking")
+    aller = request.GET.getlist("aller")                #アレルギー  
+    pref = request.GET.get("pref")                      #県
+    genre = request.GET.get("genre")                    #食ジャンル
+    date = request.GET.get("date")                      #日付
+    price = request.GET.get("price")                    #料金
+    smoking = request.GET.get("smoking")                #禁煙
+    reserved = request.GET.get("reserved")              #貸切
+    support_allergy = request.GET.get("support_allergy")#アレルギー対応
+    equipment = request.GET.get("equipment")            #車いす
+    private_room = request.GET.get("private_room")      #個室
+    parking = request.GET.get("parking")                #駐車場
+
+    serch_result = restaurant_information.objects.none()    #除外リストの空のクエリを作成
+    if 'たまご' in aller:
+        serch_result = serch_result | restaurant_information.objects.filter(allergy_tag=allergy_tags.objects.get(id = '1'))
+    if '牛乳' in aller:
+        serch_result = serch_result | restaurant_information.objects.filter(allergy_tag=allergy_tags.objects.get(tag = '牛乳'))
+    if '小麦' in aller:
+        serch_result = serch_result | restaurant_information.objects.filter(allergy_tag=allergy_tags.objects.get(tag = '小麦'))
+    if 'えび' in aller:
+        serch_result = serch_result | restaurant_information.objects.filter(allergy_tag=allergy_tags.objects.get(tag = 'えび'))
+    if 'かに' in aller:
+        serch_result = serch_result | restaurant_information.objects.filter(allergy_tag=allergy_tags.objects.get(tag = 'かに'))
+    if '落花生' in aller:
+        serch_result = serch_result | restaurant_information.objects.filter(allergy_tag=allergy_tags.objects.get(tag = '落花生'))
+    if 'そば' in aller:
+        serch_result = serch_result | restaurant_information.objects.filter(allergy_tag=allergy_tags.objects.get(tag = 'そば'))
+    if pref != None :
+        serch_result = serch_result | restaurant_information.objects.exclude(address__icontains = pref)
+    if '全席禁煙' == smoking:
+        serch_result = serch_result | restaurant_information.objects.exclude(smoking = '全席禁煙')
+    if '貸切あり' == reserved:
+        serch_result = serch_result | restaurant_information.objects.exclude(reserved = '貸切あり')
+    if 'アレルギー対応可' == support_allergy:
+        serch_result = serch_result | restaurant_information.objects.exclude(support_allergy = 'アレルギー対応可')
+    if '車いす入店可' == equipment:
+        serch_result = serch_result | restaurant_information.objects.exclude(equipment = '車いす入店可')
+    if '個室あり' == private_room:
+        serch_result = serch_result | restaurant_information.objects.exclude(private_room = '個室あり')
+    if '駐車場あり' == parking:
+        serch_result = serch_result | restaurant_information.objects.exclude(parking = '駐車場あり')
+
 
     return render(request , 'restaurantsList.html' , {
         'image_db' : images.objects.all(),
         'restaurants_db' : db,
+        'serch_result' : serch_result,
         'name' : name,
         'aller' : aller,
         'pref' : pref,
@@ -62,7 +98,11 @@ def RestaurantsList(request):
         'date' : date,
         'price' : price,
         'smoking' : smoking,
-        'other' : other,
+        'reserved' : reserved,
+        'support_allergy' : support_allergy,
+        'equipment' : equipment,
+        'private_room' : private_room,
+        'parking' : parking,
     })
 
 #飲食店の情報投稿フォーム

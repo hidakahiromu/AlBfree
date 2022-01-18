@@ -241,16 +241,16 @@
         
         <br>
         <ul class="ranking">
-            <li class="item"><a href=""><img src= "{% static 'img/ranking01.jpg' %}" alt="1位">
-                <p>カフェ　夜の森</p></a></li>
-            <li class="item"><a href=""><img src="{% static 'img/ranking02.jpg' %}" alt="2位">
-                <p>お造り処　杏</p></a></li>
-            <li class="item"><a href=""><img src="{% static 'img/ranking03.jpg' %}" alt="3位">
-                <p>たこ焼き　金だこ</p></a></li>
-            <li class="item"><a href=""><img src="{% static 'img/ranking04.jpg' %}" alt="4位">
-                <p>石窯ピザ　ビリリ</p></a></li>
-            <li class="item"><a href=""><img src="{% static 'img/ranking05.jpg' %}" alt="5位">
-                <p>ステーキハウス　山吹</p></a></li>
+            {% for data in restaurant_db %}
+            <li class="item">
+                <a href="{% url 'StoreDetail' pk=data.pk %}">
+                    {% for img in restaurant_image %}
+                        {% if data.restaurant_id == img.store_id%}
+                            <img src= "{{ img.image.url  }}">
+                        {% endif %}
+                    {% endfor %}
+                <p>{{ data.restaurant_name }}</p></a></li>
+            {% endfor %}
         </ul>
         <div class="detail">
         <a href="">００ランキング詳細へ</a>

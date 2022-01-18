@@ -17,6 +17,11 @@ form{
 .registration{
     padding-top   : 30px;   
 }
+/*pタグの位置修正　＋余白修正*/
+.registration p{
+    margin-left   : 70px;
+    margin-bottom : 5px;
+}
 /*入力タイトルのマージン*/
 label{
     margin-left   : 70px;
@@ -37,7 +42,7 @@ input[type="text"] {
 /*性別の枠組み*/
 select{
     border-width  :thin;
-    margin-left: 70px;
+    margin-left   : 70px;
 }
 /*ボタンについての位置*/
 .sub{
@@ -66,11 +71,33 @@ select{
 .login{
     text-align    : center;
 }
-
+/*アレルギー対応店のチェックリストのみ変更*/
+#id_support_allergy{
+    margin-left   : 100px;
+}
 textarea{
     border-width  :thin;
     margin-left   : 70px;
+    margin-bottom : 10px;
 }
+/*一番下の余白追加（全てに少しずつ*/
 input{
-    margin-left   : 70px;
+    margin-bottom : 10px;
 }
+/*必須のタグ*/
+.required::after {
+    content       : "必須";
+    background-color : #f0ad4e;
+    color         : #fff;
+    font-size     : 12px;
+    font-weight   : bold;
+    min-width     : 10px;
+    padding       : 3px 7px;
+    margin        : 0px 5px;
+    line-height   : 1;
+    vertical-align: middle;
+    white-space   : nowrap;
+    text-align    : center;
+    border-radius : 10px;
+    display       : inline-block;
+  }

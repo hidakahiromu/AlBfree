@@ -123,12 +123,12 @@ class review(models.Model):
     def get_uuid_no_dash():
         return uuid.uuid4().hex
 
-    review_id = models.CharField("レビューID", primary_key=True, default=get_uuid_no_dash,
-                                 max_length=33, editable=False, unique=True)  # 主キー
-    store = models.ForeignKey(restaurant_information,
-                              on_delete=models.CASCADE)  # 外部キー
-    review = models.TextField("レビュー", blank=True, max_length=500)
-    image = models.ImageField("画像", upload_to='review')
+    review_id = models.CharField("レビューID" ,primary_key=True , default=get_uuid_no_dash, max_length=33, editable=False, unique=True)         #主キー
+    store = models.ForeignKey(restaurant_information , on_delete=models.CASCADE)      #外部キー
+    user = models.ForeignKey(user_information , on_delete=models.CASCADE)       #外部キー
+    review = models.TextField( "レビュー" , blank=True , max_length = 500)
+    image = models.ImageField("画像" , upload_to='review')
+
     evaluation = models.IntegerField("評価")
 
     def __str__(self):
@@ -140,11 +140,11 @@ class customer_question(models.Model):
     def get_uuid_no_dash():
         return uuid.uuid4().hex
 
-    question_id = models.CharField(
-        "質問ID", primary_key=True, default=get_uuid_no_dash, max_length=33, editable=False, unique=True)  # 主キー
-    store = models.ForeignKey(restaurant_information,
-                              on_delete=models.CASCADE)  # 外部キー
-    question = models.TextField("質問", blank=True, max_length=400)
+    question_id = models.CharField("質問ID" , primary_key=True , default=get_uuid_no_dash, max_length=33, editable=False, unique=True)         #主キー
+    store = models.ForeignKey(restaurant_information , on_delete=models.CASCADE)      #外部キー
+    user = models.ForeignKey(user_information , on_delete=models.CASCADE)       #外部キー
+    question = models.TextField( "質問" , blank=True , max_length = 400)
+
 
     def __str__(self):
         return self.store
@@ -154,12 +154,13 @@ class customer_question(models.Model):
 class customer_answer(models.Model):
     def get_uuid_no_dash():
         return uuid.uuid4().hex
+      
+      
+    answer_id = models.CharField("回答ID" , primary_key=True , default=get_uuid_no_dash, max_length=33, editable=False, unique=True)         #主キー
+    question = models.ForeignKey(customer_question , on_delete=models.CASCADE)      #外部キー
+    user = models.ForeignKey(user_information , on_delete=models.CASCADE)       #外部キー
+    answer = models.TextField( "回答" , blank=True , max_length = 400)
 
-    answer_id = models.CharField("回答ID", primary_key=True, default=get_uuid_no_dash,
-                                 max_length=33, editable=False, unique=True)  # 主キー
-    question = models.ForeignKey(
-        customer_question, on_delete=models.CASCADE)  # 外部キー
-    answer = models.TextField("回答", blank=True, max_length=400)
 
     def __str__(self):
         return self.question
