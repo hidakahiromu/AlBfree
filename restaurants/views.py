@@ -72,7 +72,6 @@ def RestaurantsList(request):
         name = 'ゲスト'
 
     db = restaurant_information.objects.all()
-    
     #検索結果を取得
     aller = request.GET.getlist("aller")                #アレルギー  
     pref = request.GET.get("pref")                      #県
@@ -86,40 +85,52 @@ def RestaurantsList(request):
     private_room = request.GET.get("private_room")      #個室
     parking = request.GET.get("parking")                #駐車場
 
-    serch_result = restaurant_information.objects.none()    #除外リストの空のクエリを作成
+    serch_list = restaurant_information.objects.none()    #除外リストの空のクエリを作成
+    serch_result = restaurant_information.objects.none()    #表示リストの空のクエリを作成
+
     if 'たまご' in aller:
-        serch_result = serch_result | restaurant_information.objects.filter(allergy_tag=allergy_tags.objects.get(id = '1'))
+        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='1')
     if '牛乳' in aller:
-        serch_result = serch_result | restaurant_information.objects.filter(allergy_tag=allergy_tags.objects.get(tag = '牛乳'))
+        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='2')
     if '小麦' in aller:
-        serch_result = serch_result | restaurant_information.objects.filter(allergy_tag=allergy_tags.objects.get(tag = '小麦'))
+        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='3')
     if 'えび' in aller:
-        serch_result = serch_result | restaurant_information.objects.filter(allergy_tag=allergy_tags.objects.get(tag = 'えび'))
+        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='7')
     if 'かに' in aller:
-        serch_result = serch_result | restaurant_information.objects.filter(allergy_tag=allergy_tags.objects.get(tag = 'かに'))
+        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='6')
     if '落花生' in aller:
-        serch_result = serch_result | restaurant_information.objects.filter(allergy_tag=allergy_tags.objects.get(tag = '落花生'))
+        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='5')
     if 'そば' in aller:
-        serch_result = serch_result | restaurant_information.objects.filter(allergy_tag=allergy_tags.objects.get(tag = 'そば'))
+        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='4')
     if pref != None :
-        serch_result = serch_result | restaurant_information.objects.exclude(address__icontains = pref)
+        serch_list = serch_list | restaurant_information.objects.exclude(address__icontains = pref)
     if '全席禁煙' == smoking:
-        serch_result = serch_result | restaurant_information.objects.exclude(smoking = '全席禁煙')
+        serch_list = serch_list | restaurant_information.objects.exclude(smoking = '全席禁煙')
     if '貸切あり' == reserved:
-        serch_result = serch_result | restaurant_information.objects.exclude(reserved = '貸切あり')
+        serch_list = serch_list | restaurant_information.objects.exclude(reserved = '貸切あり')
     if 'アレルギー対応可' == support_allergy:
-        serch_result = serch_result | restaurant_information.objects.exclude(support_allergy = 'アレルギー対応可')
+        serch_list = serch_list | restaurant_information.objects.exclude(support_allergy = '1')
     if '車いす入店可' == equipment:
-        serch_result = serch_result | restaurant_information.objects.exclude(equipment = '車いす入店可')
+        serch_list = serch_list | restaurant_information.objects.exclude(equipment__icontains = '車いす入店可')
     if '個室あり' == private_room:
-        serch_result = serch_result | restaurant_information.objects.exclude(private_room = '個室あり')
+        serch_list = serch_list | restaurant_information.objects.exclude(private_room = '個室あり')
     if '駐車場あり' == parking:
-        serch_result = serch_result | restaurant_information.objects.exclude(parking = '駐車場あり')
+        serch_list = serch_list | restaurant_information.objects.exclude(parking = '駐車場あり')
+
+    for n in db:
+        flg = 0
+        for i in serch_list:
+            if n.restaurant_id == i.restaurant_id:
+                flg = 1
+        if flg == 0:
+            serch_result = serch_result | restaurant_information.objects.filter(restaurant_id = n.restaurant_id)
+
 
 
     return render(request , 'restaurantsList.html' , {
         'image_db' : images.objects.all(),
         'restaurants_db' : db,
+        'serch_list' : serch_list,
         'serch_result' : serch_result,
         'name' : name,
         'aller' : aller,
