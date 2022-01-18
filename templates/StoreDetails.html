@@ -29,40 +29,17 @@
   <!--アレルゲン表示とタグ-->
     <div class="allergenList">
       <p class="boldText">お店のひとこと</p>
-      <p class="allerInfo">あああああああああああ</p>
+      <p class="allerInfo">{{ restaurants_db.explanation }}</p>
       <b>同じ器具で調理しているアレルゲン</b>
       <p class="allerInfo">{{restaurants_db.restaurant_allergy}}</p>
+
          <!--アレルゲンアイコン-->
       <div class="allergenImg">
-        <img src="{% static 'allergy_pic/egg.png' %}" width="80" height="80">
-        <img src="{% static 'allergy_pic/milk.png' %}" width="80" height="80">
-        <img src="{% static 'allergy_pic/wheat.png' %}" width="80" height="80">
-        <img src="{% static 'allergy_pic/shurimp.png' %}" width="80" height="80">
-        <img src="{% static 'allergy_pic/crab.png' %}" width="80" height="80">
-        <img src="{% static 'allergy_pic/peanut.png' %}" width="80" height="80">
-        <img src="{% static 'allergy_pic/soba.png' %}" width="80" height="80">
-        <img src="{% static 'allergy_pic/apple.png' %}" width="80" height="80">
-        <img src="{% static 'allergy_pic/abalone.png' %}" width="80" height="80">
-        <img src="{% static 'allergy_pic/squid.png' %}" width="80" height="80">
-        <img src="{% static 'allergy_pic/salmonroe.png' %}" width="80" height="80">
-        <img src="{% static 'allergy_pic/orange.png' %}" width="80" height="80">
-        <img src="{% static 'allergy_pic/cashewnuts.png' %}" width="80" height="80">
-        <img src="{% static 'allergy_pic/kiwi.png' %}" width="80" height="80">
-        <img src="{% static 'allergy_pic/beaf.png' %}" width="80" height="80">
-        <img src="{% static 'allergy_pic/walnut.png' %}" width="80" height="80">
-        <img src="{% static 'allergy_pic/sesame.png' %}" width="80" height="80">
-        <img src="{% static 'allergy_pic/salmon.png' %}" width="80" height="80">
-        <img src="{% static 'allergy_pic/mackerel.png' %}" width="80" height="80">
-        <img src="{% static 'allergy_pic/soy.png' %}" width="80" height="80">
-        <img src="{% static 'allergy_pic/chiken.png' %}" width="80" height="80">
-        <img src="{% static 'allergy_pic/banana.png' %}" width="80" height="80">
-        <img src="{% static 'allergy_pic/pork.png' %}" width="80" height="80">
-        <img src="{% static 'allergy_pic/matsutake.png' %}" width="80" height="80">
-        <img src="{% static 'allergy_pic/peach.png' %}" width="80" height="80">
-        <img src="{% static 'allergy_pic/yam.png' %}" width="80" height="80">
-        <img src="{% static 'allergy_pic/almond.png' %}" width="80" height="80">
-        <img src="{% static 'allergy_pic/gelatin.png' %}" width="80" height="80">
+        {%for aller in restaurants_db.allergy_tag.all%}
+          <img src="{{ aller.image.url }}" width="80" height="80">
+        {% endfor %}
       </div>
+
     <div class="allergenTag">
       <h5>タグ：{{restaurants_db.tags }}</h5>
     </div>
@@ -109,16 +86,20 @@
 
     <!--メニューここにいれたい-->
     <!--プロトタイプ4枚目(メニューリスト)-->
-    <div class="menuList">
-      <p class="boldText">メニュー</p>
-      <img src={{menu_db.image.url}} width="300" height="300">
-      <div class="menuInfo">
-        <p class="menuPrice">￥{{menu_db.price}}</p>
-        <div class="menuName">{{menu_db.name}}</div>
-        <p class="menuAllergen">使用アレルゲン　<span>{{menu_db.allergy}}</span></p>
-        <p class="menuComment">{{menu_db.remarks}}</p>
-      </div>
-    </div>
+    {% for menu in menu_db %}
+      {% if menu.store_id == restaurants_db.pk %}
+        <div class="menuList">
+          <p class="boldText">メニュー</p>
+          <img src={{menu.image.url}} width="300" height="300">
+          <div class="menuInfo">
+            <p class="menuPrice">￥{{menu.price}}</p>
+            <div class="menuName">{{menu.name}}</div>
+            <p class="menuAllergen">使用アレルゲン　<span>{{menu.allergy}}</span></p>
+            <p class="menuComment">{{menu.remarks}}</p>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
     <!--メニューここまで-->
 
   <!--評価-->

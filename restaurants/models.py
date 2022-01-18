@@ -9,6 +9,7 @@ import uuid
 
 class allergy_tags(models.Model):
     tag = models.CharField('タグ名', max_length=25)
+    image = models.ImageField("画像" , upload_to='allergy')
 
     def __str__(self):
         return self.tag
