@@ -45,7 +45,6 @@ def RestaurantsList(request):
         name = 'ゲスト'
 
     db = restaurant_information.objects.all()
-    aller_db = allergy_tags.objects.all()
     #検索結果を取得
     aller = request.GET.getlist("aller")                #アレルギー  
     pref = request.GET.get("pref")                      #県
@@ -69,13 +68,13 @@ def RestaurantsList(request):
     if '小麦' in aller:
         serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='3')
     if 'えび' in aller:
-        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='4')
-    if 'かに' in aller:
-        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='5')
-    if '落花生' in aller:
-        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='6')
-    if 'そば' in aller:
         serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='7')
+    if 'かに' in aller:
+        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='6')
+    if '落花生' in aller:
+        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='5')
+    if 'そば' in aller:
+        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='4')
     if pref != None :
         serch_list = serch_list | restaurant_information.objects.exclude(address__icontains = pref)
     if '全席禁煙' == smoking:
@@ -104,7 +103,6 @@ def RestaurantsList(request):
     return render(request , 'restaurantsList.html' , {
         'image_db' : images.objects.all(),
         'restaurants_db' : db,
-        'aller_db' : aller_db,
         'serch_list' : serch_list,
         'serch_result' : serch_result,
         'name' : name,
