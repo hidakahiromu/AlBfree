@@ -25,6 +25,10 @@ def StoreDetails(request , pk):
     return render(request, 'StoreDetails.html', {
         'name' : name,
         'restaurants_db' : restaurant_information.objects.get(pk=pk),
+        'menu_db' : menus.objects.all(),
+        'image_db' : images.objects.all(),
+        'allergy_db' : allergy_tags.objects.all(),
+        'all' : restaurant_information.objects.all(),
     })
 
 
