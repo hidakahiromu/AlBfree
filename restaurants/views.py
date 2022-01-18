@@ -25,6 +25,7 @@ def StoreDetails(request , pk):
     return render(request, 'StoreDetails.html', {
         'name' : name,
         'restaurants_db' : restaurant_information.objects.get(pk=pk),
+        'menu_db' : menus.objects.get(store=pk),
     })
 
 
