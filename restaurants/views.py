@@ -41,7 +41,7 @@ def RestaurantsList(request):
         name = 'ゲスト'
 
     db = restaurant_information.objects.all()
-    
+    aller_db = allergy_tags.objects.all()
     #検索結果を取得
     aller = request.GET.getlist("aller")                #アレルギー  
     pref = request.GET.get("pref")                      #県
@@ -79,9 +79,9 @@ def RestaurantsList(request):
     if '貸切あり' == reserved:
         serch_list = serch_list | restaurant_information.objects.exclude(reserved = '貸切あり')
     if 'アレルギー対応可' == support_allergy:
-        serch_list = serch_list | restaurant_information.objects.exclude(support_allergy = 'アレルギー対応可')
+        serch_list = serch_list | restaurant_information.objects.exclude(support_allergy = '1')
     if '車いす入店可' == equipment:
-        serch_list = serch_list | restaurant_information.objects.exclude(equipment = '車いす入店可')
+        serch_list = serch_list | restaurant_information.objects.exclude(equipment__icontains = '車いす入店可')
     if '個室あり' == private_room:
         serch_list = serch_list | restaurant_information.objects.exclude(private_room = '個室あり')
     if '駐車場あり' == parking:
@@ -100,6 +100,7 @@ def RestaurantsList(request):
     return render(request , 'restaurantsList.html' , {
         'image_db' : images.objects.all(),
         'restaurants_db' : db,
+        'aller_db' : aller_db,
         'serch_list' : serch_list,
         'serch_result' : serch_result,
         'name' : name,

@@ -24,8 +24,6 @@
     <div class="count">
         <p>○○店舗  |  ○○口コミ</p>
     </div>
-    <p>{{a.restaurant_name}}</p>
-
 
     <div class="sortingButton">
         <select name="sorting">     <!--並び順変更ボタン-->
@@ -211,7 +209,14 @@
                 {% endfor %}
                 <p class="restaurant_name">{{ data.restaurant_name }}</p>
                 <table border="1">
-                    <tr><td>卵</td><td>乳</td><td>小麦</td><td>えび</td><td>かに</td><td>落花生</td><td>そば</td></tr>
+                    <tr>
+                        {% for n in data.allergy_tag.all %}
+                            <td>{{ n.tag }}</td>
+                        {% endfor %}
+                        {% if data.suport_allergy == 1 %}
+                            <td><img src="{% static 'image/Corresponding.png' %}" height="50px" width="50px"></td>
+                        {% endif%}
+                    </tr>
                 </table>
                 <br><br>
                 <p class="explanation">{{ data.explanation }}</p>
