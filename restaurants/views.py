@@ -4,6 +4,7 @@ from .models import allergy_tags , restaurant_information , menus , images , rev
 from .forms import restaurantInformationForm , restaurantMenusForm , restaurantImagesForm , restaurantReviewForm , customerQuestionForm , customerAnswerForm
 
 from django.shortcuts import get_object_or_404
+from django.db.models import Avg , IntegerField
 
 
 
@@ -17,18 +18,44 @@ def StoreDetails(request , pk):
         name = ','.join(request.session['name'])
     else:
         name = 'ゲスト'
+
+    if review.objects.filter(store=pk):         #レビューがあれば
+        review_db = review.objects.filter(store=pk)     #レビューの取り出し
+        count1 = review_db.aggregate(Avg('evaluation', output_field=IntegerField()))            #お店の評価の平均
+        count2 = review_db.aggregate(Avg('allergy_evaluation', output_field=IntegerField()))    #アレルギー対応の評価平均
+    else:
+        review_db = None
+        count1 = None
+        count2 = None
+
+    if customer_question.objects.filter(store=pk):      #カスタマーQ&Aの質問が有るのか判定
+        question_db = customer_question.objects.filter(store=pk)
+    else:
+        question_db = None
+
+    flg = 0
+    if question_db != None:
+        for db in question_db:
+            if customer_answer.objects.filter(question=db.pk): 
+                answer_db = customer_answer.objects.filter(question=db.pk)
+                flg = 1
+    else:
+        answer_db = None
+
+    if flg == 0:
+        answer_db = None
+
     
-    
-    #restaurants_db = restaurant_information.objects.get(pk=pk),
-    #'user_db': restaurant_information.objects.get(restaurant_id_id=0),
-    #'showdetail_restaurants': restaurant_information.objects.get(restaurant_id=0)
     return render(request, 'StoreDetails.html', {
         'name' : name,
         'restaurants_db' : restaurant_information.objects.get(pk=pk),
-        'menu_db' : menus.objects.all(),
-        'image_db' : images.objects.all(),
-        'allergy_db' : allergy_tags.objects.all(),
-        'all' : restaurant_information.objects.all(),
+        'menu_db' : menus.objects.filter(store=pk),
+        'image_db' : images.objects.filter(store=pk),
+        'review_db' : review_db,
+        'question_db' : question_db,
+        'answer_db' : answer_db,
+        'count1' : count1,
+        'count2' : count2,
     })
 
 
@@ -238,7 +265,7 @@ def CustomerAnswerForm(request):
     
 
     return render(request, 'customerAnswerForm.html', {
-        'form': form
+        'form': form,
     })
 
 #飲食店情報確認画面
@@ -263,19 +290,4 @@ def restaurantFinishi(request):
 
     return render(request , 'restaurantFinishi.html',{
         'name' : name,
-    })
-
-
-def testForm(request):
-    if request.method == 'POST':
-        form = testsForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('testForm')
-    else:
-        form = testsForm()
-    
-
-    return render(request, 'test.html', {
-        'form': form
     })

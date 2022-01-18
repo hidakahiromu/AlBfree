@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.validators import MinLengthValidator, RegexValidator  # バリデーション関連のライブラリ
+from django.core.validators import MinLengthValidator, RegexValidator , MaxValueValidator, MinValueValidator # バリデーション関連のライブラリ
 from django.core.exceptions import ValidationError  # 上と同じく
 from accounts.models import user_information
 
@@ -127,13 +127,15 @@ class review(models.Model):
     review_id = models.CharField("レビューID" ,primary_key=True , default=get_uuid_no_dash, max_length=33, editable=False, unique=True)         #主キー
     store = models.ForeignKey(restaurant_information , on_delete=models.CASCADE)      #外部キー
     user = models.ForeignKey(user_information , on_delete=models.CASCADE)       #外部キー
+    title = models.CharField("タイトル" , max_length = 100)
     review = models.TextField( "レビュー" , blank=True , max_length = 500)
     image = models.ImageField("画像" , upload_to='review')
 
-    evaluation = models.IntegerField("評価")
+    evaluation = models.IntegerField("評価" , blank=True , validators=[MinValueValidator(1), MaxValueValidator(5)])
+    allergy_evaluation = models.IntegerField("アレルギー対応の評価" , blank=True , validators=[MinValueValidator(1), MaxValueValidator(5)])
 
     def __str__(self):
-        return self.store
+        return self.title
 
 
 # カスタマーQ&Aの質問管理テーブル
@@ -148,7 +150,7 @@ class customer_question(models.Model):
 
 
     def __str__(self):
-        return self.store
+        return self.question
 
 
 # カスタマーQ&Aの回答管理テーブル
@@ -164,4 +166,4 @@ class customer_answer(models.Model):
 
 
     def __str__(self):
-        return self.question
+        return self.title
