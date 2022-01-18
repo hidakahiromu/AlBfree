@@ -24,6 +24,8 @@
     <div class="count">
         <p>○○店舗  |  ○○口コミ</p>
     </div>
+    <p>{{a.restaurant_name}}</p>
+
 
     <div class="sortingButton">
         <select name="sorting">     <!--並び順変更ボタン-->
@@ -44,7 +46,7 @@
             <!--アレルゲン検索-->
             <div class="searchAllergen">
                 <p class="allergen">アレルゲン</p>
-                <label class="allergenCheck"><input type="checkbox" name="aller" value="卵"><span>卵</span></label>
+                <label class="allergenCheck"><input type="checkbox" name="egg" value="たまご"><span>たまご</span></label>
                 <label class="allergenCheck"><input type="checkbox" name="aller" value="乳"><span>乳</span></label>
                 <label class="allergenCheck"><input type="checkbox" name="aller" value="小麦"><span>小麦</span></label>
                 <label class="allergenCheck"><input type="checkbox" name="aller" value="えび"><span>えび</span></label>
@@ -199,26 +201,22 @@
 
 
     <!--詳細画面に飛ぶやつ-->
-
-    {% for data in restaurants_db %}
-        {% if data.restaurant_id != serch_result.restaurant_id %}
-            <p>{{serch_result.restaurant_name}}</p>
-            <a href = "{% url 'StoreDetail' pk=data.pk %}">    
-                <div class="storeList">
-                    {% for a in image_db %}
-                        {% if a.store_id == data.restaurant_id %}
-                            <img src="{{ a.image.url }}" height="125px" width="125px">
-                        {% endif%}
-                    {% endfor %}
-                    <p class="restaurant_name">{{ data.restaurant_name }}</p>
-                    <table border="1">
-                        <tr><td>卵</td><td>乳</td><td>小麦</td><td>えび</td><td>かに</td><td>落花生</td><td>そば</td></tr>
-                    </table>
-                    <br><br>
-                    <p class="explanation">{{ data.explanation }}</p>
-                </div>
-            </a>
-        {% endif %}
+    {% for data in serch_result %}
+        <a href = "{% url 'StoreDetail' pk=data.pk %}">    
+            <div class="storeList">
+                {% for a in image_db %}
+                    {% if a.store_id == data.restaurant_id %}
+                        <img src="{{ a.image.url }}" height="125px" width="125px">
+                    {% endif%}
+                {% endfor %}
+                <p class="restaurant_name">{{ data.restaurant_name }}</p>
+                <table border="1">
+                    <tr><td>卵</td><td>乳</td><td>小麦</td><td>えび</td><td>かに</td><td>落花生</td><td>そば</td></tr>
+                </table>
+                <br><br>
+                <p class="explanation">{{ data.explanation }}</p>
+            </div>
+        </a>
     {% endfor %}
     
 {% endblock content %}
