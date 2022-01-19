@@ -21,7 +21,11 @@
         <h1>カスタマーQ&A質問フォーム</h1>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <div class="registration">{{ form.as_p }}</div>
+            <div class="registration"> 
+                <p>store:</p>{{ form.store }}
+                <p>User:</p>{{ form.user }}
+                <p>質問:</p>{{ form.question }}
+            </div>
             <div class="sub"><button class="submit" type="submit">登録</button></div>
         </form>
 

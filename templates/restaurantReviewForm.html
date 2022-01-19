@@ -21,7 +21,15 @@
         <h1>レビュー登録</h1>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <div class="registration">{{ form.as_p }}</div>
+            <div class="registration"> 
+                <p>store:</p>{{ form.store }}
+                <p>User:</p>{{ form.user }}
+                <p>タイトル:</p>{{ form.title }}
+                <p>レビュー:</p>{{ form.review }}
+                <p>画像:</p>{{ form.image }}
+                <p>評価:</p>{{ form.evaluation }}
+                <p>アレルギー対応の評価:</p>{{ form.allergy_evaluation}}
+            </div>
             <div class="sub"><button class="submit" type="submit">登録</button></div>
         </form>
 

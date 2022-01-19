@@ -101,3 +101,21 @@ input{
     border-radius : 10px;
     display       : inline-block;
   }
+/*メニュー登録の変更点*/
+input#id_image {
+    margin-left: 70px;
+}
+input#id_price {
+    margin-left: 70px;
+    border: solid 1px #000000;
+}
+/*レビューフォーム*/
+input#id_evaluation {
+    margin-left: 70px;
+    border: solid 1px #000000;
+}
+/*評価フォーム*/
+input#id_allergy_evaluation {
+    margin-left: 70px;
+    border: solid 1px #000000;
+}

@@ -21,7 +21,14 @@
         <h1>メニュー登録</h1>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <div class="registration">{{ form.as_p }}</div>
+            <div class="registration"> 
+                <p>store:</p>      {{ form.store }}
+                <p>メニュー名:</p>  {{ form.name }}
+                <p>画像:</p>       {{ form.image }}
+                <p>アレルギー:</p>  {{ form.akkergy }}
+                <p>備考:</p>       {{ form.remarks }}
+                <p>値段:</p>       {{ form.price }}
+            </div>
             <div class="sub"><button class="submit" type="submit">登録</button></div>
         </form>
 
@@ -30,3 +37,9 @@
 {% block footer %}
             <!-- ここにfooter書くよ -->
 {% endblock footer %}
+'store',
+'name',
+'image',
+'allergy',
+'remarks',
+'price'
