@@ -22,9 +22,9 @@
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="registration">
-                <p>外部キー:</p>{{ form.store }}
-                <p>画像:</p>{{ form.image }}
-                <p>属性:</p>{{ form.attribute }}
+                <p>外部キー:{{ form.store }}</p>
+                <p>画像:{{ form.image }}</p>
+                <p>属性:{{ form.attribute }}</p>
             </div>
             <div class="sub"><button class="submit" type="submit">登録</button></div>
         </form>
