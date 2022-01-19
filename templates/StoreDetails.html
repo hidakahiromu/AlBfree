@@ -32,7 +32,7 @@
     <div class="allergenList">
       <p class="boldText">お店のひとこと</p>
       <p class="allerInfo">{{ restaurants_db.explanation }}</p>
-      <b>同じ器具で調理しているアレルゲン</b>
+      <p class="boldText">アレルギーに対する取り組み</p>
       <p class="allerInfo">{{restaurants_db.restaurant_allergy}}</p>
 
          <!--アレルゲンアイコン-->
@@ -143,10 +143,10 @@
       <br>
       <span class="rating-name">トータルの評価</span>
       <span class="star">
-      {% for _ in ''|center:count2.allergy_evaluation__avg %}<!--星の数-->
+      {% for _ in ''|center:count1.evaluation__avg %}<!--星の数-->
         ★
       {%endfor%}
-      {{count2.allergy_evaluation__avg}}.0</span>
+      {{count1.evaluation__avg}}.0</span>
       
       {% else %}
         <h3>まだレビューは投稿されていません</h3>
