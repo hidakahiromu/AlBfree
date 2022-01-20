@@ -201,7 +201,7 @@
     <!--詳細画面に飛ぶやつ-->
     {% for data in serch_result %}
         <a href = "{% url 'StoreDetail' pk=data.pk %}">  
-            {% if data.support_allergy == 0 %}
+            {% if data.support_allergy == 1 %}
                 <div class="storeList">
                     {% for a in image_db %}
                         {% if a.store_id == data.restaurant_id %}
@@ -209,14 +209,12 @@
                         {% endif%}
                     {% endfor %}
                     <p class="restaurant_name">{{ data.restaurant_name }}</p>
-                    <table border="1">
+                    <table>
                         <tr><!--アレルギー表示-->
                             {% for n in data.allergy_tag.all %}
                                 <td><img src="{{ n.image.url }}" height="40px" width="40px"></td>
                             {% endfor %}
-                            {% if data.support_allergy == 1 %}
-                                <td><img src="{% static 'img/Corresponding.png' %}" height="40px"></td>
-                            {% endif%}
+                            <td><img src="{% static 'img/Corresponding.png' %}" height="40px"></td>
                         </tr>
                     </table>
                     <br><br>
@@ -230,14 +228,11 @@
                         {% endif%}
                     {% endfor %}
                     <p class="restaurant_name">{{ data.restaurant_name }}</p>
-                    <table border="1">
+                    <table>
                         <tr><!--アレルギー表示-->
                             {% for n in data.allergy_tag.all %}
                                 <td><img src="{{ n.image.url }}" height="40px" width="40px"></td>
                             {% endfor %}
-                            {% if data.support_allergy == 1 %}
-                                <td><img src="{% static 'img/Corresponding.png' %}" height="40px"></td>
-                            {% endif%}
                         </tr>
                     </table>
                     <br><br>

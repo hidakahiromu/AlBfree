@@ -421,7 +421,7 @@ input[type="date"] {
   }
   /*検索ボタンここまで*/
 
-.storeList{         /*飲食店一覧のスタイル*/
+.storeList_nosup{         /*飲食店一覧のスタイル*/
     width: 830px;        /*ここは調節が必要*/
     height: auto;       /*ここも調節がいる*/
     float: left;
@@ -433,7 +433,7 @@ input[type="date"] {
     border-radius: 10px;          /*角の丸み*/
 }
 
-.storeList_nosup{         /*飲食店一覧(非対応)のスタイル*/
+.storeList{         /*飲食店一覧(非対応)のスタイル*/
     width: 830px;        /*ここは調節が必要*/
     height: auto;       /*ここも調節がいる*/
     float: left;
@@ -445,13 +445,11 @@ input[type="date"] {
     border-radius: 10px;          /*角の丸み*/
 }
 
-.storeList img{         /*飲食店のトップ画*/
+.storeList img ,.storeList_nosup img{         /*飲食店のトップ画*/
     float: left;
 }
 
-.storeList table{       /*飲食店のアレルギー表示*/
-    font-size: 12px;
-    font-weight: bold;
+.storeList table ,.storeList_nosup table{       /*飲食店のアレルギー表示*/
     float: right;
 }
 
