@@ -33,7 +33,7 @@
         </select>
     </div>
 
-    <h2 class="storeName">○○なお店</h2>     <!--○○に検索した条件を代入-->
+    <h2 class="storeName">お店一覧</h2>     <!--○○に検索した条件を代入-->
 
     <!-- 詳細条件検索 -->
     <form action="" method="get">
@@ -178,7 +178,7 @@
                 <label class="otherCheck"><input type="checkbox" name="reserved" value="貸切あり"><span>貸切あり</span></label>
                 <label class="otherCheck"><input type="checkbox" name="other" value="座敷あり"><span>座敷あり</span></label><!--未対応-->
                 <label class="otherCheck"><input type="checkbox" name="support_allergy" value="アレルギー対応可"><span>アレルギー対応可</span></label>
-                <label class="otherCheck"><input type="checkbox" name="other" value="無料Wi-Fiあり"><span>無料Wi-Fiあり</span></label>
+                <label class="otherCheck"><input type="checkbox" name="other" value="無料Wi-Fiあり"><span>無料Wi-Fiあり</span></label><!--未対応-->
                 <label class="otherCheck"><input type="checkbox" name="equipment" value="車いす入店可"><span>車いす入店可</span></label>
                 <label class="otherCheck"><input type="checkbox" name="private_room" value="個室あり"><span>個室あり</span></label>
                 <label class="otherCheck"><input type="checkbox" name="parking" value="駐車場あり"><span>駐車場あり</span></label>
@@ -200,27 +200,50 @@
 
     <!--詳細画面に飛ぶやつ-->
     {% for data in serch_result %}
-        <a href = "{% url 'StoreDetail' pk=data.pk %}">    
-            <div class="storeList">
-                {% for a in image_db %}
-                    {% if a.store_id == data.restaurant_id %}
-                        <img src="{{ a.image.url }}" height="125px" width="125px">
-                    {% endif%}
-                {% endfor %}
-                <p class="restaurant_name">{{ data.restaurant_name }}</p>
-                <table border="1">
-                    <tr><!--アレルギー表示-->
-                        {% for n in data.allergy_tag.all %}
-                            <td><img src="{{ n.image.url }}" height="40px" width="40px"></td>
-                        {% endfor %}
-                        {% if data.support_allergy == 1 %}
-                            <td><img src="{% static 'img/Corresponding.png' %}" height="40px"></td>
+        <a href = "{% url 'StoreDetail' pk=data.pk %}">  
+            {% if data.support_allergy == 0 %}
+                <div class="storeList">
+                    {% for a in image_db %}
+                        {% if a.store_id == data.restaurant_id %}
+                            <img src="{{ a.image.url }}" height="125px" width="125px">
                         {% endif%}
-                    </tr>
-                </table>
-                <br><br>
-                <p class="explanation">{{ data.explanation }}</p>
-            </div>
+                    {% endfor %}
+                    <p class="restaurant_name">{{ data.restaurant_name }}</p>
+                    <table border="1">
+                        <tr><!--アレルギー表示-->
+                            {% for n in data.allergy_tag.all %}
+                                <td><img src="{{ n.image.url }}" height="40px" width="40px"></td>
+                            {% endfor %}
+                            {% if data.support_allergy == 1 %}
+                                <td><img src="{% static 'img/Corresponding.png' %}" height="40px"></td>
+                            {% endif%}
+                        </tr>
+                    </table>
+                    <br><br>
+                    <p class="explanation">{{ data.explanation }}</p>
+                </div>
+            {% else%}
+                <div class="storeList_nosup">
+                    {% for a in image_db %}
+                        {% if a.store_id == data.restaurant_id %}
+                            <img src="{{ a.image.url }}" height="125px" width="125px">
+                        {% endif%}
+                    {% endfor %}
+                    <p class="restaurant_name">{{ data.restaurant_name }}</p>
+                    <table border="1">
+                        <tr><!--アレルギー表示-->
+                            {% for n in data.allergy_tag.all %}
+                                <td><img src="{{ n.image.url }}" height="40px" width="40px"></td>
+                            {% endfor %}
+                            {% if data.support_allergy == 1 %}
+                                <td><img src="{% static 'img/Corresponding.png' %}" height="40px"></td>
+                            {% endif%}
+                        </tr>
+                    </table>
+                    <br><br>
+                    <p class="explanation">{{ data.explanation }}</p>
+                </div>
+            {% endif %}
         </a>
     {% endfor %}
     

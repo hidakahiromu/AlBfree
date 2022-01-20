@@ -429,6 +429,18 @@ input[type="date"] {
     margin-left: 10px; 
     padding: 10px 10px;
     font-weight: bold;
+    border: solid 3px rgba(0, 0, 0, 0.247);     /*線*/
+    border-radius: 10px;          /*角の丸み*/
+}
+
+.storeList_nosup{         /*飲食店一覧(非対応)のスタイル*/
+    width: 830px;        /*ここは調節が必要*/
+    height: auto;       /*ここも調節がいる*/
+    float: left;
+    margin-top: 20px;
+    margin-left: 10px; 
+    padding: 10px 10px;
+    font-weight: bold;
     border: solid 3px #000;     /*線*/
     border-radius: 10px;          /*角の丸み*/
 }

@@ -239,14 +239,16 @@
         <br>
         <ul class="ranking">
             {% for data in restaurant_db %}
-            <li class="item">
-                <a href="{% url 'StoreDetail' pk=data.pk %}">
-                    {% for img in restaurant_image %}
-                        {% if data.restaurant_id == img.store_id%}
-                            <img src= "{{ img.image.url  }}">
-                        {% endif %}
-                    {% endfor %}
-                <p>{{ data.restaurant_name }}</p></a></li>
+                {% if forloop.counter <= 5 %}
+                    <li class="item">
+                    <a href="{% url 'StoreDetail' pk=data.pk %}">
+                        {% for img in restaurant_image %}
+                            {% if data.restaurant_id == img.store_id%}
+                                <img src= "{{ img.image.url  }}">
+                            {% endif %}
+                        {% endfor %}
+                    <p>{{ data.restaurant_name }}</p></a></li>
+                {% endif %}
             {% endfor %}
         </ul>
         <div class="detail">
