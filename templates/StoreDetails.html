@@ -14,12 +14,14 @@
 {% endblock css %}
 
 {% block content %}
-
+<div class = backcoler>
+  <br>
   <p class="shopname">{{restaurants_db.restaurant_name}}&nbsp;
     {% if restaurants_db.support_allergy == True %}
       <img src="{% static 'img/Corresponding.png' %}" width="180" height="100">
     {% endif %}
   </p>
+  <br>
   <!--店舗イメージ画像-->
   <div class="storeImg">
     <img src="{% static 'img/cafe.jpg' %}" width="350" height="300"><br><br>
@@ -46,7 +48,7 @@
       <h5>タグ：{{restaurants_db.tags }}</h5>
     </div>
   </div>
-    <!--アレルゲンタグここまで-->
+  <!--アレルゲンタグここまで-->
 
     <!--店舗基本情報のテーブル-->
   <div class="informationTable">
@@ -94,23 +96,23 @@
   </div>
   <!--店舗基本情報ここまで-->
 
-    <!--メニューここにいれたい-->
-    <!--プロトタイプ4枚目(メニューリスト)-->
-    {% for menu in menu_db %}
-      {% if menu.store_id == restaurants_db.pk %}
-        <div class="menuList">
-          <p class="boldText">メニュー</p>
-          <img src={{menu.image.url}} width="300" height="300">
-          <div class="menuInfo">
-            <p class="menuPrice">￥{{menu.price}}</p>
-            <div class="menuName">{{menu.name}}</div>
-            <p class="menuAllergen">使用アレルゲン　<span>{{menu.allergy}}</span></p>
-            <p class="menuComment">{{menu.remarks}}</p>
-          </div>
+  <!--メニューここにいれたい-->
+  <!--プロトタイプ4枚目(メニューリスト)-->
+  {% for menu in menu_db %}
+    {% if menu.store_id == restaurants_db.pk %}
+      <div class="menuList">
+        <p class="boldText">メニュー</p>
+        <img src={{menu.image.url}} width="300" height="300">
+        <div class="menuInfo">
+          <p class="menuPrice">￥{{menu.price}}</p>
+          <div class="menuName">{{menu.name}}</div>
+          <p class="menuAllergen">使用アレルゲン　<span>{{menu.allergy}}</span></p>
+          <p class="menuComment">{{menu.remarks}}</p>
         </div>
-      {% endif %}
-    {% endfor %}
-    <!--メニューここまで-->
+      </div>
+    {% endif %}
+  {% endfor %}
+  <!--メニューここまで-->
 
   <!--評価-->
   <div class="clearfix">
@@ -165,9 +167,9 @@
   <div class="customerQA">    <!--カスタマーQ＆A-->
     <p class="boldText">カスタマーQ&A</p>
     
-  {% if question_db != None %}
-  ———————————————————————————————————————————————————
-    {%for ques in question_db%}
+    {% if question_db != None %}
+    ———————————————————————————————————————————————————
+      {%for ques in question_db%}
         <div class="customerQuestion">
           <p class="questionName">質問者:{{ ques.user.user }}</p><!--IDか名前か-->
           <p class="question">{{ ques.question }}</p><!--質問-->
@@ -181,17 +183,18 @@
             </div>
           {% endif %}
         {% endfor %}
-      ———————————————————————————————————————————————————
-    {% endfor %}
-        <br>
-        <a href="#">回答したい方はこちら</a><!--まとめてもOK-->
-        <a href="#">質問したい方はこちら</a>
-  {% else %}
-    <h3>カスタマーQ&Aは投稿されていません</h3>
-    <a href="#">質問したい方はこちら</a><!--質問・回答したい方はみたいに-->
-  {%endif%}
+        ———————————————————————————————————————————————————
+      {% endfor %}
+      <br>
+      <a href="#">回答したい方はこちら</a><!--まとめてもOK-->
+      <a href="#">質問したい方はこちら</a>
+    {% else %}
+      <h3>カスタマーQ&Aは投稿されていません</h3>
+      <a href="#">質問したい方はこちら</a><!--質問・回答したい方はみたいに-->
+    {%endif%}
+  </div>
+  <br>
 </div>
-
 {% endblock content %}
 
 {% block footer %}
