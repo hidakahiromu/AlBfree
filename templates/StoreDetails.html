@@ -31,18 +31,18 @@
   <!--店舗イメージ画像ここまで-->
 
   <!--アレルゲン表示とタグ-->
-  <div class="allergenList">
-    <p class="boldText">お店のひとこと</p>
-    <p class="allerInfo">{{ restaurants_db.explanation }}</p>
-    <b>同じ器具で調理しているアレルゲン</b>
-    <p class="allerInfo">{{restaurants_db.restaurant_allergy}}</p>
+    <div class="allergenList">
+      <p class="boldText">お店のひとこと</p>
+      <p class="allerInfo">{{ restaurants_db.explanation }}</p>
+      <p class="boldText">アレルギーに対する取り組み</p>
+      <p class="allerInfo">{{restaurants_db.restaurant_allergy}}</p>
 
-        <!--アレルゲンアイコン-->
-    <div class="allergenImg">
-      {%for aller in restaurants_db.allergy_tag.all %}
-        <img src="{{ aller.image.url }}" width="80" height="80">
-      {% endfor %}
-    </div>
+         <!--アレルゲンアイコン-->
+      <div class="allergenImg">
+        {%for aller in restaurants_db.allergy_tag.all %}
+          <img src="{{ aller.image.url }}" width="80" height="80">
+        {% endfor %}
+      </div>
 
     <div class="allergenTag">
       <h5>タグ：{{restaurants_db.tags }}</h5>
@@ -59,7 +59,7 @@
         <td>{{restaurants_db.restaurant_name}}</td>
       </tr>
       <tr>
-        <th>アレルゲン</th>
+        <th>同じ器具で調理しているアレルゲン</th>
         <td>{{restaurants_db.restaurant_allergy}}</td>
       </tr>
       <tr>
@@ -79,6 +79,14 @@
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3280.221249650056!2d135.19094770084797!3d34.699599090688814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60008edd1fe54845%3A0xb872547b0f538bea!2z56We5oi46Zu75a2Q5bCC6ZaA5a2m5qCh!5e0!3m2!1sja!2sjp!4v1641875305141!5m2!1sja!2sjp"
           width="400" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div></td>
+      </tr>
+      <tr>
+        <th>座席数</th>
+        <td>{{restaurants_db.seat}} ({{restaurants_db.reserved}})</td>
+      </tr>
+      <tr>
+        <th>支払い方法</th>
+        <td>{{restaurants_db.payment}}</td>
       </tr>
       <tr>
         <th>電話番号</th>
@@ -145,10 +153,10 @@
       <br>
       <span class="rating-name">トータルの評価</span>
       <span class="star">
-      {% for _ in ''|center:count2.allergy_evaluation__avg %}<!--星の数-->
+      {% for _ in ''|center:count1.evaluation__avg %}<!--星の数-->
         ★
       {%endfor%}
-      {{count2.allergy_evaluation__avg}}.0</span>
+      {{count1.evaluation__avg}}.0</span>
       
       {% else %}
         <h3>まだレビューは投稿されていません</h3>
