@@ -118,14 +118,15 @@
   <div class="clearfix">
     <div class="rating">
       <p class="boldText">レビュー</p>
-
+      <hr>
+      <br>
       {% if review_db != None %}
         {%for a in review_db%}
         <div class="reviews">   <!--個人のレビュー-->
-          ———————————————————————————————————————————————————
+         
           <p class="reviewsName">{{ a.user.user }}:{{ a.title }}</p><!--名前+タイトル-->
           <p class="reviewsComments">{{ a.review }}</p><!--コメント-->
-          <span class="reviewsStar">お店の評価</span>
+          <span class="reviewsStar">お店の評価　　　　</span>
 
           <span class="star-mini">
             {% for _ in ''|center:a.evaluation %}<!--星の数-->
@@ -140,10 +141,11 @@
               ★
             {%endfor%}
           {{a.allergy_evaluation}}.0</span><!--とりあえず★にしてる--><br>
-          ———————————————————————————————————————————————————
+      
         </div>    <!--個人のレビューここまで-->
         {% endfor %}
-
+        <br>
+        <hr>
       <span class="rating-name">アレルギー対応の評価</span>
       <span class="star">
       {% for _ in ''|center:count2.allergy_evaluation__avg %}<!--星の数-->
@@ -151,7 +153,7 @@
       {%endfor%}
       {{count2.allergy_evaluation__avg}}.0</span>
       <br>
-      <span class="rating-name">トータルの評価</span>
+      <span class="rating-name">トータルの評価　　　</span>
       <span class="star">
       {% for _ in ''|center:count1.evaluation__avg %}<!--星の数-->
         ★
@@ -166,9 +168,9 @@
   <!--評価ここまで-->
   <div class="customerQA">    <!--カスタマーQ＆A-->
     <p class="boldText">カスタマーQ&A</p>
-    
+    <hr>
+    <br>
     {% if question_db != None %}
-    ———————————————————————————————————————————————————
       {%for ques in question_db%}
         <div class="customerQuestion">
           <p class="questionName">質問者:{{ ques.user.user }}</p><!--IDか名前か-->
@@ -176,18 +178,18 @@
         </div>
         {% for ans in answer_db %}
           {% if ans.question_id == ques.pk %}
-          ———————————————————————————————————————————————————
+          
             <div class="customerAnswer">
               <p class="AnswerName">回答者:{{ ans.user.user }}</p><!--IDか名前か-->
               <p class="Answer">{{ ans.answer }}</p><!--回答-->
             </div>
           {% endif %}
         {% endfor %}
-        ———————————————————————————————————————————————————
       {% endfor %}
+      <hr>
       <br>
-      <a href="#">回答したい方はこちら</a><!--まとめてもOK-->
-      <a href="#">質問したい方はこちら</a>
+      <a href="" class="btn btn--orange  btn--shadow">回答したい方はこちら</a><!--まとめてもOK-->
+      <a href="" class="btn btn--oranges  btn--shadows">質問したい方はこちら</a>
     {% else %}
       <h3>カスタマーQ&Aは投稿されていません</h3>
       <a href="#">質問したい方はこちら</a><!--質問・回答したい方はみたいに-->

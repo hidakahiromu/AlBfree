@@ -199,3 +199,68 @@ span.star{
 
 /*プロトタイプ3枚目ここまで*/
 /*GoogleMap AIzaSyAPru-bEhxv6GA0EKk0ggzrDwDFCE-tfiQ */
+.reviewsName {
+  font-weight: 600;
+  background: #444; 
+	color: #fff;
+	padding: 8px;
+	border-radius: 2px;
+
+}
+.reviewsComments{
+  margin: 14px 16px 10px 32px;
+	line-height: 140%;
+	text-indent: -24px;
+}
+.reviewsStar{
+  margin: 14px 16px 10px 12px;
+  font-weight: bold;
+	color: #3a3a3a;
+}
+.questionName{
+  font-weight: 600;
+  margin-right: 665px;
+  background: rgb(122, 101, 241); 
+	color: #fff;
+	padding: 8px;
+	border-radius: 2px;
+}
+.AnswerName{
+  font-weight: 600;
+  margin-right: 665px;
+  background: rgb(255, 70, 70); 
+	color: #fff;
+	padding: 8px;
+	border-radius: 2px;
+}
+a.btn--orange {
+  
+  background-color: rgba(255, 70, 70, 0.459); 
+  border-bottom: 5px solid rgba(207, 61, 61, 0.575); 
+}
+a.btn--orange:hover {
+  margin-top: 3px;
+  color: #fff;
+  background: rgb(255, 70, 70);
+  border-bottom: 2px solid rgb(180, 48, 48);  
+}
+a.btn--shadow {
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+}
+
+a.btn--oranges {
+ 
+  background-color: rgba(122, 101, 241, 0.692);
+  border-bottom: 5px solid rgba(102, 85, 201, 0.753);
+}
+a.btn--oranges:hover {
+  margin-top: 3px;
+  color: #fff;
+  background: rgb(122, 101, 241);
+  border-bottom: 2px solid rgb(102, 85, 201);
+}
+a.btn--shadows {
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+}
