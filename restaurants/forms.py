@@ -49,10 +49,14 @@ class restaurantMenusForm(forms.ModelForm):
             'store',
             'name',
             'image',
-            'allergy',
+            'allergy_tag',
             'remarks',
             'price'
         )
+        #複数選択可能にするためのwidgets
+        widgets = {
+            'allergy_tag': forms.CheckboxSelectMultiple
+        }
 
 #画像投稿用フォーム
 class restaurantImagesForm(forms.ModelForm):
