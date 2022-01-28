@@ -122,6 +122,7 @@
       <br>
       {% if review_db != None %}
         {%for a in review_db%}
+        <br>
         <div class="reviews">   <!--個人のレビュー-->
          
           <p class="reviewsName">{{ a.user.user }}:{{ a.title }}</p><!--名前+タイトル-->
@@ -188,11 +189,11 @@
       {% endfor %}
       <hr>
       <br>
-      <a href="" class="btn btn--orange  btn--shadow">回答したい方はこちら</a><!--まとめてもOK-->
-      <a href="" class="btn btn--oranges  btn--shadows">質問したい方はこちら</a>
+      <a href="{% url 'CustomerAnswerForm' %}" class="btn btn--orange  btn--shadow">回答したい方はこちら</a><!--まとめてもOK-->
+      <a href="{% url 'CustomerQuestionForm' %}" class="btn btn--oranges  btn--shadows">質問したい方はこちら</a>
     {% else %}
       <h3>カスタマーQ&Aは投稿されていません</h3>
-      <a href="#">質問したい方はこちら</a><!--質問・回答したい方はみたいに-->
+      <a href="{% url 'CustomerQuestionForm' %}">質問したい方はこちら</a><!--質問・回答したい方はみたいに-->
     {%endif%}
   </div>
   <br>

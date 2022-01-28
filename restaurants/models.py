@@ -64,7 +64,7 @@ class restaurant_information(models.Model):
     dress_code = models.TextField("ドレスコード", blank=True, max_length=100)
     remarks = models.TextField("備考", blank=True, max_length=1000)
     support_allergy = models.BooleanField("対応可能店", blank=True)
-    allergy_tag = models.ManyToManyField(allergy_tags, blank=True)
+    allergy_tag = models.ManyToManyField(allergy_tags, blank=False)
     restaurant_allergy = models.TextField("アレルギー", blank=True, max_length=1000)
     tags = models.TextField("タグ", blank=True, max_length=500)
 
@@ -84,7 +84,7 @@ class menus(models.Model):
                               on_delete=models.CASCADE)  # 外部キー
     name = models.CharField("メニュー名", max_length=50)
     image = models.ImageField("画像", upload_to='menu')
-    allergy = models.CharField("アレルギー", blank=True, max_length=100)
+    allergy_tag = models.ManyToManyField(allergy_tags, blank=False)
     remarks = models.TextField("備考", blank=True, max_length=300)
     price = models.IntegerField("値段")
 
