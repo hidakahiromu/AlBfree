@@ -23,10 +23,13 @@
   </p>
   <br>
   <!--店舗イメージ画像-->
+  <!--新規登録順から3枚-->
   <div class="storeImg">
-    <img src="{% static 'img/cafe.jpg' %}" width="350" height="300"><br><br>
-    <img src="{% static 'img/waffle.jpg' %}" width="350" height="300"><br><br>
-    <img src="{% static 'img/coffe.jpg' %}" width="350" height="300"><br><br>
+    {% for a in image_db %}
+        {% if forloop.counter <=  3 %}
+          <img src="{{ a.image.url }}" width="350" height="300"><br><br>
+        {% endif%}
+    {% endfor %}
   </div>
   <!--店舗イメージ画像ここまで-->
 
@@ -63,7 +66,7 @@
         <td>{{restaurants_db.restaurant_allergy}}</td>
       </tr>
       <tr>
-        <th>定休日</th>
+        <th>営業時間</th>
         <td>{{restaurants_db.time}}</td>
       </tr>
       <tr>
@@ -106,7 +109,14 @@
         <div class="menuInfo">
           <p class="menuPrice">￥{{menu.price}}</p>
           <div class="menuName">{{menu.name}}</div>
-          <p class="menuAllergen">使用アレルゲン　<span>{{menu.allergy}}</span></p>
+          <p class="menuAllergen">使用アレルゲン
+            <table>
+              <tr><!--アレルギー表示-->
+                {% for n in menu.allergy_tag.all %}
+                    <td><img src="{{ n.image.url }}" height="60px" width="60px"></td>
+                {% endfor %}
+              </tr></p>
+            </table>
           <p class="menuComment">{{menu.remarks}}</p>
         </div>
       </div>

@@ -81,6 +81,7 @@ html{
   border-bottom: 8px dotted #ffa500;
   padding-bottom: 15px;
 }
+
 .menuPrice{   /*料金*/
   font-size: 23px;
   float: right;
@@ -117,7 +118,7 @@ span.ul.rst-info-title li {
 }
 
 /*店舗基本情報(表)*/
-table{
+.inlineRight{
   width: 80%;
   margin: auto;
   border-collapse: collapse;
@@ -127,13 +128,13 @@ table{
   font-weight: bold;
   margin-bottom: 10px;
 }
-table tr{
+.inlineRight tr{
   border-bottom: solid 2px white;
 }
-table tr:last-child{
+.inlineRight tr:last-child{
   border-bottom: none;
 }
-table th{
+.inlineRight th{
   position: relative;
   text-align: left;
   width: 30%;
@@ -142,7 +143,7 @@ table th{
   text-align: left;
   padding: 10px;
 }
-table td{
+.inlineRight td{
   text-align: left;
   width: 70%;
   text-align: center;

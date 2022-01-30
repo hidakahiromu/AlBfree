@@ -178,7 +178,6 @@
                 <label class="otherCheck"><input type="checkbox" name="reserved" value="貸切あり"><span>貸切あり</span></label>
                 <label class="otherCheck"><input type="checkbox" name="other" value="座敷あり"><span>座敷あり</span></label><!--未対応-->
                 <label class="otherCheck"><input type="checkbox" name="support_allergy" value="アレルギー対応可"><span>アレルギー対応可</span></label>
-                <label class="otherCheck"><input type="checkbox" name="other" value="無料Wi-Fiあり"><span>無料Wi-Fiあり</span></label><!--未対応-->
                 <label class="otherCheck"><input type="checkbox" name="equipment" value="車いす入店可"><span>車いす入店可</span></label>
                 <label class="otherCheck"><input type="checkbox" name="private_room" value="個室あり"><span>個室あり</span></label>
                 <label class="otherCheck"><input type="checkbox" name="parking" value="駐車場あり"><span>駐車場あり</span></label>
@@ -204,7 +203,7 @@
             {% if data.support_allergy == 1 %}
                 <div class="storeList">
                     {% for a in image_db %}
-                        {% if a.store_id == data.restaurant_id %}
+                        {% if a.store_id == data.restaurant_id and a.attribute == 'exterior' %}
                             <img src="{{ a.image.url }}" height="125px" width="125px">
                         {% endif%}
                     {% endfor %}
