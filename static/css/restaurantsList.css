@@ -1,9 +1,9 @@
 
-body {      
+.body {      
     font-family: sans-serif;
     font-size: 12px;
     color: #000;
-    background: #fff;
+    background-color: #fff8ee;
 }
 
 /*階層構造表示のスタイル*/
@@ -82,6 +82,7 @@ body {
     border-radius: 10px;          /*角の丸み*/
     -ms-word-break: normal;
     word-break: normal;
+    background-color: white;
   }
 /*プルダウンメニューのデザインここまで*/
 
@@ -103,7 +104,8 @@ body {
     margin-right: 10px;
     padding: 0.5em 1em;
     font-weight: bold;
-    border: solid 3px #000;     /*線*/
+    background-color: white;
+    border: solid 1px #000;     /*線*/
     border-radius: 10px;          /*角の丸み*/
 }
 
@@ -429,7 +431,8 @@ input[type="date"] {
     margin-left: 10px; 
     padding: 10px 10px;
     font-weight: bold;
-    border: solid 3px rgba(0, 0, 0, 0.247);     /*線*/
+    background-color: rgb(253, 251, 251);
+    border: solid 1px #000;     /*線*/
     border-radius: 10px;          /*角の丸み*/
 }
 
@@ -441,12 +444,14 @@ input[type="date"] {
     margin-left: 10px; 
     padding: 10px 10px;
     font-weight: bold;
-    border: solid 3px #000;     /*線*/
+    background-color: white;
+    border: solid 1px #000;     /*線*/
     border-radius: 10px;          /*角の丸み*/
 }
 
 .storeList img ,.storeList_nosup img{         /*飲食店のトップ画*/
     float: left;
+    border-radius: 8px;
 }
 
 .storeList table ,.storeList_nosup table{       /*飲食店のアレルギー表示*/
@@ -456,9 +461,16 @@ input[type="date"] {
 /*飲食店名のスタイル*/
 .restaurant_name{
     float: left;
+    font-size: 20px;
+    margin-left: 3px;
 }
 
-.explanation{       /*飲食店の説明文のスタイル*/
-    
+.colour{       
+    color: #000;    
+
+    padding-left: 130px;
 }
 
+p{
+    margin-bottom: 0px;    
+}
