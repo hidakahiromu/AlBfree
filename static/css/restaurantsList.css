@@ -100,13 +100,15 @@
     height: auto;      /*ここも調節が必要*/
     float: right;
     clear: both;
-    margin-top: 20px;
+    margin-top: 15px;
     margin-right: 10px;
     padding: 0.5em 1em;
-    font-weight: bold;
-    background-color: white;
-    border: solid 1px #000;     /*線*/
-    border-radius: 10px;          /*角の丸み*/
+    font-weight: bold;/*線*/
+    border-radius: 10px;  
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/
+    background: #ffff;
+    border-bottom: solid 6px rgb(233, 233, 233);
+    border-radius: 9px;        /*角の丸み*/
 }
 
 .conditions{        /*詳細条件の文字*/
@@ -126,7 +128,7 @@
 
 /*アレルゲンのチェックボックス*/
 .searchAllergen label {
-    margin: 15px 10px 10px 10px; /* ボタン同士の間隔 */
+    margin: 15px 4px 6px 10px; /* ボタン同士の間隔 */
 }
 .searchAllergen label input {
     display: none; /* デフォルトのinputは非表示にする */
@@ -134,9 +136,10 @@
 .searchAllergen label span {
     color: #333; /* 文字色を黒に */
     font-size: 14px; /* 文字サイズを14pxに */
-    border: 1px solid #333; /* 淵の線を指定 */
-    border-radius: 20px; /* 角丸を入れて、左右が丸いボタンにする */
+     border-radius: 20px; /* 角丸を入れて、左右が丸いボタンにする */
     padding: 5px 20px; /* 上下左右に余白をトル */
+    background-color: white;
+    border: 0.1px solid;
 }
 .searchAllergen label input:hover + span{
     background-color: #ffc0cb;
@@ -160,7 +163,7 @@
 	overflow: hidden;
 	width: 90%;
 	margin: 0.5rem 1rem auto auto; /*位置*/
-	text-align: center;
+	text-align:left;
     position: relative;
 	border: 1px solid #bbbbbb;
 	border-radius: 2px;
@@ -220,7 +223,7 @@
 	overflow: hidden;
 	width: 90%;
 	margin: 0.5rem 1rem auto auto; /*位置*/
-	text-align: center;
+	text-align: left;
     position: relative;
 	border: 1px solid #bbbbbb;
 	border-radius: 2px;
@@ -279,11 +282,12 @@
 .dateList {
     position: relative;
     display: inline-block;
-    margin: 0.5rem 2rem auto 2.5rem;
-    width: 80%;
-    height: 36px;
+    margin: 0.5rem 2.5rem auto 1.5rem ;
+    width: 90%;
+    height: 40px;
     border: 2px solid #ccc;
     border-radius: 15px;
+    background-color: white;
 }
 input[type="date"] {
     position: relative;
@@ -293,7 +297,7 @@ input[type="date"] {
     border: 0;
     background: transparent;
     box-sizing: border-box;
-    font-size: 14px;
+    font-size: 15px;
     color: #000;
 }
 /*日付選択ここまで*/
@@ -308,7 +312,7 @@ input[type="date"] {
 	overflow: hidden;
 	width: 90%;
 	margin: 0.5rem 1rem auto auto; /*位置*/
-	text-align: center;
+	text-align: left;
     position: relative;
 	border: 1px solid #bbbbbb;
 	border-radius: 2px;
@@ -373,9 +377,10 @@ input[type="date"] {
 .otherConditions label span {
     color: #333; /* 文字色を黒に */
     font-size: 14px; /* 文字サイズを14pxに */
-    border: 1px solid #333; /* 淵の線を指定 */
-    border-radius: 20px; /* 角丸を入れて、左右が丸いボタンにする */
+    border-radius: 25px; /* 角丸を入れて、左右が丸いボタンにする */
     padding: 5px 20px; /* 上下左右に余白をトル */
+    background-color: white;
+    border: 0.1px solid;
 }
 
 .otherConditions label input:hover + span{
@@ -400,6 +405,7 @@ input[type="date"] {
   margin-top: 20px;
   border-radius: 100vh;
 }
+
 .informationButton:hover {
   color: #fff;
   background: #fa8072;
@@ -423,7 +429,8 @@ input[type="date"] {
   }
   /*検索ボタンここまで*/
 
-.storeList_nosup{         /*飲食店一覧のスタイル*/
+
+  .storeList_nosup{         /*飲食店一覧のスタイル*/
     width: 830px;        /*ここは調節が必要*/
     height: auto;       /*ここも調節がいる*/
     float: left;
@@ -431,9 +438,11 @@ input[type="date"] {
     margin-left: 10px; 
     padding: 10px 10px;
     font-weight: bold;
-    background-color: rgb(253, 251, 251);
-    border: solid 1px #000;     /*線*/
+    background-color:rgba(0, 0, 0, 0.017);
+    background: #ffff;
+    border-bottom: solid 6px #e4e4e4;     /*線*/
     border-radius: 10px;          /*角の丸み*/
+    text-align: left;
 }
 
 .storeList{         /*飲食店一覧(非対応)のスタイル*/
@@ -444,11 +453,15 @@ input[type="date"] {
     margin-left: 10px; 
     padding: 10px 10px;
     font-weight: bold;
-    background-color: white;
-    border: solid 1px #000;     /*線*/
     border-radius: 10px;          /*角の丸み*/
+    padding: 0.5em 1em;
+    margin: 1em 11px;
+    color: black;
+    background: #ffff;
+    border-bottom: solid 6px #e4e4e4;
+    border-radius: 9px;
+    text-align: left;
 }
-
 .storeList img ,.storeList_nosup img{         /*飲食店のトップ画*/
     float: left;
     border-radius: 8px;
