@@ -100,16 +100,14 @@
     height: auto;      /*ここも調節が必要*/
     float: right;
     clear: both;
-    margin-top: 20px;
+    margin-top: 15px;
     margin-right: 10px;
     padding: 0.5em 1em;
-    font-weight: bold;
-        /*線*/
+    font-weight: bold;/*線*/
     border-radius: 10px;  
     box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/
-    color: #5989cf;
-    background: #c6e4ff;
-    border-bottom: solid 6px #aac5de;
+    background: #ffff;
+    border-bottom: solid 6px rgb(233, 233, 233);
     border-radius: 9px;        /*角の丸み*/
 }
 
@@ -130,7 +128,7 @@
 
 /*アレルゲンのチェックボックス*/
 .searchAllergen label {
-    margin: 15px 10px 10px 10px; /* ボタン同士の間隔 */
+    margin: 15px 4px 6px 10px; /* ボタン同士の間隔 */
 }
 .searchAllergen label input {
     display: none; /* デフォルトのinputは非表示にする */
@@ -141,6 +139,7 @@
      border-radius: 20px; /* 角丸を入れて、左右が丸いボタンにする */
     padding: 5px 20px; /* 上下左右に余白をトル */
     background-color: white;
+    border: 0.1px solid;
 }
 .searchAllergen label input:hover + span{
     background-color: #ffc0cb;
@@ -381,6 +380,7 @@ input[type="date"] {
     border-radius: 25px; /* 角丸を入れて、左右が丸いボタンにする */
     padding: 5px 20px; /* 上下左右に余白をトル */
     background-color: white;
+    border: 0.1px solid;
 }
 
 .otherConditions label input:hover + span{
@@ -438,7 +438,9 @@ input[type="date"] {
     margin-left: 10px; 
     padding: 10px 10px;
     font-weight: bold;
-    background-color:rgba(0, 0, 0, 0.017);     /*線*/
+    background-color:rgba(0, 0, 0, 0.017);
+    background: #ffff;
+    border-bottom: solid 6px #e4e4e4;     /*線*/
     border-radius: 10px;          /*角の丸み*/
     text-align: left;
 }
@@ -453,10 +455,10 @@ input[type="date"] {
     font-weight: bold;
     border-radius: 10px;          /*角の丸み*/
     padding: 0.5em 1em;
-    margin: 2em 0;
+    margin: 1em 11px;
     color: black;
-    background: #c6e4ff;
-    border-bottom: solid 6px #aac5de;
+    background: #ffff;
+    border-bottom: solid 6px #e4e4e4;
     border-radius: 9px;
     text-align: left;
 }
