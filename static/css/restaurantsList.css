@@ -100,13 +100,17 @@
     height: auto;      /*ここも調節が必要*/
     float: right;
     clear: both;
+    background-color:#ffc0cb;
     margin-top: 20px;
     margin-right: 10px;
     padding: 0.5em 1em;
     font-weight: bold;
-    background-color: white;
-    border: solid 1px #000;     /*線*/
     border-radius: 10px;          /*角の丸み*/
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/
+    color: #5989cf;
+    background: #c6e4ff;
+    border-bottom: solid 6px #aac5de;
+    border-radius: 9px;
 }
 
 .conditions{        /*詳細条件の文字*/
@@ -162,10 +166,11 @@
 	margin: 0.5rem 1rem auto auto; /*位置*/
 	text-align: center;
     position: relative;
-	border: 1px solid #bbbbbb;
+	border: 1px  #bbbbbb;
 	border-radius: 2px;
 	background: #ffffff;
     font-size: 15px;
+    text-align: left;
 }
 .areaSearch select {
 	width: 100%;
@@ -207,6 +212,7 @@
 	width: 1px;
 	content: '';
 	border-left: 1px solid #bbbbbb;
+
 }
 /*都道府県プルダウンメニューここまで*/
 
@@ -217,10 +223,10 @@
 }
 /*ジャンル選択プルダウンメニュー*/
 .genreList {
+    text-align: left;
 	overflow: hidden;
 	width: 90%;
 	margin: 0.5rem 1rem auto auto; /*位置*/
-	text-align: center;
     position: relative;
 	border: 1px solid #bbbbbb;
 	border-radius: 2px;
@@ -305,10 +311,10 @@ input[type="date"] {
 }
 /*予算選択プルダウンメニュー*/
 .budgetList {
+    text-align: left;
 	overflow: hidden;
 	width: 90%;
 	margin: 0.5rem 1rem auto auto; /*位置*/
-	text-align: center;
     position: relative;
 	border: 1px solid #bbbbbb;
 	border-radius: 2px;
@@ -423,7 +429,8 @@ input[type="date"] {
   }
   /*検索ボタンここまで*/
 
-.storeList_nosup{         /*飲食店一覧のスタイル*/
+
+  .storeList_nosup{         /*飲食店一覧のスタイル*/
     width: 830px;        /*ここは調節が必要*/
     height: auto;       /*ここも調節がいる*/
     float: left;
@@ -431,9 +438,9 @@ input[type="date"] {
     margin-left: 10px; 
     padding: 10px 10px;
     font-weight: bold;
-    background-color: rgb(253, 251, 251);
-    border: solid 1px #000;     /*線*/
+    background-color:rgba(0, 0, 0, 0.017);     /*線*/
     border-radius: 10px;          /*角の丸み*/
+    text-align: left;
 }
 
 .storeList{         /*飲食店一覧(非対応)のスタイル*/
@@ -444,11 +451,15 @@ input[type="date"] {
     margin-left: 10px; 
     padding: 10px 10px;
     font-weight: bold;
-    background-color: white;
-    border: solid 1px #000;     /*線*/
     border-radius: 10px;          /*角の丸み*/
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: black;
+    background: #c6e4ff;
+    border-bottom: solid 6px #aac5de;
+    border-radius: 9px;
+    text-align: left;
 }
-
 .storeList img ,.storeList_nosup img{         /*飲食店のトップ画*/
     float: left;
     border-radius: 8px;
