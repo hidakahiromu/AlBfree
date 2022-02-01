@@ -1,3 +1,4 @@
+from inspect import Attribute
 from django.shortcuts import render , redirect
 from django.conf import settings
 from .models import allergy_tags , restaurant_information , menus , images , review , customer_question , customer_answer
@@ -125,10 +126,10 @@ def RestaurantsList(request):
         if flg == 0:
             serch_result = serch_result | restaurant_information.objects.filter(restaurant_id = n.restaurant_id)
 
-
-
+    image_db = images.objects.filter(attribute = 'exterior').order_by().distinct()
+    
     return render(request , 'restaurantsList.html' , {
-        'image_db' : images.objects.all(),
+        'image_db' : image_db,
         'restaurants_db' : db,
         'serch_list' : serch_list,
         'serch_result' : serch_result,

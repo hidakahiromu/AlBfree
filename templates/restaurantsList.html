@@ -228,7 +228,7 @@
             {% else%}
                 <div class="storeList_nosup">
                     {% for a in image_db %}
-                        {% if a.store_id == data.restaurant_id and a.attribute == 'exterior' %}
+                        {% if a.store_id == data.restaurant_id %}
                             <img src="{{ a.image.url }}" height="125px" width="125px">
                         {% endif%}
                     {% endfor %}
