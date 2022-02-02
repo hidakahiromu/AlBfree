@@ -103,6 +103,48 @@ def RestaurantsList(request):
         serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='5')
     if 'そば' in aller:
         serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='4')
+    if 'アーモンド' in aller:
+        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='8')
+    if 'あわび' in aller:
+        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='9')
+    if 'いか' in aller:
+        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='10')
+    if 'いくら' in aller:
+        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='11')
+    if 'オレンジ' in aller:
+        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='12')
+    if 'カシューナッツ' in aller:
+        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='13')
+    if 'キウイフルーツ' in aller:
+        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='14')
+    if '牛肉' in aller:
+        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='15')
+    if 'くるみ' in aller:
+        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='16')
+    if 'ごま' in aller:
+        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='17')
+    if '鮭' in aller:
+        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='18')
+    if '鯖' in aller:
+        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='19')
+    if '大豆' in aller:
+        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='20')
+    if '鶏肉' in aller:
+        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='21')
+    if 'ばなな' in aller:
+        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='22')
+    if '豚肉' in aller:
+        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='23')
+    if 'まつたけ' in aller:
+        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='24')
+    if 'もも' in aller:
+        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='25')
+    if 'やまいも' in aller:
+        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='26')
+    if 'りんご' in aller:
+        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='27')
+    if 'ゼラチン' in aller:
+        serch_list = serch_list | restaurant_information.objects.filter(allergy_tag='28')
     if pref != None :
         serch_list = serch_list | restaurant_information.objects.exclude(address__icontains = pref)
     if '全席禁煙' == smoking:
